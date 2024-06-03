@@ -1,0 +1,16 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" >Update Task Status</h1>
+<mat-dialog-content style="height:50vh ;width: 35vw; overflow-y: scroll; max-width: 70vh;">
+<form  [formGroup]="updateTaskStatus" class="d-flex flex-column py-2">
+    <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let option of statusOptions" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions [align]="'end'">
+    <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+    <button (click)="editTaskStatus()"  mat-raised-button color="primary" cdkFocusInitial [disabled]="!updateTaskStatus.valid">Update Status</button>
+</div>

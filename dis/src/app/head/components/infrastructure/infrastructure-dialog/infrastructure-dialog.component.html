@@ -1,0 +1,73 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'add'">Add Infrastructure</h1>
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'update'">Add Infrastructure</h1>
+
+<div mat-dialog-content style="min-width: 400px">
+  <form [formGroup]="infraForm" class="d-flex flex-column py-2">
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of infraTypeList" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="d-flex">
+      <mat-form-field appearance="outline" class="me-1 w-50">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" formControlName="name" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="ms-1 w-50">
+        <mat-label>Acronym</mat-label>
+        <input matInput type="text" formControlName="nameAcronym" />
+      </mat-form-field>
+    </div>
+    <div class="d-flex">
+      <!-- <mat-form-field appearance="outline" class="me-1 w-50">
+        <mat-label>Location</mat-label>
+        <input type="text" placeholder="Location" aria-label="Location" matInput formControlName="location" [matAutocomplete]="auto" />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let loc of filteredLocList | async" [value]="loc">
+            {{ loc }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field> -->
+      <mat-form-field appearance="outline" class="ms-1 w-50">
+        <mat-label>Area</mat-label>
+        <input matInput type="text" formControlName="area" class="text-end pe-1" />
+        <span matTextSuffix>Sqft.</span>
+      </mat-form-field>
+    </div>
+    <div class="d-flex">
+      <mat-form-field appearance="outline" class="me-1 w-50">
+        <mat-label>Incharge</mat-label>
+        <mat-select formControlName="incharge">
+          <mat-option *ngFor="let faculty of facultyList" [value]="faculty.id">{{ faculty.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="me-1 w-50">
+        <mat-label>Associate Incharge</mat-label>
+        <mat-select formControlName="associateIncharge">
+          <mat-option *ngFor="let faculty of facultyList" [value]="faculty.id">{{ faculty.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="d-flex">
+      <mat-form-field appearance="outline" class="me-1 w-50">
+        <mat-label>Staff</mat-label>
+        <mat-select formControlName="staff">
+          <mat-option *ngFor="let staff of staffList" [value]="staff.id">{{ staff.name }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="ms-1 w-50">
+        <mat-label>Attendant</mat-label>
+        <input matInput type="text" formControlName="attendant" />
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <input matInput type="text" formControlName="description" />
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+  <!-- <button mat-raised-button color="primary" cdkFocusInitial (click)="saveClick()" [disabled]="!infraForm.valid">Save</button> -->
+</div>

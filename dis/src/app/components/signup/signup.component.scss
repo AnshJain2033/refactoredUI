@@ -1,0 +1,32 @@
+.signup-page {
+    margin: 9% 20px;
+    // position: absolute;
+    z-index: 99;
+    top: 0px;
+    width: 98%;
+    bottom:10% !important;
+    position: relative;
+  }
+
+.signup-wrapper {
+    width: 100%;
+    margin: auto;
+    max-width: 525px;
+    min-height: 600px;
+    position: relative;
+    box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);
+  }
+  .mat-toolbar{
+    background: linear-gradient(to top, #2b32b2, #1488cc);
+   flex-direction: row; box-sizing: border-box; display: flex;position: fixed;
+   border-radius: 3px;
+   z-index:999;
+   justify-content: center;
+}
+#mat-toolbar-footer{
+    background: linear-gradient(to top, #2b32b2, #1488cc);
+   flex-direction: row; box-sizing: border-box; display: flex;position: sticky;
+   border-radius: 3px;
+   z-index:999;
+   justify-content: flex-start;
+  }

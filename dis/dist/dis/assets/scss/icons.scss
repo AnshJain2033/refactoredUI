@@ -1,0 +1,48 @@
+$iconDimensions: '1x' 10px 10px, '2x' 16px 16px, '2x-2x' 18px 18px, '3x' 20px 20px, '3x-4x' 24px 24px, '3x-3x' 38px 38px, '4x' 44px 44px, '5x' 32px 32px, '6x' 35px 35px, '7x' 42px 42px, '8x' 48px 48px;
+
+@each $name, $height, $width in $iconDimensions {
+  .icon-#{$name} {
+    height: $height;
+    width: $width;
+  }
+}
+
+$imageDimensions: '1x' 48px 48px, '2x' 70px 70px, '3x' 100px 100px, '4x' 150px 150px;
+
+@each $name, $height, $width in $imageDimensions {
+  .image-#{$name} {
+    height: $height;
+    width: $width;
+  }
+}
+
+.header-img {
+  background-position: center;
+  background-size: 100%, 100%;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+$header-icons: 'about' '../icons/header/earth-globe.svg', 'home' '../icons/header/home.svg', 'menu' '../icons/header/hamburger.svg', 'task' '../icons/header/task-list.svg', 'moodle' '../icons/header/moodle.svg';
+@each $name, $url in $header-icons {
+  .header-icon-#{$name} {
+    background-image: url($url);
+    display: inline-block;
+    fill: white;
+    @extend .header-img;
+  }
+}
+
+$logo: 'logo-big' '../icons/logo/logo_big.png', 'logo-small' '../icons/logo/logo_small.png';
+
+@each $name, $url in $logo {
+  .college-#{$name} {
+    background-image: url($url);
+    background-position: center;
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+  }
+}

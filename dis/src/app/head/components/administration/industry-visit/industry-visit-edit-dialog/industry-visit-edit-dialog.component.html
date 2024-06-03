@@ -1,0 +1,51 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'edit'">Edit Industry Visit</h1>
+<mat-dialog-content style="height:50vh ;width: 35vw; overflow-y: scroll; max-width: 70vh;">
+
+    <form *ngIf="type==='edit'" [formGroup]="editIndustryForm" class="d-flex flex-column py-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Participants</mat-label>
+          <mat-select formControlName="participants">
+            <mat-option *ngFor="let participant of participants" [value]="participant">{{ participant }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Coordinator-1</mat-label>
+          <mat-select formControlName="coordinator1">
+            <mat-option *ngFor="let faculty of facultyList" [value]="faculty.name">{{ faculty.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Coordinator-2</mat-label>
+          <mat-select formControlName="coordinator2">
+            <mat-option *ngFor="let faculty of facultyList" [value]="faculty.name">{{ faculty.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <!-- <input matInput placeholder="date" type="date" formControlName="date" /> -->
+          <input matInput [matDatepicker]="picker1" formControlName="date" [min]="todayDate"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error *ngIf="editIndustryForm.controls['date'].touched && editIndustryForm.controls['date'].invalid">Invalid Date</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Start Time</mat-label>
+          <!-- <input matInput placeholder="Start Time" type="time" formControlName="time" /> -->
+          <input matInput [ngxMatTimepicker]="pickert" formControlName="time">  
+          <ngx-mat-timepicker #pickert></ngx-mat-timepicker> 
+          
+          <mat-error *ngIf="editIndustryForm.controls['time'].touched && editIndustryForm.controls['time'].invalid">Invalid Time</mat-error>
+        </mat-form-field>
+    
+       
+      </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions [align]="'end'">
+    <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+  
+    <button *ngIf="type==='edit'" (click)="updateVisit()" mat-raised-button color="primary" cdkFocusInitial>Update</button>
+    <!-- <button (click)="updateStatus()" *ngIf="type==='status'" mat-raised-button color="primary" cdkFocusInitial>Update Status</button> -->
+    <!-- <button (click)="onUpdateVisit()" *ngIf="type==='upcoming'" mat-raised-button color="primary" cdkFocusInitial>Update Status</button> -->
+  
+  </div>

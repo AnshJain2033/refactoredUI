@@ -1,0 +1,29 @@
+<table *ngIf="renderList.length" mat-table [dataSource]="currentRenderList" class="mat-elevation-z8">
+    <ng-container matColumnDef="serial">
+      <th mat-header-cell *matHeaderCellDef>S. No.</th>
+      <td mat-cell *matCellDef="let element; let index = index">{{ index + 1 }}</td>
+    </ng-container>
+    <ng-container *ngFor="let column of columnsList" matColumnDef="{{ column.binding }}">
+      <th mat-header-cell *matHeaderCellDef>{{ column.header }}</th>
+      <td mat-cell *matCellDef="let element">{{ element[column.binding] }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <ng-container *ngFor="let actionBtn of actionBtnList">
+          <button mat-mini-fab *ngIf="!actionBtn.displayName" color="{{ actionBtn.color }}" (click)="actionBtnClickEvent(actionBtn.name, element)" class="mx-1">
+            <i class="{{ actionBtn.icon }}"></i>
+          </button>
+          <button mat-raised-button *ngIf="actionBtn.displayName" color="{{ actionBtn.color }}" (click)="actionBtnClickEvent(actionBtn.name, element)" class="mx-1">
+            <i class="{{ actionBtn.icon }}"></i><span *ngIf="actionBtn.displayName">{{ actionBtn.name }}</span>
+          </button>
+        </ng-container>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+  </table>
+  
+  <mat-paginator *ngIf="renderList.length" [length]="renderList.length" [pageSize]="pageSize" [pageIndex]="pageIndex" (page)="handlePageEvent($event)" aria-label="Select Page"> </mat-paginator>
+  <div *ngIf="!renderList.length">NO DATA AVAILABLE</div>
+  

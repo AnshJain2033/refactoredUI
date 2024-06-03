@@ -1,0 +1,13 @@
+<div class="row">
+    <app-dashboard-sidenav class="col-lg-3"></app-dashboard-sidenav>
+    <div class="col-lg-9">
+        <mat-tab-group (selectedTabChange)="onTabSelectionChange($event)" (animationDone)="animationDone()" style="padding: 5px 20px">
+          <mat-tab *ngFor="let navItem of navListItem" label="{{ navItem.value }}">
+            <app-table [renderList]="currentList" [displayColumns]="displayColumns" [columnsList]="columnsList" [showActions]="true" [actionBtnList]="actionBtnList" [pageSize]="7" (btnClickEvent)="actionBtnClickEvent($event)"></app-table>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+</div>
+<button mat-fab color="primary" style="position: fixed; bottom: 9%; right: 1%; z-index: 999" aria-label="Add meeting" (click)="addMeetingDialog()">
+    <i class="bi bi-plus-lg" style="font-size: 24px"></i>
+</button>

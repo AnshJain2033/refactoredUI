@@ -1,0 +1,44 @@
+.mat-toolbar{
+  background: linear-gradient(to top, #2b32b2, #1488cc);
+ flex-direction: row; box-sizing: border-box; display: flex;position: fixed;
+ border-radius: 3px;
+}
+
+// .header-icon-text {
+//   font-size: 12px;
+// }
+
+// .header-icon-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+// .nav-main {
+//   background: linear-gradient(to top, #2b32b2, #1488cc);
+// }
+
+// .nav-link {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   i {
+//     font-size: 20px;
+//   }
+//   span {
+//     font-size: 14px;
+//   }
+//   &:hover {
+//     color: rgb(91, 193, 255) !important;
+//   }
+// }
+
+// .navbar-nav {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-evenly;
+//   width: 100%;
+// }
+
+// .active-header {
+//   color: rgb(91, 193, 255) !important;
+// }

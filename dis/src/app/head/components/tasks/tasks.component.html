@@ -1,0 +1,57 @@
+<mat-card style="display: flex; flex-direction: row; justify-content: start; padding: 20px">
+    <div style="min-width: 300px !important ; width: fit-content">
+      <mat-card style="width: 20vw; padding: 20px; min-width: 280px !important">
+        <mat-card-title style="display: flex">
+          <mat-icon>query_builder</mat-icon>
+          <span style="margin-left: 8px">Assigned task status</span>
+        </mat-card-title>
+        <mat-card-content style="padding: 20px">
+          <button mat-button color="primary">
+            <mat-chip style="background-color: rgb(255, 166, 166); height: 20px; margin-right: 10px">
+              {{ this.inProgressList.length }}
+            </mat-chip>
+            <span>In Progress</span>
+          </button>
+          <button mat-button color="primary">
+            <mat-chip style="background-color: rgb(127, 247, 135); height: 20px; margin-right: 10px">
+              {{ this.completedList.length }}
+            </mat-chip>
+            <span>Completed</span>
+          </button>
+          <button mat-button color="primary">
+            <mat-chip style="background-color: rgb(255, 233, 138); height: 20px; margin-right: 10px">
+              {{ this.onHoldList.length }}
+            </mat-chip>
+            <span>Hold</span>
+          </button>
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-title style="display: flex; margin-top: 10px">
+          <mat-icon>toc</mat-icon>
+          <span style="margin-left: 8px">Quick Actions</span>
+        </mat-card-title>
+        <mat-card-content style="padding: 20px">
+          <button (click)="assignTask()" mat-button color="primary">
+            Assign Task
+            <mat-icon>assignment</mat-icon>
+          </button>
+          <!-- <button (click)="updateTask()" mat-button color="primary">
+            Update Task
+            <mat-icon>update</mat-icon>
+          </button> -->
+          <button (click)="exportData()" mat-button color="primary">
+            Export List
+            <mat-icon>save_alt</mat-icon>
+          </button>
+          <!-- <button mat-button color="primary">
+            Advance Search
+            <mat-icon>filter_list</mat-icon>
+          </button> -->
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <mat-card style="margin-left: 20px">
+      <ag-grid-angular style="height: 58vh; width: 65vw" class="ag-theme-alpine" [rowData]="this.activeTaskList" [columnDefs]="colDefs" [defaultColDef]="defaultColDef" [gridOptions]="gridOptions" (gridReady)="onGridReady($event)" [components]="frameworkComponents" [rowGroupPanelShow]="rowGroupPanelShow" > </ag-grid-angular>
+    </mat-card>
+  </mat-card>
+  

@@ -1,0 +1,326 @@
+<!--  
+ <mat-sidenav-container>
+
+    <mat-sidenav [(opened)]="opened">
+
+        Start
+    </mat-sidenav>
+    <mat-sidenav-content>
+        End
+        <button mat-icon-button (click)="opened=!opened">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <div fxHide.gt-sm >
+                    <button mat-icon-button >
+                        <mat-icon (click)="opened=!opened">menu</mat-icon>
+                    </button>
+                </div>
+                <div class="college-logo-small image-2x"></div>
+            <div>
+            <a routerLink="/{{ userType }}">
+            
+            <span style="text-align: center; font-size: 16px; margin-left: 10px" class="text-white">Department of <br />
+                Computer Engineering</span>
+            </a>
+            </div>
+            <div fxFlex fxLayout fxLayoutAlign="end" fxHide.sm>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            
+             <li  *ngFor="let route of renderList">
+                <a class="nav-link text-white" *ngIf="!route.children" [routerLink]="[route.route]"
+                  routerLinkActive="active-header">
+                  <i class="bi" [ngClass]="route.icon"></i>
+                  <span>{{ route.text }}</span>
+                </a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false" *ngIf="route.children">
+                  {{ route.children.text }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li *ngFor="let subRoute of route.children?.children">
+                    <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                      subRoute.text }}</a>
+                  </li>
+                </ul>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link text-white" (click)="logout()">
+                  <i class="bi bi-arrow-left"></i>
+                  <span>Logout</span>
+                </a>
+              </li> 
+        </ul>
+    </div>
+            </mat-toolbar-row>
+         </mat-toolbar>
+    </mat-sidenav-content>
+ </mat-sidenav-container>  -->
+ 
+<!-- <mat-toolbar>
+    <div fxHide.gt-sm >
+        <button mat-icon-button >
+            <mat-icon (click)="opened=!opened">menu</mat-icon>
+        </button>
+    </div>
+    
+    <div class="college-logo-small image-2x"></div>
+    <div>
+    <a routerLink="/{{ userType }}">
+    
+    <span style="text-align: center; font-size: 16px; margin-left: 10px" class="text-white">Department of <br />
+        Computer Engineering</span>
+    </a>
+    </div>
+    <div fxFlex fxLayout fxLayoutAlign="end" fxHide.sm>
+        <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+            
+             <li  *ngFor="let route of renderList">
+                <a class="nav-link text-white" *ngIf="!route.children" [routerLink]="[route.route]"
+                  routerLinkActive="active-header">
+                  <i class="bi" [ngClass]="route.icon"></i>
+                  <span>{{ route.text }}</span>
+                </a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false" *ngIf="route.children">
+                  {{ route.children.text }}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li *ngFor="let subRoute of route.children?.children">
+                    <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                      subRoute.text }}</a>
+                  </li>
+                </ul>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link text-white" (click)="logout()">
+                  <i class="bi bi-arrow-left"></i>
+                  <span>Logout</span>
+                </a>
+              </li> 
+        </ul>
+    </div>
+    
+</mat-toolbar> -->
+<!-- <mat-drawer-container>
+    <mat-drawer #sidenav opened="opened" mode="side" style="visibility: visible;">
+        <mat-nav-list >
+            <a mat-list-item routerLink="/home">
+                <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+            </a>
+           
+          </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+
+    </mat-drawer-content>
+</mat-drawer-container> -->
+
+<!-- <mat-sidenav-container style=" flex: 1 1 auto;">
+    <mat-toolbar>
+        <div fxHide.gt-sm >
+            <button mat-icon-button >
+                <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+            </button>
+        </div>
+        
+        <div class="college-logo-small image-2x"></div>
+        <div>
+        <a routerLink="/{{ userType }}">
+        
+        <span style="text-align: center; font-size: 16px; margin-left: 10px" class="text-white">Department of <br />
+            Computer Engineering</span>
+        </a>
+        </div>
+        <div fxFlex fxLayout fxLayoutAlign="end" fxHide.sm>
+            <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+                
+                 <li  *ngFor="let route of renderList">
+                    <a class="nav-link text-white" *ngIf="!route.children" [routerLink]="[route.route]"
+                      routerLinkActive="active-header">
+                      <i class="bi" [ngClass]="route.icon"></i>
+                      <span>{{ route.text }}</span>
+                    </a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false" *ngIf="route.children">
+                      {{ route.children.text }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li *ngFor="let subRoute of route.children?.children">
+                        <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                          subRoute.text }}</a>
+                      </li>
+                    </ul>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link text-white" (click)="logout()">
+                      <i class="bi bi-arrow-left"></i>
+                      <span>Logout</span>
+                    </a>
+                  </li> 
+            </ul>
+        </div>
+        
+    </mat-toolbar>
+    <mat-sidenav #sidenav style="background-color:cornflowerblue;" [(opened)]="opened">
+       
+        <mat-nav-list >
+            <a mat-list-item routerLink="/home">
+                <mat-icon>home</mat-icon> <span class="nav-caption">Home</span>
+            </a>
+           
+          </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        
+       
+    </mat-sidenav-content>
+</mat-sidenav-container>  -->
+
+<!-- 
+    <nav class="navbar navbar-expand-lg bg-dark text-white nav-main">
+      <div class="container-fluid" style="max-width: 1400px">
+        <a class="navbar-brand d-flex align-items-center" routerLink="/{{ userType }}">
+          <div class="college-logo-small image-2x"></div>
+          <span style="text-align: center; font-size: 16px; margin-left: 10px" class="text-white">Department of <br />
+            Computer Engineering</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item" *ngFor="let route of renderList" [ngClass]="route.children ? 'dropdown' : ''">
+              <a class="nav-link text-white" *ngIf="!route.children" [routerLink]="[route.route]"
+                routerLinkActive="active-header">
+                <i class="bi" [ngClass]="route.icon"></i>
+                <span>{{ route.text }}</span>
+              </a>
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" *ngIf="route.children">
+                {{ route.children.text }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li *ngFor="let subRoute of route.children?.children">
+                  <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                    subRoute.text }}</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" (click)="logout()">
+                <i class="bi bi-arrow-left"></i>
+                <span>Logout</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   -->
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+    <div fxShow class="college-logo-small image-1x"></div>
+        <div>
+        <a routerLink="/{{ userType }}">
+        
+        <span style="text-align: center; font-size: 16px; margin-left: 10px" class="text-white">Department of <br />
+            Computer Engineering</span>
+        </a>
+        
+    </div>
+        <div style="display: flex;position: fixed;right: 0;" fxLayout fxLayoutAlign="end" fxHide.lt-md>
+            <ng-container *ngFor="let route of renderList">
+        <button mat-button *ngIf="route.text!='Profile'">
+            <a class="nav-link text-white" *ngIf="!route.children" [routerLink]="[route.route]"
+            routerLinkActive="active-header">
+            <i class="bi" [ngClass]="route.icon"></i>
+            <span>{{ route.text }}</span>
+          </a>
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false" *ngIf="route.children">
+            {{ route.children.text }}
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li *ngFor="let subRoute of route.children?.children">
+              <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                subRoute.text }}</a>
+            </li>
+          </ul>
+        </button>
+    </ng-container>
+        <button mat-button *ngIf="isLoggedIn"  [matMenuTriggerFor]="usermenu" class="nav-link text-white" style="bottom: 0;"><img src={{images[loginUser]}} alt="HOD_image" style="height: 40px;"/></button>
+        <mat-menu #usermenu="matMenu">
+            <button mat-menu-item (click)="navigateToProfile()">View Profile</button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="logout()">Logout</button>
+          </mat-menu>
+        <!-- <button mat-button >
+            <a class="nav-link text-white" (click)="logout()">
+                <i class="bi bi-arrow-left"></i>
+                <span>Logout</span>
+              </a>
+        </button> -->
+    
+    </div>
+    <mat-menu #dropMenu="matMenu">
+        <ng-container *ngFor="let route of renderList">
+            <button mat-menu-item>
+                <a class="text-black" *ngIf="!route.children" [routerLink]="[route.route]"
+                routerLinkActive="active-header">
+                <i class="bi" [ngClass]="route.icon"></i>
+                <span>{{ route.text }}</span>
+              </a>
+              <a class="dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false" *ngIf="route.children">
+                {{ route.children.text }}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li *ngFor="let subRoute of route.children?.children">
+                  <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                    subRoute.text }}</a>
+                </li>
+              </ul>
+            </button>
+            <mat-divider></mat-divider>
+        </ng-container>
+        <button mat-menu-item>
+            <a class="text-black" (click)="logout()">
+                <i class="bi bi-arrow-left"></i>
+                <span>Logout</span>
+              </a>
+        </button>
+    </mat-menu>
+        <!-- <div fxFlex fxLayout fxLayoutAlign="end" fxHide.sm>
+            <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+                
+                 <li  *ngFor="let route of renderList">
+                    <a class="nav-link text-white" *ngIf="!route.children" [routerLink]="[route.route]"
+                      routerLinkActive="active-header">
+                      <i class="bi" [ngClass]="route.icon"></i>
+                      <span>{{ route.text }}</span>
+                    </a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false" *ngIf="route.children">
+                      {{ route.children.text }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li *ngFor="let subRoute of route.children?.children">
+                        <a class="dropdown-item" [routerLink]="[subRoute.route]" routerLinkActive="active-header">{{
+                          subRoute.text }}</a>
+                      </li>
+                    </ul>
+                  </li> 
+                  <li class="nav-item">
+                    <a class="nav-link text-white" (click)="logout()">
+                      <i class="bi bi-arrow-left"></i>
+                      <span>Logout</span>
+                    </a>
+                  </li> 
+            </ul>
+        </div> -->
+</mat-toolbar>

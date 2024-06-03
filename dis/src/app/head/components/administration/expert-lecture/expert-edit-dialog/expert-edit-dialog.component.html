@@ -1,0 +1,95 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'edit'">Edit Expert Lecture</h1>
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'status'"> Update Status</h1>
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'upcoming'">Update Status</h1>
+
+<mat-dialog-content style="height:50vh ;width: 35vw; overflow-y: scroll; max-width: 70vh;">
+
+  <form *ngIf="type==='edit' && expertLecture" [formGroup]="updateExpertLectureForm" class="d-flex flex-column py-2">
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Coordinators</mat-label>
+      <mat-select formControlName="coordinator" multiple>
+        <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option>
+        <mat-option *ngFor="let coordinator of facultyList" [value]="coordinator.name">{{ coordinator.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Audience</mat-label>
+      <mat-select formControlName="audience" multiple>
+        <mat-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <mat-form-field appearance="outline">
+      <mat-label>Date </mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="date" [min]="todayDate"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+      <!-- <input matInput placeholder="Date" type="date" formControlName="date" /> -->
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Time</mat-label>
+      <input matInput [ngxMatTimepicker]="picker2" formControlName="time">  
+          <ngx-mat-timepicker #picker2></ngx-mat-timepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Venue</mat-label>
+      <input matInput placeholder="venue" type="text" formControlName="venue" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>conveyance</mat-label>
+      <input matInput placeholder="conveyance" type="number"
+        formControlName="conveyance" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>honorarium</mat-label>
+      <input matInput placeholder="honorarium" type="number"
+        formControlName="honorarium" />
+    </mat-form-field>
+  </form>
+
+  <form *ngIf="type==='status'" [formGroup]="updateLectureStatus" class="d-flex flex-column py-2">
+    <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let option of statusOptions" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    <mat-label>Upload Notesheet</mat-label>
+    <input style="padding: 20px;"  (change)="selectFileInput($event)" type="file" formControlName="file" />
+  </form>
+
+  <form *ngIf="type==='upcoming'" [formGroup]="updateUpcomingLectureStatus" class="d-flex flex-column py-2">
+    <mat-form-field appearance="outline">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status" required>
+          <mat-option *ngFor="let option of statusOptions" [value]="option">{{ option }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-container *ngIf="updateUpcomingLectureStatus.controls['status'].value.toLowerCase() === 'completed'">
+    <mat-label>Upload Attendance</mat-label>
+    <input style="padding: 20px;"  (change)="selectAttendanceFileInput($event)" type="file" formControlName="attendanceFile" />
+  
+    <mat-label>Upload Photographs</mat-label>
+    <input style="padding: 20px;" (change)="selectPhotosFileInput($event)" type="file" formControlName="photos" />
+</ng-container>
+<ng-container *ngIf="updateUpcomingLectureStatus.controls['status'].value.toLowerCase() === 'pending'">
+  <mat-label>Upload Pending Note</mat-label>
+  <input style="padding: 20px;"  (change)="selectFileInput($event)" type="file" formControlName="file" />
+
+</ng-container>
+  </form>
+
+
+
+</mat-dialog-content>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+
+  <button *ngIf="type==='edit'" (click)="onUpdateExpertLecture()" mat-raised-button color="primary" cdkFocusInitial [disabled]="!updateExpertLectureForm.valid">Update</button>
+  <button (click)="editExpert()" *ngIf="type==='status'" mat-raised-button color="primary" cdkFocusInitial [disabled]="!updateLectureStatus.valid">Update Status</button>
+  <button (click)="editUpcomingLectureStatus()" *ngIf="type==='upcoming'" mat-raised-button color="primary" cdkFocusInitial  [disabled]="!updateUpcomingLectureStatus.valid">Update Status</button>
+
+</div>
