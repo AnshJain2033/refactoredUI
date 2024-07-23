@@ -12,7 +12,7 @@ export class MeetingsService {
 
   private serviceUrls = serviceUrls;
 
-  constructor(private http: HttpClient, private spinnerService: SpinnerService, private router: Router) { }
+  constructor(private http: HttpClient, private spinnerService: SpinnerService) { }
 
   public getPastMeetings(){
     this.spinnerService.addSpinner();

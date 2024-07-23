@@ -15,6 +15,7 @@ export const images  = {
 'sgupta':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/surendra_gupta1-resize.jpg",
 'tdubey':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/TeenaDubey.png",
 'uthakar':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/urjita_thakar_new-resize.jpg",
-'vtiwari':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/vandan_tiwari_a-resize.jpg"
+'vtewari':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/vandan_tiwari_a-resize.jpg",
+'compdept': './images/CSDept.jpg'
 
 } 

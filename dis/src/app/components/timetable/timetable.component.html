@@ -1,0 +1,71 @@
+<form style="margin-top: 5px" [formGroup]="editTimeTableForm" class="d-flex flex-column py-2">
+    <!-- <div class="wrapper"> -->
+    <div fxLayout="row wrap" fxLayoutGap="1%">
+        <mat-form-field appearance="outline">
+            <mat-label>Time Table Type</mat-label>
+            <mat-select formControlName="ttType">
+                <!-- <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option> -->
+                <ng-container *ngFor="let type of ttTypes; let last = last">
+                    <mat-option [value]="type.name">{{ type.name }}</mat-option>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+                
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course" (selectionChange)="onCourseSelection($event)">
+                <!-- <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option> -->
+                <ng-container *ngFor="let course of courseList; let last = last">
+                    <mat-option [value]="course.name">{{ course.name }}</mat-option>
+                    <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Semester</mat-label>
+            <mat-select formControlName="semester">
+                <!-- <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option> -->
+                <ng-container *ngFor="let sem of semesterList; let last = last">
+                    <mat-option [value]="sem">{{ sem }}</mat-option>
+                <mat-divider *ngIf="!last"></mat-divider>
+                </ng-container>
+            </mat-select>
+        </mat-form-field>
+    <!-- </div>
+    <div fxLayout="row"> -->
+        <mat-form-field appearance="outline">
+            <mat-label>Session Start</mat-label>
+            <!-- <mat-datepicker formControlName="sessionStart" [matDatepicker]="sessionPicker" /> -->
+            <input matInput [matDatepicker]="sessionPicker" formControlName="sessionStart" [max]="session1" />
+            <!-- <input matStartDate matInput placeholder="Start year" formControlName="sessionStart"> -->
+            <!-- <input matEndDate matInput placeholder="End year" formControlName="sessionEnd"> -->
+            <!-- <mat-datepicker> -->
+            <!-- <mat-hint>YYYY</mat-hint> -->
+            <mat-datepicker-toggle matSuffix [for]="sessionPicker"></mat-datepicker-toggle>
+            <mat-datepicker #sessionPicker startView="multi-year"
+                (yearSelected)="chosenYearHandler($event, sessionPicker,'sessionStart')" 
+                
+                ></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Session End</mat-label>
+            <input matInput [matDatepicker]="sessionPicker2" formControlName="sessionEnd" [min]="session2" [disabled]="!showSession2"/>
+            <!-- <mat-hint>YYYY</mat-hint> -->
+            <mat-datepicker-toggle matSuffix [for]="sessionPicker2"></mat-datepicker-toggle>
+            <mat-datepicker #sessionPicker2 startView="multi-year"
+                (yearSelected)="chosenYearHandler($event, sessionPicker2,'sessionEnd')"></mat-datepicker>
+            <!-- <mat-error *ngIf="editTimeTableForm.controls['sessionEnd'] < editTimeTableForm.controls['sessionStart']">Invalid Selection</mat-error> -->
+        </mat-form-field>
+    
+        <button mat-raised-button [disabled]="!editTimeTableForm.valid" color="primary" (click)="onSubmit()" style="align-self: right">Submit</button>
+    </div>
+    <div class="grid-wrapper" [hidden]="!showGrid">
+        <ag-grid-angular style="height: 58vh;" class="ag-theme-alpine" [rowData]="rowData" [columnDefs]="colDefs"
+            [defaultColDef]="defaultColDef" (gridReady)="onGridReady($event)">
+        </ag-grid-angular>
+    </div>
+
+</form>

@@ -2,11 +2,13 @@
 <div class="row">
 <app-dashboard-sidenav class="col-lg-3"></app-dashboard-sidenav>
 <div class="col-lg-9 home-page-tabs">
-    <mat-tab-group style="padding: 5px 20px;position: relative;opacity: inherit;">
+    <mat-tab-group style="padding: 5px 20px;position: relative;opacity: inherit; height: 500px;">
         <mat-tab label="Calender">
           <full-calendar [options]="calendarOptions" ></full-calendar>
         </mat-tab>
-        <mat-tab label="Time Table"> Time Table </mat-tab>
+        <mat-tab label="Time Table" > 
+          <app-timetable style="height: 100px;"></app-timetable>  
+        </mat-tab>
       </mat-tab-group>
 </div>
 </div>

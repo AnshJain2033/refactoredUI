@@ -44,6 +44,7 @@ import { IndustryVisitPendingComponent } from './components/administration/indus
 import { IndustryVisitUpcomingComponent } from './components/administration/industry-visit/industry-visit-upcoming/industry-visit-upcoming.component';
 import { IndustryVisitCompletedComponent } from './components/administration/industry-visit/industry-visit-completed/industry-visit-completed.component';
 import { IndustryVisitEditDialogComponent } from './components/administration/industry-visit/industry-visit-edit-dialog/industry-visit-edit-dialog.component';
+import { TimetableComponent } from '../components/timetable/timetable.component';
 // import { FacultyDialogComponent } from './components/faculty-page/faculties/faculty-dialog/faculty-dialog.component';
 
 //import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
@@ -80,7 +81,8 @@ import { IndustryVisitEditDialogComponent } from './components/administration/in
     IndustryVisitPendingComponent,
     IndustryVisitUpcomingComponent,
     IndustryVisitCompletedComponent,
-    IndustryVisitEditDialogComponent
+    IndustryVisitEditDialogComponent,
+    TimetableComponent
     
    
   ],

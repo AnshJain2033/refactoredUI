@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 import { MatChipsModule } from '@angular/material/chips';
+import {MomentDateModule, MomentDateAdapter} from '@angular/material-moment-adapter';
 //import { NgxMatDatetimePickerModule } from '@angular-material-components/datetime-picker';
 //import { NgxMatMomentModule } from '@angular-material-components/moment-adapter';
 
@@ -40,6 +41,7 @@ const materialModules = [
   NgxMatTimepickerModule,
   MatCardModule,
   MatChipsModule,
+  MomentDateModule
  // NgxMatDatetimePickerModule,
  // NgxMatMomentModule
 ];

@@ -12,3 +12,8 @@
     box-shadow: -1px 3px 3px -3px rgb(0 0 0 / 35%);
     // z-index: -1;
   }
+
+  .mat-tab-body{
+    height: 100px !important;
+    overflow: auto !important;
+  }

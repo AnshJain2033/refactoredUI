@@ -92,6 +92,7 @@ export const serviceUrls: any = {
     addExpertLecture: urls.academics + '/expertLecture/addExpertLecture',
     updateExpertLectureByStatus: urls.academics + '/expertLecture/updateExpertLectureStatus',
     editExpertLecture: urls.academics + '/expertLecture/editExpertLecture',
+    getCourseList: urls.academics + '/timeTable/getCourseList',
     updatePanel: urls.user + '/panelOfPractical',
     getAllExternals: urls.user + '/externalExaminer',
     getAllIndustryVisitsByStatus: urls.academics + '/industryVisit/getIndustryVisits',

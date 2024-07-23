@@ -36,6 +36,7 @@ import { UploadCsvDialogComponent } from './components/admin/upload-csv-dialog/u
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { UploadCsvDialogComponent } from './components/admin/upload-csv-dialog/u
     ContactComponent,
     ProfileComponent,
     UploadCsvDialogComponent,
+    // TimetableComponent,
     
     
     // FooterComponent,
