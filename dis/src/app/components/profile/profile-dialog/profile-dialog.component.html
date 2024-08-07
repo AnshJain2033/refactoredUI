@@ -1,0 +1,401 @@
+<div>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'add'">Edit Profile</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'exp'">Add Experience</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'education'">Add Education</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'research'">Add Research Work</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'internship'">Add Internships</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'compExams'">Add Exams</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'placement'">Add Placement</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'cultural'">Add Curtural Activities</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'technical'">Add Technical Activity</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'workshop'">Add Workshop/Seminar</h1>
+
+    <div mat-dialog-content style="min-width: 400px">
+        <!-- edit profile -->
+        <form *ngIf="this.data.type === 'add'" [formGroup]="editProfileForm" class="d-flex flex-column py-2">
+          <mat-form-field appearance="outline">
+            <mat-label>alternateMobileNo</mat-label>
+            <input matInput type="text" formControlName="alternateMobileNo" [(ngModel)]="this.data.facultyProfile.alternateMobileNo" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>areaOfSpecialization</mat-label>
+            <input matInput type="text" formControlName="areaOfSpecialization" [(ngModel)]="this.data.facultyProfile.areaOfSpecialization" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>dob</mat-label>
+            <input matInput type="date" formControlName="dob" [(ngModel)]="this.data.facultyProfile.dob" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>email</mat-label>
+            <input matInput type="email" formControlName="email" [(ngModel)]="this.data.facultyProfile.email" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>mobileNo</mat-label>
+            <input matInput type="number" formControlName="mobileNo" [(ngModel)]="this.data.facultyProfile.mobileNo" />
+          </mat-form-field>
+        </form>
+        <!--Add Exp  -->
+        <form *ngIf="this.data.type === 'exp'" [formGroup]="addExpForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>organizationName</mat-label>
+              <input matInput type="text" formControlName="organizationName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>designation</mat-label>
+              <input matInput type="text" formControlName="designation" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>dateOfJoining</mat-label>
+              <input matInput type="date" formControlName="dateOfJoining" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>dateOfLeaving</mat-label>
+              <input matInput type="date" formControlName="dateOfLeaving" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>city</mat-label>
+              <input matInput type="text" formControlName="city" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>state</mat-label>
+              <input matInput type="text" formControlName="state" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>country</mat-label>
+              <input matInput type="text" formControlName="country" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>payScale</mat-label>
+              <input matInput type="number" formControlName="payScale" />
+            </mat-form-field>
+          </div>
+        </form>
+    <!-- education form  -->
+        <form *ngIf="this.data.type === 'education'" [formGroup]="addEducationForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Degree/Certificate</mat-label>
+              <input matInput type="text" formControlName="degreeCertificate" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>College/School</mat-label>
+              <input matInput type="text" formControlName="collegeSchool" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>University/Board</mat-label>
+              <input matInput type="text" formControlName="universityBoard" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Specialization</mat-label>
+              <input matInput type="text" formControlName="specialization" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Year Of Passing</mat-label>
+              <input matInput formControlName="yearOfPassing" type="number" />
+              <!-- <mat-error *ngIf="addEducationForm.controls['yearOfPassing'].hasError('pattern')">Enter valid year</mat-error> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Percentage/CGPA</mat-label>
+              <input matInput type="number" formControlName="percentageCgpa" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- Add Research -->
+        <form *ngIf="this.data.type === 'research'" [formGroup]="addResearchForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Title </mat-label>
+              <input matInput type="text" formControlName="title" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>yearOfPublication</mat-label>
+              <input matInput type="number" formControlName="yearOfPublication" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>publisher</mat-label>
+              <input matInput type="text" formControlName="publisher" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>category</mat-label>
+              <!-- <input matInput type="text" formControlName="category" > -->
+              <mat-select placeholder="category" formControlName="category">
+                <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>subcategory</mat-label>
+              <mat-select placeholder=" sub category" formControlName="subcategory">
+                <mat-option *ngFor="let option of subOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>coAuthors</mat-label>
+              <input matInput type="text" formControlName="coAuthors" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>guideName</mat-label>
+              <input matInput type="text" formControlName="guideName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>conferenceJournalName</mat-label>
+              <input matInput type="text" formControlName="conferenceJournalName" />
+            </mat-form-field>
+          </div>
+        </form>
+        <!-- Add Internship -->
+        <form *ngIf="this.data.type === 'internship'" [formGroup]="addInternshipForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>subject </mat-label>
+              <input matInput type="text" formControlName="subject" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>companyName</mat-label>
+              <input matInput type="text" formControlName="companyName" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>city</mat-label>
+              <input matInput type="text" formControlName="city" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>state</mat-label>
+              <input matInput type="text" formControlName="state" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>country</mat-label>
+              <input matInput type="text" formControlName="country" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>startDate</mat-label>
+              <input matInput type="date" formControlName="startDate" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>endDate</mat-label>
+              <input matInput type="date" formControlName="endDate" />
+            </mat-form-field>
+          </div>
+        </form>
+        <!-- Add Comp Exams -->
+        <form *ngIf="this.data.type === 'compExams'" [formGroup]="addCompExamForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>nameOfExam </mat-label>
+              <input matInput type="text" formControlName="nameOfExam" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>rank</mat-label>
+              <input matInput type="text" formControlName="rank" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>year</mat-label>
+              <input matInput type="text" formControlName="year" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>registrationNo</mat-label>
+              <input matInput type="text" formControlName="registrationNo" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>score</mat-label>
+              <input matInput type="text" formControlName="score" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- Placement form  -->
+        <form *ngIf="this.data.type === 'placement'"[formGroup]="addPlacementForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>nameOfExam </mat-label>
+              <input matInput type="text" formControlName="nameOfExam" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>rank</mat-label>
+              <input matInput type="text" formControlName="rank" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>year</mat-label>
+              <input matInput type="text" formControlName="year" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>registrationNo</mat-label>
+              <input matInput type="text" formControlName="registrationNo" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>score</mat-label>
+              <input matInput type="text" formControlName="score" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- Cultural Activities form -->
+        <form *ngIf="this.data.type === 'cultural'" [formGroup]="addCulturalActivitiesForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Name of Activity</mat-label>
+              <input matInput type="text" formControlName="nameOfActivity" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>type</mat-label>
+              <input matInput type="text" formControlName="type" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>date</mat-label>
+              <input matInput type="date" formControlName="date" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>place</mat-label>
+              <input matInput type="text" formControlName="place" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Achievement</mat-label>
+              <input matInput type="text" formControlName="achievement" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- Technical Activities form -->
+        <form *ngIf="this.data.type === 'technical'" [formGroup]="addTechnicalActivitiesForm" d-flex flex-column py-2>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Category</mat-label>
+              <mat-select placeholder="category" formControlName="attendedOrganized">
+                <mat-option *ngFor="let option of technicalActivityoptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Coordinator Name</mat-label>
+              <input matInput type="text" formControlName="nameOfCoordinator" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Start Date</mat-label>
+              <input matInput type="date" formControlName="fromDate" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>End Date</mat-label>
+              <input matInput type="date" formControlName="toDate" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Place</mat-label>
+              <input matInput type="text" formControlName="place" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Subject Topic</mat-label>
+              <input matInput type="text" formControlName="topicSubject" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Type</mat-label>
+              <input matInput type="text" formControlName="type" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- workshop form  -->
+        <form *ngIf="this.data.type === 'workshop'" [formGroup]="addWorkshopForm" d-flex flex-column py-2>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Category</mat-label>
+              <mat-select placeholder="category" formControlName="attendedOrganized">
+                <mat-option *ngFor="let option of technicalActivityoptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Coordinator Name</mat-label>
+              <input matInput type="text" formControlName="nameOfCoordinator" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Start Date</mat-label>
+              <input matInput type="date" formControlName="fromDate" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>End Date</mat-label>
+              <input matInput type="date" formControlName="toDate" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Place</mat-label>
+              <input matInput type="text" formControlName="place" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Subject Topic</mat-label>
+              <input matInput type="text" formControlName="topicSubject" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Type</mat-label>
+              <input matInput type="text" formControlName="type" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+      </div>
+      <div mat-dialog-actions [align]="'end'">
+        <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+        <button *ngIf="type === 'add'" mat-raised-button color="primary" cdkFocusInitial (click)="editProfile()">Save</button>
+        <button *ngIf="type === 'exp'" mat-raised-button color="primary" cdkFocusInitial (click)="addExp()">Add</button>
+        <button *ngIf="type === 'education'" mat-raised-button color="primary" cdkFocusInitial (click)="addEducation()">Add</button>
+        <button *ngIf="type === 'research'" mat-raised-button color="primary" cdkFocusInitial (click)="addResearch()">Add</button>
+        <button *ngIf="type === 'internship'" mat-raised-button color="primary" cdkFocusInitial (click)="addInternship()">Add</button>
+        <button *ngIf="type === 'compExams'" mat-raised-button color="primary" cdkFocusInitial (click)="addExam()">Add</button>
+        <button *ngIf="type === 'placement'" mat-raised-button color="primary" cdkFocusInitial (click)="addPlacement()">Add</button>
+        <button *ngIf="type === 'cultural'" mat-raised-button color="primary" cdkFocusInitial (click)="addCulturalActivity()">Add</button>
+        <button *ngIf="type === 'technical'" mat-raised-button color="primary" cdkFocusInitial (click)="addTechnicalActivity()">Add</button>
+        <button *ngIf="type === 'workshop'"mat-raised-button color="primary" cdkFocusInitial (click)="addWorkshop()">Add</button>
+      </div>
+    </div>
+    

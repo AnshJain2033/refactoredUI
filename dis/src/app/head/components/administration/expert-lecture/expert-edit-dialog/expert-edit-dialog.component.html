@@ -31,6 +31,7 @@
     <mat-form-field appearance="outline">
       <mat-label>Time</mat-label>
       <input matInput [ngxMatTimepicker]="picker2" formControlName="time">  
+      <ngx-mat-timepicker-toggle matIconSuffix [for]=picker2></ngx-mat-timepicker-toggle>
           <ngx-mat-timepicker #picker2></ngx-mat-timepicker>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -53,7 +54,7 @@
     <mat-form-field appearance="outline">
         <mat-label>Status</mat-label>
         <mat-select formControlName="status" required>
-          <mat-option *ngFor="let option of statusOptions" [value]="option">{{ option }}</mat-option>
+          <mat-option *ngFor="let option of pendingStatusOptions" [value]="option">{{ option }}</mat-option>
         </mat-select>
       </mat-form-field>
     <mat-label>Upload Notesheet</mat-label>
@@ -88,7 +89,7 @@
 <div mat-dialog-actions [align]="'end'">
   <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
 
-  <button *ngIf="type==='edit'" (click)="onUpdateExpertLecture()" mat-raised-button color="primary" cdkFocusInitial [disabled]="!updateExpertLectureForm.valid">Update</button>
+  <button *ngIf="type==='edit'" (click)="onUpdateExpertLecture()" mat-raised-button color="primary" cdkFocusInitial>Update</button>
   <button (click)="editExpert()" *ngIf="type==='status'" mat-raised-button color="primary" cdkFocusInitial [disabled]="!updateLectureStatus.valid">Update Status</button>
   <button (click)="editUpcomingLectureStatus()" *ngIf="type==='upcoming'" mat-raised-button color="primary" cdkFocusInitial  [disabled]="!updateUpcomingLectureStatus.valid">Update Status</button>
 

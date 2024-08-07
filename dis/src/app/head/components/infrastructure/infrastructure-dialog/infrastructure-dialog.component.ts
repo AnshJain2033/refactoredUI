@@ -7,6 +7,7 @@ import { map, Observable, startWith } from 'rxjs';
 import { Infrastructure } from '../constants';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { InfrastructureService } from 'src/app/services/infrastructure.service';
+import { FacultyService } from 'src/app/services/faculty.service';
 
 @Component({
   selector: 'app-infrastructure-dialog',
@@ -15,7 +16,7 @@ import { InfrastructureService } from 'src/app/services/infrastructure.service';
 })
 export class InfrastructureDialogComponent implements OnInit {
   type: string = '';
-  constructor(public dialogRef: MatDialogRef<InfrastructureDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, private infraService: InfrastructureService, private toastService: HotToastService, private spinnerService: SpinnerService) {
+  constructor(public dialogRef: MatDialogRef<InfrastructureDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, private infraService: InfrastructureService,private facultyService: FacultyService, private toastService: HotToastService, private spinnerService: SpinnerService) {
     this.type = data.type;
   }
 
@@ -29,7 +30,7 @@ export class InfrastructureDialogComponent implements OnInit {
     associateIncharge: ['', [Validators.required]],
     staff: ['', [Validators.required]],
     attendant: ['', [Validators.required]],
-    description: [''],
+    description: ['',[Validators.nullValidator]],
   });
 
   infraTypeList: string[] = [];
@@ -40,7 +41,22 @@ export class InfrastructureDialogComponent implements OnInit {
   loadedInfra: any;
   filteredLocList: Observable<string[]> = new Observable<string[]>();
   ngOnInit(): void {
-  //  this.init();
+    for (let key in this.fetchData) {
+      this.fetchData[key]();
+      
+      
+    }
+
+    if (this.type == 'edit') {
+      this.getInfraById(this.data.data.id);
+    }
+
+    this.filteredLocList = this.infraForm.controls['location'].valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value || ''))
+    );
+    console.log(this.filteredLocList);
+    
   }
 
   private _filter(value: string): string[] {
@@ -64,45 +80,86 @@ export class InfrastructureDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  // fetchData: any = {
-  //   getInfraTypeList: async () => {
-  //     try {
-  //       let response = await this.httpService.getPromiseRequest('getInfrastructureTypeLists');
-  //       this.infraTypeList = response;
-  //     } catch (error) {
-  //       this.toastService.error('Failed');
-  //     }
-  //     this.spinnerService.removeSpinner();
-  //   },
-  //   getInfraLocList: async () => {
-  //     let response = await this.httpService.getPromiseRequest('getListOfInfrastructureLocations');
-  //     try {
-  //       this.infraLocList = response;
-  //     } catch (error) {
-  //       this.toastService.error('Failed');
-  //     }
-  //     this.spinnerService.removeSpinner();
-  //   },
-  //   getFacList: async () => {
-  //     try {
-  //       let response = await this.httpService.getPromiseRequest('getFacultyNameList');
-  //       this.facultyList = response;
-  //     } catch (error) {
-  //       this.toastService.error('Failed');
-  //     }
-
-  //     this.spinnerService.removeSpinner();
-  //   },
-  //   getStaffList: async () => {
-  //     try {
-  //       let response = await this.httpService.getPromiseRequest('getStaffNameList');
-  //       this.staffList = response;
-  //     } catch (error) {
-  //       this.toastService.error('Failed');
-  //     }
-  //     this.spinnerService.removeSpinner();
-  //   },
-  // };
+  fetchData: any = {
+    
+    getInfraTypeList:() => {this.infraService.getInfraTypeList().subscribe({
+      next: (res: any[])=>{
+        this.infraTypeList = res;
+      },
+      error: () => {
+      this.toastService.error('Failed to fetch data');
+        this.spinnerService.removeSpinner();
+      },
+      complete: () => {
+        this.spinnerService.removeSpinner();
+      },
+    })
+  },
+  getInfraLocList:() => {this.infraService.getListOfInfrastructureLocations().subscribe({
+    next: (res: any[])=>{
+      this.infraLocList = res;
+    },
+    error: () => {
+    this.toastService.error('Failed to fetch data');
+      this.spinnerService.removeSpinner();
+    },
+    complete: () => {
+      this.spinnerService.removeSpinner();
+    },
+  })
+},
+getFacList:() => {this.infraService.getFacultyNameList().subscribe({
+  next: (res: any[])=>{
+    this.facultyList = res;
+  },
+  error: () => {
+  this.toastService.error('Failed to fetch data');
+    this.spinnerService.removeSpinner();
+  },
+  complete: () => {
+    this.spinnerService.removeSpinner();
+  },
+})
+},
+getStaffList:() => {this.infraService.getStaffNameList().subscribe({
+  next: (res: any[])=>{
+    this.staffList = res;
+    console.log(this.staffList);
+    
+  },
+  error: () => {
+  this.toastService.error('Failed to fetch data');
+    this.spinnerService.removeSpinner();
+  },
+  complete: () => {
+    this.spinnerService.removeSpinner();
+  },
+})
+},
+  }
+getInfraById(id:string) {
+  console.log(this.data);
+  let type = this.data.data.infraType;
+  
+  
+  this.infraService.getInfraById(id).subscribe({
+  next: (res: any[])=>{
+    this.loadedInfra = { ...res, type: type };
+       this.infraForm.reset(this.loadedInfra);
+       this.infraForm.updateValueAndValidity();
+  },
+  error: () => {
+  this.toastService.error('Failed to fetch infra with id : ' + id);
+  this.closeDialog();
+    this.spinnerService.removeSpinner();
+  },
+  complete: () => {
+    this.spinnerService.removeSpinner();
+  },
+})
+}
+   
+ 
 
   // async getInfraById(id: string) {
   //   try {
@@ -118,23 +175,48 @@ export class InfrastructureDialogComponent implements OnInit {
   //   this.spinnerService.removeSpinner();
   // }
 
-  // async saveClick() {
-  //   let data = { ...this.loadedInfra, ...this.prepareData() };
-  //   let response: any = { message: '' };
-  //   if (!this.infraLocList.map((loc) => loc.toLocaleLowerCase()).includes(data.location.toLowerCase())) {
-  //     try {
-  //       response = await this.httpService.postPromiseRequest('addNewInfrastructureLocation', '', [data.location]);
-  //     } catch (error) {
-  //       this.spinnerService.removeSpinner();
-  //       this.toastService.error('Unable to save new location. Please try again.');
-  //       return;
-  //     }
-  //     if (response) this.toastService.success(response.message);
-  //     this.spinnerService.removeSpinner();
-  //   }
+  saveClick() {
+    let data = { ...this.loadedInfra, ...this.prepareData() };
+    let response: any = { message: '' };
+    //if (!this.infraLocList.map((loc) => loc.toLocaleLowerCase()).includes(data.location.toLowerCase())) 
+    if(this.type==='add'){
+      this.infraService.saveInfrastructure(data).subscribe({
+        next: (response) => {
+          this.toastService.success(response.message);
+        },
+        error: (error) => {
+          console.log(error);
+          this.toastService.error('Unable to save new location. Please try again.');
+          this.spinnerService.removeSpinner();
+        },
+        complete: () => {
+          //this.getTabData[this.selectedTab]();
+          this.spinnerService.removeSpinner();
+        },
+      });
+      
+    this.dialogRef.close();
+  }
+  if(this.type==='edit'){
+    this.dialogRef.close(data);
+  }
+}
 
-  //   this.dialogRef.close(data);
-  // }
+// async updateInfra(data: Infrastructure) {
+//   this.httpService.putRequest('updateInfrastructure', data).subscribe({
+//     next: (result: any) => {
+//       this.toastService.success(result.message);
+//     },
+//     error: () => {
+//       this.toastService.error('Failed to update infrastructure');
+//       this.spinnerService.removeSpinner();
+//     },
+//     complete: () => {
+//       this.getInfrastructureByType();
+//       this.spinnerService.removeSpinner();
+//     },
+//   });
+// }
 
   prepareData() {
     let obj = cloneDeep(this.infraForm.getRawValue());

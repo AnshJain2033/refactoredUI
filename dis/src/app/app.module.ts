@@ -31,6 +31,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UploadCsvDialogComponent } from './components/admin/upload-csv-dialog/upload-csv-dialog.component';
+import { TimeTableDialogComponent } from './components/timetable/time-table-dialog/time-table-dialog.component';
+import { ProfileDialogComponent } from './components/profile/profile-dialog/profile-dialog.component';
 
 
 
@@ -50,6 +52,8 @@ import { UploadCsvDialogComponent } from './components/admin/upload-csv-dialog/u
     ContactComponent,
     ProfileComponent,
     UploadCsvDialogComponent,
+    TimeTableDialogComponent,
+    ProfileDialogComponent,
     // TimetableComponent,
     
     

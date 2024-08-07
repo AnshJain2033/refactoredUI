@@ -47,11 +47,14 @@ export const serviceUrls: any = {
     updateInfrastructure: urls.infrastructure + '/infrastructure/updateInfrastructure',
     addNewInfrastructureLocation: urls.infrastructure + '/infrastructure/addNewInfrastructureLocation',
     searchTaskByUserId: urls.user + '/task/searchTaskByUserId',
+    searchTaskByTaskId: urls.user + '/task/searchTaskByTaskId',
     getMyUserId: urls.user + '/staffProfile/getMyUserID',
     getStaffBasicProfile: urls.user + '/staffBasicProfile',
     addStaffBasicProfile: urls.user + '/addStaffBasicProfile',
     userWorkExperience: urls.user + '/userWorkExperience',
     addUserWorkExperience: urls.user + '/addUserWorkExperience',
+    userQualification: urls.user + '/userQualification',
+    addUserQualification: urls.user + '/addUserQualification',
     userResearchWork: urls.user + '/userResearchWork',
     addUserResearchWork: urls.user + '/addUserResearchWork',
     userInternship: urls.user + '/userInternship',
@@ -79,7 +82,9 @@ export const serviceUrls: any = {
     getUGCourseBatches: urls.user + '/guideAllotment/getAllBatches',
     getCategoryList: urls.user + '/task/getTaskCategoryList',
     getTaskByCategory: urls.user + '/task/getTasksFromCategoryId',
+    getCategoryByTask: urls.user + '/task/searchCategoryIdByTaskId',
     assignTask: urls.user + '/task/assignTask',
+    updateTask: urls.user + '/task/updateTask',
     deleteTask: urls.user + '/task/deleteTask',
     addMemberDetails: urls.user + '/staffProfile/addNewMember',
     getExpertLectureByStatus: urls.academics + '/expertLecture/getExpertLecturesByStatus',
@@ -100,7 +105,10 @@ export const serviceUrls: any = {
     deleteIndustryVisit: urls.academics + '/industryVisit/deleteIndustryVisit',
     editIndustryVisit: urls.academics + '/industryVisit/editIndustryVisit',
     updateIndustryVisitStatus: urls.academics + '/industryVisit/updateIndustryVisitStatus',
+    getIndustryVisitById: urls.academics + '/industryVisit/viewIndustryVisitDetails',
+    getTimeTableByTypeCourseAndSemester: urls.academics + '/timeTable/getTimeTableByTypeCourseAndSem',
     updateTaskStatus : urls.user + '/task/updateTaskStatus',
+
 
     // Url For Magazine Module
     deleteMagazine: urls.academics + '/magazine/deleteMagazine',
@@ -122,6 +130,8 @@ export const serviceUrls: any = {
     getAllGrades : urls.moodle + '/moodle/getUserGradeReport',
     getAssignmentDetails : urls.moodle + '/moodle/getAssignmentDetails',
     getAllEnrolledCourses: urls.moodle + '/moodle/getAllEnrolledCourses',
+
+
 
 
   };

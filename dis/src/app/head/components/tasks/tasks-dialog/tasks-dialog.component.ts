@@ -26,6 +26,7 @@ export class TasksDialogComponent implements OnInit{
   type: string = '';
   facultyList: any = [];
   todayDate = new Date();
+  task:any;
 
   assignTaskForm = this.fb.group({
     deadline: ['', [Validators.required]],
@@ -35,15 +36,22 @@ export class TasksDialogComponent implements OnInit{
     userId: ['', [Validators.required]],
   });
   updateTaskForm = this.fb.group({
+    categoryId: ['', [Validators.required]],
     deadline: ['', [Validators.required]],
     description: ['', [Validators.required]],
     taskId: ['', [Validators.required]],
     userId: ['', [Validators.required]],
   });
 
+  formData: any;
   constructor(public dialogRef: MatDialogRef<TasksDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, 
   private tasksService: TasksService, private facultyService: FacultyService, private toastService: HotToastService, private spinnerService: SpinnerService) {
     this.type = data.type;
+    this.formData = data.data;
+    console.log(this.formData);
+    if(this.type === 'update')
+      this.getTaskById(this.formData.taskId);
+    
   }
 
   
@@ -55,10 +63,53 @@ export class TasksDialogComponent implements OnInit{
     for (let key in this.fetchData) {
       await this.fetchData[key]();
     }
+    
   }
 
   closeDialog() {
     this.dialogRef.close();
+  }
+
+  getTaskById(taskId:any){
+    this.tasksService.getCategoryByTask(taskId).subscribe({
+      next: (result: any) => {
+        console.log(result);
+        
+        this.formData.categoryId = result.message;
+        try {
+          this.tasksService.getTaskByCategory(this.formData.categoryId).subscribe((Response) => {
+            this.taskList = Response;
+            console.log(this.taskList);
+
+            this.formData.taskId = taskId;
+            this.assignTaskForm.reset(this.formData);
+            this.assignTaskForm.updateValueAndValidity();
+          });
+          this.spinnerService.removeSpinner();
+        } catch (e) {
+          this.toastService.error('failed');
+        }
+        
+      },
+
+    
+    // this.tasksService.searchTaskByTaskId(taskId).subscribe({
+    //   next: (result: any) => {
+    //     this.task = result;
+    //     console.log(this.task);
+    //     this.formData.task = this.task;
+    //     this.updateTaskForm.reset(this.formData);
+    //     this.updateTaskForm.updateValueAndValidity();
+    //     // this.toastService.success(result.message);
+    //   },
+      error: (error) => {
+        this.toastService.error('Failed to fetch task details');
+        this.spinnerService.removeSpinner();
+      },
+      complete: () => {
+        this.spinnerService.removeSpinner();
+      },
+    });
   }
 
   fetchData: any = {
@@ -90,14 +141,25 @@ export class TasksDialogComponent implements OnInit{
   async onClick() {
     const status = 'Progress';
     let data = { ...this.prepareData(this.assignTaskForm), status };
-    data.deadline = data.deadline.toLocaleDateString();
+    if(typeof(data.deadline)=='string'){
+      let [year, month, date] = data.deadline.split('-');
+      data.deadline = month+"/"+date+"/"+year;
+      // console.log(typeof date);
+    }else
+      data.deadline = data.deadline.toLocaleDateString();
     console.log(data);
     let response: any = { message: '' };
     try {
-      response = await this.tasksService.assignTask(data);
+      if(this.type === 'assign')
+        response = await this.tasksService.assignTask(data);
+      else if(this.type ==='update')
+        response = await this.tasksService.updateTask(data);
     } catch (error) {
       this.spinnerService.removeSpinner();
-      this.toastService.error('Unable to Add task. Please try again.');
+      if(this.type === 'assign')
+        this.toastService.error('Unable to Add task. Please try again.');
+      else if(this.type ==='update')
+        this.toastService.error('Unable to Update task. Please try again.');
       return;
     }
     if (response) this.toastService.success(response.message);
@@ -138,4 +200,9 @@ export class TasksDialogComponent implements OnInit{
       this.toastService.error('failed');
     }
   }
+
+  // updateTask(){
+  //   let status = { ...this.prepareData(this.assignTaskForm) };
+  //   console.log("this is status" , status);
+  // }
 }

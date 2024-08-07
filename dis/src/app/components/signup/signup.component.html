@@ -21,6 +21,11 @@
         <h1 class="text-center pb-3">SIGN UP</h1>
         <form [formGroup]="signupForm" class="d-flex flex-column py-2">
           <mat-form-field appearance="outline">
+            <mat-label>Enter full name:</mat-label>
+            <!-- <span class="fa fa-user p-2" matIconPrefix></span> -->
+            <input matInput placeholder="fullname" type="text" formControlName="fullName" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
             <mat-label>Username</mat-label>
             <span class="fa fa-user p-2" matIconPrefix></span>
             <input matInput placeholder="Username" type="text" formControlName="username" />
@@ -65,9 +70,16 @@
             <!-- <span class="fa fa-lock p-2" matIconPrefix></span> -->
             <!-- <mat-icon matPrefix>lock</mat-icon> -->
             <mat-select formControlName="userType">
-                <mat-option *ngFor="let type of userType" [value]="type">{{type}}</mat-option>
+                <mat-option *ngFor="let type of userType" [value]="type" >{{type}}</mat-option>
             </mat-select>
           </mat-form-field>
+          <!-- <mat-form-field appearance="outline">
+            <mat-label>Designation</mat-label>
+            
+            <mat-select formControlName="designation">
+                <mat-option *ngFor="let designation of currentDesignations" [value]="designation" >{{designation.substring(0,designation.indexOf(":"))}}</mat-option>
+            </mat-select>
+          </mat-form-field> -->
           <button mat-raised-button [disabled]="!signupForm.valid" color="primary" (click)="onSubmit()">Sign Up</button>
         </form>
   

@@ -45,6 +45,14 @@ import { IndustryVisitUpcomingComponent } from './components/administration/indu
 import { IndustryVisitCompletedComponent } from './components/administration/industry-visit/industry-visit-completed/industry-visit-completed.component';
 import { IndustryVisitEditDialogComponent } from './components/administration/industry-visit/industry-visit-edit-dialog/industry-visit-edit-dialog.component';
 import { TimetableComponent } from '../components/timetable/timetable.component';
+import { FacultyRoomComponent } from './components/infrastructure/faculty-room/faculty-room.component';
+import { LaboratoryComponent } from './components/infrastructure/laboratory/laboratory.component';
+import { OtherComponent } from './components/infrastructure/other/other.component';
+import { ClassroomComponent } from './components/infrastructure/classroom/classroom.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
+import { MoodleComponent } from './components/moodle/moodle.component';
 // import { FacultyDialogComponent } from './components/faculty-page/faculties/faculty-dialog/faculty-dialog.component';
 
 //import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
@@ -58,9 +66,9 @@ import { TimetableComponent } from '../components/timetable/timetable.component'
     ExpertLectureComponent,
     TasksComponent,
     CommonDashboardComponent,
-    DashboardSidenavComponent,
+    // DashboardSidenavComponent,
     MeetingsComponent,
-    TableComponent,
+    // TableComponent,
     MeetingDialogComponent,
     ExpertDialogComponent,
     ExpertLecturePendingComponent,
@@ -82,7 +90,15 @@ import { TimetableComponent } from '../components/timetable/timetable.component'
     IndustryVisitUpcomingComponent,
     IndustryVisitCompletedComponent,
     IndustryVisitEditDialogComponent,
-    TimetableComponent
+    TimetableComponent,
+    FacultyRoomComponent,
+    LaboratoryComponent,
+    OtherComponent,
+    ClassroomComponent,
+    NotificationsComponent,
+    ComplaintsComponent,
+    LeavesComponent,
+    MoodleComponent
     
    
   ],

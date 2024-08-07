@@ -2,7 +2,7 @@
 export const images  = {
 
 
-'apurohit' : 'src/assets/images/anuradha_purohit-resize.jpg',
+'apurohit' : "https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/anuradha_purohit-resize.jpg",
 'bpriyanka':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/priyanka_bamne-resize.jpg",
 'dmehta':"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/da_mehta1-resize.jpg",
 'hmishra' :"https://www.sgsits.ac.in/images/Departments/Computer-Science/Faculty/himani2_300.jpg",

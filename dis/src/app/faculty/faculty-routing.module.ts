@@ -16,6 +16,16 @@ import { IndustryVisitComponent } from './components/administration/industry-vis
 import { IndustryVisitPendingComponent } from './components/administration/industry-visit/industry-visit-pending/industry-visit-pending.component';
 import { IndustryVisitUpcomingComponent } from './components/administration/industry-visit/industry-visit-upcoming/industry-visit-upcoming.component';
 import { IndustryVisitCompletedComponent } from './components/administration/industry-visit/industry-visit-completed/industry-visit-completed.component';
+import { MeetingsComponent } from './components/meetings/meetings.component';
+import { LaboratoryComponent } from './components/infrastructure/laboratory/laboratory.component';
+import { ClassroomComponent } from './components/infrastructure/classroom/classroom.component';
+import { FacultyRoomComponent } from './components/infrastructure/faculty-room/faculty-room.component';
+import { OtherComponent } from './components/infrastructure/other/other.component';
+import { InfrastructureComponent } from './components/infrastructure/infrastructure.component';
+import { MoodleComponent } from './components/moodle/moodle.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
 
 const routes: Routes = [
   {
@@ -25,6 +35,10 @@ const routes: Routes = [
       {
         path: '',
         component: DashboardComponent,
+      },
+      {
+        path: 'meetings',
+        component: MeetingsComponent,
       },
       {
         path: 'profile',
@@ -54,6 +68,49 @@ const routes: Routes = [
           path: 'tasks',
           component: TasksComponent,
         
+      },
+      {
+        path: 'infrastructure',
+        component: InfrastructureComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'laboratory',
+            pathMatch: 'full',
+          },
+          {
+            path: 'laboratory',
+            component: LaboratoryComponent,
+          },
+          {
+            path: 'classroom',
+            component: ClassroomComponent,
+          },
+          {
+            path: 'facultyRoom',
+            component: FacultyRoomComponent,
+          },
+          {
+            path: 'other',
+            component: OtherComponent,
+          }
+        ],
+      },
+      {
+        path: 'moodle',
+        component: MoodleComponent,
+      },
+      {
+        path: 'complaints',
+        component: ComplaintsComponent,
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent,
+      },
+      {
+        path: 'leaves',
+        component: LeavesComponent,
       },
       {
         path: 'admin',
@@ -118,6 +175,7 @@ const routes: Routes = [
       }
     ]
   },
+  
   {
     path: '**',
     redirectTo: 'login',

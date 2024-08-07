@@ -25,6 +25,8 @@ export class ExpertLectureUpcomingComponent {
   api: any;
   gridOptions: any = {
     rowSelection: 'multiple',
+    alwaysShowHorizontalScroll: true,
+    alwaysShowVerticalScroll: true,
   };
 
   colDefs: ColDef[] = [

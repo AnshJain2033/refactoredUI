@@ -14,5 +14,10 @@ export class TimetableService {
   public getAllCourses(){
     return this.http.get<any>(serviceUrls.getCourseList);
   }
+
+  public getDataByTypeCourseAndSemester(type: string, course: string, semester:string){
+    // type = type + " Time Table";
+    return this.http.get<any>(serviceUrls.getTimeTableByTypeCourseAndSemester+'/'+type+'/'+course+'/'+semester);
+  }
   
 }

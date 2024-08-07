@@ -48,6 +48,11 @@ export class TasksService {
     return lastValueFrom(this.http.post<any>(serviceUrls.assignTask,data, {headers: this.headers})); 
   }
 
+  public updateTask(data: any){
+    this.spinnerService.addSpinner();
+    return lastValueFrom(this.http.put<any>(serviceUrls.updateTask,data, {headers: this.headers})); 
+  }
+
   public getTaskByCategory(categoryId:any){
     this.spinnerService.addSpinner();
     return this.http.get<any>(serviceUrls.getTaskByCategory+"/"+categoryId, {headers: this.headers});
@@ -58,4 +63,16 @@ export class TasksService {
     return this.http.get<any>(serviceUrls.searchTaskByUserId+"/"+userId, {headers: this.headers});
     
   }
+
+  public getCategoryByTask(taskId:any){
+    this.spinnerService.addSpinner();
+    return this.http.get<any>(serviceUrls.getCategoryByTask+"/"+taskId, {headers: this.headers});
+  }
+
+  public searchTaskByTaskId(taskId:any){
+    this.spinnerService.addSpinner();
+    return this.http.get<any>(serviceUrls.searchTaskByTaskId+"/"+taskId, {headers: this.headers});
+    
+  }
+
 }

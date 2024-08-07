@@ -20,6 +20,7 @@ export class NavbarComponent implements OnInit {
   public isLoggedIn:any;
   loginUser:any;
   images : any = images;
+  img : any = 'https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png';
 
   constructor(private router: Router, private authService:AuthService) {
     this.isLoggedIn = this.authService.getStatus()

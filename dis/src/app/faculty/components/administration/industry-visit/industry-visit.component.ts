@@ -4,6 +4,7 @@ import { HotToastService } from '@ngneat/hot-toast';
 import { NavItem } from 'src/app/faculty/constants';
 import { SpinnerService } from 'src/app/services/spinner.service';
 import { IndustryDialogComponent } from './industry-dialog/industry-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-industry-visit',
@@ -12,7 +13,18 @@ import { IndustryDialogComponent } from './industry-dialog/industry-dialog.compo
 })
 export class IndustryVisitComponent {
 
-  constructor( private toastService: HotToastService, private spinnerService: SpinnerService, private dialog: MatDialog) {}
+  url: string ;
+
+  constructor( private toastService: HotToastService, private spinnerService: SpinnerService, private dialog: MatDialog, private router: Router) {
+    this.url= this.router.url;
+  }
+
+  ngOnInit(): void {
+    console.log(this.router.url);
+
+    
+    this.router.navigate([this.url]);
+  }
 
   selectedTab: string = 'expert-lecture-pending';
   navItemList: NavItem[] = [
@@ -28,6 +40,9 @@ export class IndustryVisitComponent {
       },
       disableClose: true,
     });
-    
+    dialogRef.afterClosed().subscribe(() => {
+      //let url = this.router.url;
+      this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{this.router.navigate([this.url])});
+    });
   }
 }

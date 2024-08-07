@@ -36,6 +36,7 @@ export class TasksComponent implements OnInit{
   colDefs: ColDef[] = [
     {
       field: 'userName',
+      minWidth: 200
     },
     {
       field: 'taskName',
@@ -43,12 +44,15 @@ export class TasksComponent implements OnInit{
     },
     {
       field: 'createdDate',
+      minWidth: 200
     },
     {
       field: 'deadline',
+      minWidth: 200
     },
     {
       field: 'status',
+      minWidth: 200
       // cellStyle: function (params) {
       //   console.log(params.node);
       //   if (params.node.data.status == 'Progress') {
@@ -64,6 +68,7 @@ export class TasksComponent implements OnInit{
     },
     {
       headerName: 'Actions',
+      minWidth: 200,
       cellRenderer: 'actionsCellRenderer',
       cellRendererParams: {
         clicked: function(field: any) {
@@ -86,6 +91,8 @@ export class TasksComponent implements OnInit{
   gridOptions: any = {
     rowSelection: 'multiple',
     stylesheet: './tasks-dialog.component .scss',
+    alwaysShowHorizontalScroll: true,
+    alwaysShowVerticalScroll: true,
   };
 
   public rowGroupPanelShow: 'always' | 'onlyWhenGrouping' | 'never' = 'always';
@@ -190,28 +197,18 @@ export class TasksComponent implements OnInit{
     dialogRef.afterClosed().subscribe(() => this.Init());
   }
 
-  updateTask() {
+  updateTask(rowData:any) {
+    console.log(rowData);
+    
     let dialogRef = this.dialog.open(TasksDialogComponent, {
       data: {
         type: 'update',
+        data: rowData
       },
       disableClose: true,
     });
-    dialogRef.afterClosed().subscribe(async (result) => {
-      // if (result) {
-      //   this.httpService.postRequest('addNewInfrastructure', result).subscribe({
-      //     next: (result: any) => {
-      //       this.toastService.success(result.message);
-      //     },
-      //     error: (error) => {
-      //       this.toastService.error('Failed to save infrastructure');
-      //       this.spinnerService.removeSpinner();
-      //     },
-      //     complete: () => {
-      //       this.spinnerService.removeSpinner();
-      //     },
-      //   });
-      // }
+    dialogRef.afterClosed().subscribe( () => { this.Init();
+     
     });
   }
 

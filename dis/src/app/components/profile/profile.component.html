@@ -14,32 +14,34 @@
         <mat-divider></mat-divider>
         <div class="bottom-profile" style="display: flex; flex-direction: row; justify-content: space-around; padding: 20px">
           <!-- photograph -->
-          <div class="photograph" style="height: 200px; width: 200px; border: 1px solid grey"><img src="{{images[this.username]}}" alt="image" style="height: 200px; width: 200px" /></div>
+          <div class="photograph" style="height: 200px; width: 200px; border: 1px solid grey"><img *ngIf="images[this.username]" src="{{images[this.username]}}" alt="image" style="height: 200px; width: 200px" />
+            <img *ngIf="!images[this.username]" src="{{img}}" alt="image" style="height: 200px; width: 200px" />
+          </div>
           <!-- details and edit icon -->
           <div class="details">
             <ul>
               <li>Email: {{ this.facultyProfile?.email }}</li>
-              <!-- <li>Mobile Number: {{ this.facultyProfile?.mobileNo }}</li> -->
-              <!-- <li>DOB: {{ this.facultyProfile?.dob }}</li> -->
+              <li>Mobile Number: {{ this.facultyProfile?.mobileNo }}</li>
+              <li>DOB: {{ this.facultyProfile?.dob }}</li>
               <li>Specialization: {{ this.facultyProfile?.areaOfSpecialization }}</li>
             </ul>
-            <!-- <button mat-raised-button color="primary" (click)="editProfile()">
+            <button mat-raised-button color="primary" (click)="editProfile()">
               Edit Profile
               <i class="bi bi-pencil-fill"></i>
-            </button> -->
+            </button>
           </div>
         </div>
       </mat-card>
   
       <!-- activities card -->
-      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
           <h3>Experience</h3>
           <button mat-raised-button color="primary" (click)="addExp()">Add</button>
         </div>
-   -->
+  
         <!-- dynamically list updated -->
-        <!-- <mat-card-content>
+         <mat-card-content>
           <mat-list *ngFor="let workExp of expList; let i = index">
             <mat-list-item>
               <mat-icon matListItemIcon>note</mat-icon>
@@ -59,8 +61,8 @@
           <mat-list *ngFor="let edu of eduList; let i = index">
             <mat-list-item>
               <mat-icon matListItemIcon>note</mat-icon>
-              <div matListItemTitle>{{ edu.degree }}</div>
-              <div matListItemLine>{{ edu.institute }}</div>
+              <div matListItemTitle>{{ edu.degreeCertificate }}</div>
+              <div matListItemLine>{{ edu.collegeSchool }}</div>
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
@@ -188,8 +190,8 @@
             <mat-divider></mat-divider>
           </mat-list>
         </mat-card-content>
-      </mat-card> -->
-      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+      </mat-card> 
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
           <h3>Workshops/Seminar</h3>
           <button mat-raised-button color="primary" (click)="addWorkshop()">Add</button>
@@ -210,18 +212,18 @@
           </mat-list>
         </mat-card-content>
       </mat-card> 
-    </div>-->
+    </div>
     <!-- faculty list comp -->
-    <!-- <div class="col-lg-3" style="margin-inline: 20px">
+    <div class="col-lg-3" style="margin-inline: 20px">
       <mat-card appearance="outlined">
         <mat-card-header style="justify-content: space-evenly; padding: 20px">
           <h3>Employees</h3>
-          <button mat-raised-button color="primary">Download</button>
+          <button mat-raised-button color="primary" (click)="exportData()">Download</button>
         </mat-card-header>
         <mat-divider></mat-divider>
   
         <!-- list for now hard coded -->
-        <!-- <mat-list *ngFor="let faculty of facultyList; let i = index"> 
+         <mat-list *ngFor="let faculty of facultyList; let i = index"> 
           <mat-list-item>
             {{ faculty.name }}
             <!-- <div class="row">
@@ -237,11 +239,11 @@
                       </div>
           
                     </div> -->
-          <!-- </mat-list-item> 
+          </mat-list-item> 
         </mat-list>
       </mat-card>
     </div>
-  </div> -->
+  </div> 
   <!-- <button mat-fab color="primary" style="position: fixed; bottom: 4 rem; right: 1rem; z-index: 9999" aria-label="Add meeting" (click)="logout()">
     <i class="bi bi-box-arrow-right" style="font-size: 24px"></i>
   </button> -->

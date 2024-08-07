@@ -8,6 +8,7 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { IndustryVisitEditDialogComponent } from '../industry-visit-edit-dialog/industry-visit-edit-dialog.component';
 
 @Component({
   selector: 'app-industry-visit-pending',
@@ -26,38 +27,47 @@ export class IndustryVisitPendingComponent implements OnInit {
   api: any;
   gridOptions: any = {
     rowSelection: 'multiple',
+    alwaysShowHorizontalScroll: true,
+    alwaysShowVerticalScroll: true,
   };
 
   colDefs: ColDef[] = [
     {
       field: 'date',
+      minWidth: 200,
       cellStyle: function (params) {
         return { fontWeight: 'bold' };
       },
     },
     {
       field: 'time',
+      minWidth: 200,
     },
     {
       field: 'companyName',
+      minWidth: 200,
     },
     {
       field: 'participants',
+      minWidth: 200,
     },
     {
       field: 'coordinator1',
+      minWidth: 200,
     },
     {
       field: 'coordinator2',
+      minWidth: 200,
     },
 
     {
       headerName: 'Actions',
       cellRenderer: 'actionsCellRenderer',
+      minWidth: 200,
       cellRendererParams: {
         onDelete: this.onDelete.bind(this),
-        //onEdit: this.onEdit.bind(this),
-        //onStatus: this.onStatus.bind(this)
+        onEdit: this.onEdit.bind(this),
+        onStatus: this.onStatus.bind(this)
       },
     },
   ];
@@ -80,6 +90,7 @@ export class IndustryVisitPendingComponent implements OnInit {
   }
   constructor(private industryService: IndustryVisitService, private commonService: CommonService, private toastService: HotToastService, private spinnerService: SpinnerService, private dialog: MatDialog, private fb: FormBuilder, private http: HttpClient) {
     this.onDelete = this.onDelete.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
   async Init() {
     for (let key in this.fetchData) {
@@ -106,6 +117,24 @@ export class IndustryVisitPendingComponent implements OnInit {
     },
   };
 
+  onStatus(rowData: any) {
+
+    console.log('on status clicked');
+    // alert(rowData);
+    console.log(rowData);
+    const dialogRef = this.dialog.open(IndustryVisitEditDialogComponent, {
+      data: {
+        type: 'status',
+        data : rowData
+
+      },
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => this.fetchData['getAllIndustryVisitsByStatus']());
+
+
+  }
+
   onDelete(rowData: any) {
     console.log('on delete clicked');
     // console.log("on delete clicked")
@@ -117,7 +146,7 @@ export class IndustryVisitPendingComponent implements OnInit {
       },
       error: (error) => {
         console.log(error);
-        this.toastService.error('Failed to delete industry');
+        this.toastService.error('Failed to delete industry visit');
         this.spinnerService.removeSpinner();
       },
       complete: () => {
@@ -125,6 +154,25 @@ export class IndustryVisitPendingComponent implements OnInit {
         this.spinnerService.removeSpinner();
       },
     });
+    this.pendingList = this.pendingList.filter((item: any) => item.id !== rowData.id);
+  }
+
+  onEdit(rowData: any) {
+
+    console.log('on edit clicked');
+    // alert(rowData);
+    console.log(rowData);
+    const dialogRef = this.dialog.open(IndustryVisitEditDialogComponent, {
+      data: {
+        type: 'edit',
+        data : rowData
+
+      },
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => this.fetchData['getAllIndustryVisitsByStatus']());
+
+
   }
 
   exportData() {

@@ -10,6 +10,10 @@ import { TimetableService } from 'src/app/services/timetable.service';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 import { MatDatepicker, MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { Subject } from 'rxjs';
+import { TimeTableDialogComponent } from './time-table-dialog/time-table-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
+import { group } from '@angular/animations';
 
 // const moment = _rollupMoment || _moment;
 
@@ -19,9 +23,9 @@ export const MY_FORMATS = {
   },
   display: {
     dateInput: 'YYYY',
-    monthYearLabel: 'YYYY',
-    dateA11yLabel: 'LL',
-    monthYearA11yLabel: 'MMMM YYYY'
+    // monthYearLabel: 'YYYY',
+    // dateA11yLabel: 'LL',
+    // monthYearA11yLabel: 'MMMM YYYY'
   }
 };
 
@@ -39,7 +43,7 @@ export const MY_FORMATS = {
       deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
     },
 
-    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
+     { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS }
   ],
   
 })
@@ -48,9 +52,10 @@ export class TimetableComponent {
   @Output()
 dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
 
-  rowData = [
-    {Monday: "'Subject': ML"}
-  ];
+  // rowData = [
+  //   // {Monday: "'Subject': ML"}
+  //   {Monday: { 'Subject': 'ML', 'Faculty': 'Himani Mishra', 'Time': '10:00-12:00' },}
+  // ];
 
   courseList: any[] = [];
 
@@ -67,10 +72,8 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
   showGrid = false;
 
   semesters:any = [
-    {course: 'BE', sem: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']},
-    {course: 'BTech', sem: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']},
-    {course: 'ME', sem: ['I', 'II', 'III', 'IV']},
-    {course: 'MTech', sem: ['I', 'II', 'III', 'IV']},
+    {course: 'B.Tech', sem: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII']},
+    {course: 'M.Tech', sem: ['I', 'II', 'III', 'IV']},
     {course: 'Phd', sem: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']},
   ];
 
@@ -81,7 +84,13 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
       field: 'Monday',
       minWidth: 200,
       autoHeight: true,
-      wrapText: true
+      wrapText: true,
+      rowSpan(params) {
+        return 4
+      },
+      cellClassRules: {
+        "show-cell": "value !== undefined",
+      },
     },
     {
       field: 'Tuesday',
@@ -99,10 +108,10 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
       field: 'Friday',
       minWidth: 200,
     },
-    {
-      field: 'Saturday',
-      minWidth: 200,
-    }
+    // {
+    //   field: 'Saturday',
+    //   minWidth: 200,
+    // }
   ];
 
   public defaultColDef: ColDef = {
@@ -120,16 +129,23 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
   });
 
 
+  gridData:any[] = [];
+  gridDataTheory:any[] = [];
+  gridDataLab:any[] = [];
   
+  labGroups:any = {};  
 
-  constructor(private fb: FormBuilder, private ttService: TimetableService, private toastService: HotToastService, private taskService: TasksService){
-  //  this.session1.setFullYear(this.today.getFullYear() + 4);
+  userType: any="";
+  fullName:any ="";
+
+  constructor(private fb: FormBuilder, private ttService: TimetableService, private toastService: HotToastService, private taskService: TasksService, private dialog:MatDialog){
     this.editTimeTableForm.get('sessionEnd')?.disable();
     ttService.getAllCourses().subscribe((response:any) => {
       this.courseList = response;
     }); 
     
-
+    this.userType = sessionStorage.getItem("userType");
+    this.fullName = sessionStorage.getItem("fullname");
     taskService.getCategoryList().subscribe((response:any) => {
       let categoryList = response;
       for(let category of categoryList){
@@ -148,9 +164,8 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
     });
   }
 
-  
-  onGridReady(params: GridReadyEvent) {
-  }
+  // onGridReady(params: GridReadyEvent) {
+  // }
 
   chosenYearHandler(normalizedYear: Moment, datepicker: MatDatepicker<any>, str: string){
     console.log(normalizedYear);
@@ -180,12 +195,110 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
   }
 
   sessionChange(event:any){
-    console.log(event);
-    
-    
+    console.log(event);    
   }
 
   onSubmit(){
-    this.showGrid = true;
+
+    let type = this.editTimeTableForm.controls.ttType.value;
+    let course = this.editTimeTableForm.controls.course.value;
+    let sem = this.editTimeTableForm.controls.semester.value;
+    this.gridData = [];
+    this.gridDataTheory = [];
+    this.gridDataLab = [];
+    this.labGroups = [];
+    this.ttService.getDataByTypeCourseAndSemester(type,course,sem).subscribe(data=>{
+      console.log(data);
+      for(let d of data){
+        this.gridData.push({day: d.day, faculty: d.faculty1, code: d.subjectCode, subject: d.subjectName, room: d.location, start: d.start, end: d.end, type: d.type, batch: d.batch });
+      }
+      console.log(this.gridData);
+      
+      for(let data of this.gridData){
+        if(data.type === 'Lecture' && this.userType==='head')
+          this.gridDataTheory.push(data);
+        else{
+          if(data.type  === 'Lecture' && this.userType==='faculty' && String(data.faculty).includes(String(this.fullName)))
+            this.gridDataTheory.push(data);
+        }
+        // .filter((d:any)=> d.faculty.contains(this.fullName)));
+
+        if(data.type === 'Lab' && this.userType==='head')
+          this.gridDataLab.push(data);
+        else{
+          if(data.type  === 'Lab' && this.userType==='faculty' && String(data.faculty).includes(String(this.fullName)))
+            this.gridDataLab.push(data);
+        }
+      }
+      console.log(this.gridDataTheory);
+      console.log(this.gridDataLab);
+      
+      for(let lab of this.gridDataLab){
+        let grpNo = this.convertTimeToNumber(lab.start); 
+        let group = "group_"+grpNo+"_"+lab.day;
+        // let object = {grpNo: {data: []}};
+        console.log(this.labGroups[group]);
+        
+         if(!this.labGroups[group]){
+          console.log("in if..");
+          
+          Object.defineProperty(this.labGroups, group,{writable: true, value: {}});
+          Object.defineProperty(this.labGroups[group], 'data',{writable: true, value:[]});
+          this.labGroups.push(this.labGroups[group]);
+         }
+
+          this.labGroups[group].data.push(lab);
+        
+        console.log(this.labGroups);
+        
+      }
+      this.showGrid = true;
+    }); 
+  }
+
+  createSchedule(){
+    console.log(this.editTimeTableForm.value);
+    const dialogRef = this.dialog.open(TimeTableDialogComponent, {
+      data: {
+        data: this.editTimeTableForm.value,
+        ttTypes: this.ttTypes,
+        lecTypes: ['Lab','Lecture'],
+        type: 'add'
+      },
+      disableClose: true,
+    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   //let url = this.router.url;
+    //   this.router.navigateByUrl('/',{skipLocationChange:true}).then(()=>{this.router.navigate([this.url])});
+    // }); 
+  }
+  getStyle(data:any){
+   // console.log(data);
+    let start = 'time-'+data.start.replace(":","");    
+    let end = 'time-'+data.end.replace(":","");
+    return {'grid-column': data.day, 'grid-row-start': start ,'grid-row-end': end};
+  }
+
+  getLabStyle(group:any){ 
+     let start = 'time-'+group['data'][0].start.replace(":","");     
+     let end = 'time-'+group['data'][0].end.replace(":","");
+     return {'grid-column': group['data'][0].day, 'grid-row-start': start ,'grid-row-end': end};
+   }
+
+  getRowStyle(i:any){
+    i=i.replace(":","");
+    let time= 'time-'+i;
+    if(i>1200)
+      time = 'time-0'+(i-1200);
+    // console.log(time);
+    return { 'grid-row': time};
+  }
+
+  convertTimeToNumber(t:string){
+    return parseInt(t.substring(0,2));
+  }
+
+  editSchedule(data:any){
+    console.log(data); 
   }
 }

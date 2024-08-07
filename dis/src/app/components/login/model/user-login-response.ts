@@ -4,6 +4,7 @@ export interface UserLoginResponse {
   accessToken: string;
   tokenType: string;
   userType: string;
+  userId: string;
 }
 
 interface Authority {

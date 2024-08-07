@@ -8,11 +8,13 @@ import { HeadRoutingModule } from '../head/head-routing.module';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { TableComponent } from '../components/table/table.component';
+import { DashboardSidenavComponent } from '../components/dashboard-sidenav/dashboard-sidenav.component';
 
 const shared = [
   NavbarComponent,
   FooterComponent,
-  // TableComponent
+  TableComponent,
+  DashboardSidenavComponent,
 ]
 
 @NgModule({

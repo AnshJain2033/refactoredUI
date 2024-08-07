@@ -35,6 +35,7 @@
       <mat-label>Start Time</mat-label>
       <!-- <input matInput placeholder="Start Time" type="time" formControlName="time" /> -->
       <input matInput [ngxMatTimepicker]="pickert" formControlName="time">  
+      <ngx-mat-timepicker-toggle matIconSuffix [for]=pickert></ngx-mat-timepicker-toggle>
       <ngx-mat-timepicker #pickert></ngx-mat-timepicker> 
           
       <mat-error *ngIf="addIndustryForm.controls['time'].touched && addIndustryForm.controls['time'].invalid">Invalid Time</mat-error>
