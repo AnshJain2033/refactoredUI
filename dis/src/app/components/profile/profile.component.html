@@ -24,6 +24,7 @@
               <li>Mobile Number: {{ this.facultyProfile?.mobileNo }}</li>
               <li>DOB: {{ this.facultyProfile?.dob }}</li>
               <li>Specialization: {{ this.facultyProfile?.areaOfSpecialization }}</li>
+              <li>Blood Group: {{ this.facultyProfile?.bloodGroup }}</li>
             </ul>
             <button mat-raised-button color="primary" (click)="editProfile()">
               Edit Profile
@@ -44,9 +45,26 @@
          <mat-card-content>
           <mat-list *ngFor="let workExp of expList; let i = index">
             <mat-list-item>
-              <mat-icon matListItemIcon>note</mat-icon>
+              <div style="display:flex; justify-content:space-between;">
+              
+               <div  style="display: flex; flex-direction: column;">
+               
+                <div matListItemLine>{{workExp.dateOfJoining.substring(0,4)}}-{{workExp.dateOfLeaving!=null?workExp.dateOfLeaving.substring(0,4):'Present'}}</div>
+              </div>
+              <div style="display: flex; flex-direction: column;">
               <div matListItemTitle>{{ workExp.organizationName }}</div>
               <div matListItemLine>{{ workExp.designation }}</div>
+            </div>
+            <div style="display:flex; flex-direction: column;">
+               <button style="border: none;" (click)="editExp($event)">
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+                
+                <button style="border: none;" (click)="deleteExp($event)">
+                  <i class="bi bi-trash"></i>
+                </button>
+            </div>
+          </div>
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
@@ -60,9 +78,27 @@
         <mat-card-content>
           <mat-list *ngFor="let edu of eduList; let i = index">
             <mat-list-item>
-              <mat-icon matListItemIcon>note</mat-icon>
+              <div style="display:flex; justify-content:space-between;">
+                <div  style="display: flex; flex-direction: column;">
+              <!-- <mat-icon matListItemIcon>note</mat-icon> -->
+              <div matListItemLine>{{edu.yearOfPassing}}</div>
+            </div>
+              <div style="display: flex; flex-direction: column;">
               <div matListItemTitle>{{ edu.degreeCertificate }}</div>
               <div matListItemLine>{{ edu.collegeSchool }}</div>
+            </div>
+              <div style="display:flex; flex-direction: column;">
+                <button style="border: none;" (click)="editEducation($event)">
+                   <i class="bi bi-pencil-fill"></i>
+                 </button>
+
+                 <button style="border: none;" (click)="deleteEducation($event)">
+                  <i class="bi bi-trash"></i>
+                </button>
+                 
+             </div>
+             </div>
+
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
@@ -76,11 +112,29 @@
         </div>
   
         <mat-card-content>
-          <mat-list *ngFor="let workExp of researchList; let i = index">
+          <mat-list *ngFor="let research of researchList; let i = index">
             <mat-list-item>
-              <mat-icon matListItemIcon>note</mat-icon>
-              <div matListItemTitle>{{ workExp.title }}</div>
-              <div matListItemLine>{{ workExp.yearOfPublication }}</div>
+              <div style="display:flex; justify-content:space-between;">
+                <div  style="display: flex; flex-direction: column;">
+              <!-- <mat-icon matListItemIcon>note</mat-icon> -->
+              <div matListItemTitle>{{research.publisher}}</div>
+              <div matListItemLine>{{research.category}}</div>
+               </div>
+              <div  style="display: flex; flex-direction: column;">
+              <div matListItemTitle>{{ research.title }}</div>
+              <div matListItemLine>{{ research.yearOfPublication }}</div>
+              </div>
+              <div style="display:flex; flex-direction: column;">
+                <button style="border: none;" (click)="editResearch($event)">
+                   <i class="bi bi-pencil-fill"></i>
+                 </button>
+
+                 <button style="border: none;" (click)="deleteResearch($event)">
+                  <i class="bi bi-trash"></i>
+                </button>
+                 
+             </div>
+             </div>
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
@@ -95,9 +149,29 @@
         <mat-card-content>
           <mat-list *ngFor="let internship of internshipList; let i = index">
             <mat-list-item>
-              <mat-icon matListItemIcon>note</mat-icon>
-              <div matListItemTitle>{{ internship.subject }}</div>
-              <div matListItemLine>{{ internship.companyName }}</div>
+              <div style="display:flex; justify-content:space-between;">
+              
+                <div  style="display: flex; flex-direction: column;">
+                
+                 <div matListItemLine>{{internship.startDate}} to {{internship.endDate!=null?internship.endDate:'Present'}}</div>
+               </div>
+               <div style="display: flex; flex-direction: column;">
+               <div matListItemTitle>{{ internship.subject }}</div>
+               <div matListItemLine>{{ internship.companyName }}</div>
+             </div>
+             <div style="display:flex; flex-direction: column;">
+                <button style="border: none;" (click)="editInternship($event)">
+                   <i class="bi bi-pencil-fill"></i>
+                 </button>
+                 
+                 <button style="border: none;" (click)="deleteInternship($event)">
+                   <i class="bi bi-trash"></i>
+                 </button>
+             </div>
+           </div>
+              <!-- <mat-icon matListItemIcon>note</mat-icon> -->
+              <!-- <div matListItemTitle>{{ internship.subject }}</div> -->
+              <!-- <div matListItemLine>{{ internship.companyName }}</div> -->
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
@@ -112,21 +186,40 @@
         <mat-card-content>
           <mat-list *ngFor="let val of compExamList; let i = index">
             <mat-list-item style="height: fit-content; margin-bottom: 10px">
-              <mat-icon matListItemIcon>note</mat-icon>
+              <!-- <mat-icon matListItemIcon>note</mat-icon> -->
   
-              <div matListItemTitle>{{ val.nameOfExam }}</div>
-              <div matListItemLine>
-                Year : {{ val.year }}<br />
+              <div style="display:flex; justify-content:space-between;">
+              
+                <div  style="display: flex; flex-direction: column;">
+                
+                 <div matListItemLine>{{val.year}}</div>
+               </div>
+               <div style="display: flex; flex-direction: column;">
+               <div matListItemTitle>{{ val.nameOfExam  }}</div>
+               <div matListItemLine>Rank : {{ val.rank }}</div>
+             </div>
+             <div style="display:flex; flex-direction: column;">
+                <button style="border: none;" (click)="editCompExam($event)">
+                   <i class="bi bi-pencil-fill"></i>
+                 </button>
+                 
+                 <button style="border: none;" (click)="deleteCompExam($event)">
+                   <i class="bi bi-trash"></i>
+                 </button>
+             </div>
+           </div>
+              <!-- <div matListItemTitle>{{ val.nameOfExam }}</div>
+              <div matListItemLine>Year : {{ val.year }}<br />
                 Score : {{ val.score }}<br />
                 Rank : {{ val.rank }}
-              </div>
+              </div> -->
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
         </mat-card-content>
       </mat-card>
   
-      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
           <h3>Placements</h3>
           <button mat-raised-button color="primary" (click)="addPlacement()">Add</button>
@@ -147,9 +240,9 @@
             <mat-divider></mat-divider>
           </mat-list>
         </mat-card-content>
-      </mat-card>
+      </mat-card> -->
   
-      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
           <h3>Cultural Activities/Achievements</h3>
           <button mat-raised-button color="primary" (click)="addCultural()">Add</button>
@@ -169,52 +262,72 @@
             <mat-divider></mat-divider>
           </mat-list>
         </mat-card-content>
-      </mat-card>
+      </mat-card> -->
       <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
-          <h3>Technical Activities/Achievements</h3>
+          <h3>Workshop/Seminar/Technical Event</h3>
           <button mat-raised-button color="primary" (click)="addTechnical()">Add</button>
         </div>
         <mat-card-content>
           <mat-list *ngFor="let activity of technicalActivityList; let i = index">
             <mat-list-item style="height: fit-content; margin-bottom: 10px">
-              <mat-icon matListItemIcon>note</mat-icon>
+              <div style="display:flex; justify-content:space-between;">
+              
+                <div  style="display: flex; flex-direction: column;">
+                
+                 <div matListItemLine>{{activity.fromDate}}</div>
+                  <!-- {{activity.toDate!=null?'to activity.toDate':''}}</div> -->
+               </div>
+               <div style="display: flex; flex-direction: column;">
+               <div matListItemTitle>{{ activity.type  }}</div>
+               <div matListItemLine>{{ activity.topicSubject }}</div>
+             </div>
+             <div style="display:flex; flex-direction: column;">
+                <button style="border: none;" (click)="editTechnicalEvent($event)">
+                   <i class="bi bi-pencil-fill"></i>
+                 </button>
+                 
+                 <button style="border: none;" (click)="deleteTechnicalEvent($event)">
+                   <i class="bi bi-trash"></i>
+                 </button>
+             </div>
+           </div>
+              <!-- <mat-icon matListItemIcon>note</mat-icon> 
   
               <div matListItemTitle>{{ activity.type }}</div>
-              <div matListItemLine>
-                Name of Coordinator : {{ activity.nameOfCoordinator }}<br />
-                topic : {{ activity.topicSubject }}<br />
-                Place : {{ activity.place }}
-              </div>
+              <div matListItemLine>Coordinator : {{ activity.nameOfCoordinator }}<br />
+              Event : {{ activity.topicSubject }}<br />
+              Place : {{ activity.place }}
+              </div>-->
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
         </mat-card-content>
       </mat-card> 
-      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
         <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
           <h3>Workshops/Seminar</h3>
           <button mat-raised-button color="primary" (click)="addWorkshop()">Add</button>
         </div>
         <mat-card-content>
-          <mat-list *ngFor="let activity of technicalActivityList; let i = index">
+          <mat-list *ngFor="let activity of workshopList; let i = index">
             <mat-list-item style="height: fit-content; margin-bottom: 10px">
               <mat-icon matListItemIcon>note</mat-icon>
   
               <div matListItemTitle>{{ activity.type }}</div>
               <div matListItemLine>
                 Name of Coordinator : {{ activity.nameOfCoordinator }}<br />
-                topic : {{ activity.topicSubject }}<br />
+                Topic : {{ activity.topicSubject }}<br />
                 Place : {{ activity.place }}
               </div>
             </mat-list-item>
             <mat-divider></mat-divider>
           </mat-list>
         </mat-card-content>
-      </mat-card> 
+      </mat-card>  -->
     </div>
     <!-- faculty list comp -->
-    <div class="col-lg-3" style="margin-inline: 20px">
+    <!-- <div class="col-lg-3" style="margin-inline: 20px">
       <mat-card appearance="outlined">
         <mat-card-header style="justify-content: space-evenly; padding: 20px">
           <h3>Employees</h3>
@@ -222,7 +335,7 @@
         </mat-card-header>
         <mat-divider></mat-divider>
   
-        <!-- list for now hard coded -->
+        
          <mat-list *ngFor="let faculty of facultyList; let i = index"> 
           <mat-list-item>
             {{ faculty.name }}
@@ -239,10 +352,10 @@
                       </div>
           
                     </div> -->
-          </mat-list-item> 
+          <!-- </mat-list-item>  
         </mat-list>
       </mat-card>
-    </div>
+    </div> -->
   </div> 
   <!-- <button mat-fab color="primary" style="position: fixed; bottom: 4 rem; right: 1rem; z-index: 9999" aria-label="Add meeting" (click)="logout()">
     <i class="bi bi-box-arrow-right" style="font-size: 24px"></i>

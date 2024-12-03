@@ -31,14 +31,40 @@ export class IndustryDialogComponent implements OnInit {
     this.Init();
   }
 
-  participants: string[] = ['BE-I', 'BE-II', 'BE-III', 'BE-IV', 'ME-I', 'ME-II'];
+  participants: any = [
+    {
+      label: 'BE-I',
+      value: 'BE-I',
+    },
+    {
+      label: 'BE-II',
+      value: 'BE-II',
+    },
+    {
+      label: 'BE-III',
+      value: 'BE-III',
+    },
+    {
+      label: 'BE-IV',
+      value: 'BE-IV',
+    },
+    {
+      label: 'ME-I',
+      value: 'ME-I',
+    },
+    {
+      label: 'ME-II',
+      value: 'ME-II',
+    },
+  ];
+  // string[] = ['BE-I', 'BE-II', 'BE-III', 'BE-IV', 'ME-I', 'ME-II'];
   type: string = '';
   facultyList: any[] = [];
   todayDate: Date = new Date();
   allParticipantsSelected = false;
-  allParticipants = [];
+  allParticipants:any[] = [];
 
-  addIndustryForm: FormGroup = this.fb.group({
+  addIndustryForm: any = this.fb.group({
     address: ['', [Validators.required]],
     city: ['', [Validators.required]],
     companyName: ['', [Validators.required]],
@@ -118,14 +144,14 @@ export class IndustryDialogComponent implements OnInit {
     this.allParticipantsSelected = !this.allParticipantsSelected;
     this.allParticipants = [];
     if(this.allParticipantsSelected){
-    // for(let participant of this.participants){
-    //   this.allParticipants.push(faculty.userId);
-    // }
-    this.addIndustryForm.controls['participants'].patchValue([...this.participants,0]);
-    }else{
-    this.addIndustryForm.controls['participants'].patchValue([]);
+    for(let participant of this.participants){
+      this.allParticipants.push(participant.value);
     }
-    console.log(this.addIndustryForm.controls['participants'].value);
+    this.addIndustryForm.controls.participants.patchValue([...this.participants,0]);
+    }else{
+    this.addIndustryForm.controls.participants.patchValue([]);
+    }
+    console.log(this.addIndustryForm.controls.participants.value);
   }
 
 

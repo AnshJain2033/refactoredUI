@@ -7,8 +7,11 @@ import { enableProdMode } from '@angular/core';
 
 if (environment.production) {
   enableProdMode();
-  if(window)
+  if(window){
     window.console.log = () => { }
+    window.console.warn = () => { }
+    window.console.error = () => { }
+  }
 }
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

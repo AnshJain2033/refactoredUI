@@ -1,0 +1,29 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'register'">Upload File</h1>
+
+<mat-dialog-content style="height:50vh ;width: 35vw; overflow-y: scroll; max-width: 70vh;">
+
+    <!-- <form *ngIf="type==='register'" [formGroup]="uploadCsv" class="d-flex flex-column py-2">
+      
+      <mat-form-field appearance="outline">
+        <mat-label>Coordinators</mat-label>
+        <mat-select formControlName="coordinator" multiple>
+        </mat-select>
+      </mat-form-field>
+
+    </form> -->
+    <form [formGroup]="fBulkEnrollment" class="d-flex flex-column py-2">
+        <mat-form-field appearance="outline">
+            <mat-label>User Type</mat-label>
+            <mat-select formControlName="userType" required>
+              <mat-option *ngFor="let type of userTypes" [value]="type">{{ type }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        <mat-label>Upload CSV</mat-label>
+        <input style="padding: 20px;"  (change)="selectFileInput($event)" type="file" formControlName="csv" />
+      </form>
+</mat-dialog-content>
+
+<mat-dialog-actions [align]="'end'">
+    <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+    <button (click)="uploadCsv()" mat-raised-button color="primary" cdkFocusInitial [disabled]="!fBulkEnrollment.valid">Upload</button>
+</mat-dialog-actions>

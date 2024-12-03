@@ -4,8 +4,8 @@
     <mat-form-field appearance="outline">
       <mat-label>Participants</mat-label>
       <mat-select formControlName="participants" multiple>
-        <mat-option #all (click)="selectAllParticipants()" [value]="0">Select All</mat-option>
-        <mat-option *ngFor="let participant of participants" [value]="participant">{{ participant }}</mat-option>
+        <mat-option (click)="selectAllParticipants()" [value]="0">Select All</mat-option>
+        <mat-option *ngFor="let participant of participants" [value]="participant.value">{{ participant.label }}</mat-option>
       </mat-select>
       <!-- <mat-select formControlName="participants">
         <mat-option *ngFor="let participant of participants" [value]="participant">{{ participant }}</mat-option>

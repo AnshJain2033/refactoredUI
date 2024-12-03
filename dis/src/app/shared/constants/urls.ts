@@ -9,4 +9,5 @@ export const urls = {
   moodle: `http://${environment.apiUrl}:8087`,
   phd: `http://${environment.apiUrl}:8089`,
   eureka: `http://${environment.apiUrl}:8761`,
+  file: `http://${environment.apiUrl}:8088`,
 };

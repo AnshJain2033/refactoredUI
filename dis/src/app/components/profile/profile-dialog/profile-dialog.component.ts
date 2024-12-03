@@ -23,49 +23,50 @@ export class ProfileDialogComponent implements OnInit {
   facultyProfile: any;
 
   editProfileForm: FormGroup = this.fb.group({
-    alternateMobileNo: ['', [Validators.required]],
+    alternateMobileNo: ['', [Validators.nullValidator]],
     areaOfSpecialization: ['', [Validators.required]],
     dob: [Date, [Validators.required]],
     email: ['', [Validators.required]],
     mobileNo: ['', [Validators.required]],
+    bloodGroup: ['', [Validators.required]],
   });
 
   // exp list and form
   expList: any;
-
+  exp: any = null;
   addExpForm: FormGroup = this.fb.group({
-    organizationName: ['', [Validators.required]],
-    designation: ['', [Validators.required]],
-    dateOfJoining: [Date, [Validators.required]],
-    dateOfLeaving: [Date, [Validators.required]],
-    city: ['', [Validators.required]],
-    state: ['', [Validators.required]],
-    country: ['', [Validators.required]],
-    payScale: ['', [Validators.required]],
+    organizationName: [this.data.exp!=null?this.data.exp.organizationName:'', [Validators.required]],
+    designation: [this.data.exp!=null?this.data.exp.designation:'', [Validators.required]],
+    dateOfJoining: [this.data.exp!=null?this.data.exp.dateOfJoining:Date, [Validators.required]],
+    dateOfLeaving: [this.data.exp!=null?this.data.exp.dateOfLeaving:'', [Validators.nullValidator]],
+    city: [this.data.exp!=null?this.data.exp.city:'', [Validators.required]],
+    state: [this.data.exp!=null?this.data.exp.state:'', [Validators.required]],
+    country: [this.data.exp!=null?this.data.exp.country:'', [Validators.required]],
+    payScale: [this.data.exp!=null?this.data.exp.payScale:'', [Validators.required]],
   });
 
   // Education list and form
 
   addEducationForm: FormGroup = this.fb.group({
-    degreeCertificate: ['', [Validators.required]],
-    collegeSchool: ['', [Validators.required]],
-    universityBoard: ['', [Validators.required]],
-    specialization: ['', [Validators.required]],
-    yearOfPassing: ['', [Validators.required]],
-    percentageCgpa: ['', [Validators.required]],
+    degreeCertificate: [this.data.edu!=null?this.data.edu.degreeCertificate:'', [Validators.required]],
+    collegeSchool: [this.data.edu!=null?this.data.edu.collegeSchool:'', [Validators.required]],
+    universityBoard: [this.data.edu!=null?this.data.edu.universityBoard:'', [Validators.required]],
+    specialization: [this.data.edu!=null?this.data.edu.specialization:'', [Validators.required]],
+    yearOfPassing: [this.data.edu!=null?this.data.edu.yearOfPassing:'', [Validators.required]],
+    percentageCgpa: [this.data.edu!=null?this.data.edu.percentageCgpa:'', [Validators.required]],
   });
 
 
   //research list and form
   addResearchForm: FormGroup = this.fb.group({
-    title: ['', [Validators.required]],
-    yearOfPublication: ['', [Validators.required]],
-    publisher: ['', [Validators.required]],
-    category: ['', [Validators.required]],
-    subcategory: ['', [Validators.required]],
-    coAuthors: ['', [Validators.required]],
-    guideName: ['', [Validators.required]],
-    conferenceJournalName: ['', [Validators.required]],
+    title: [this.data.research!=null?this.data.research.title:'', [Validators.required]],
+    yearOfPublication: [this.data.research!=null?this.data.research.yearOfPublication:'', [Validators.required]],
+    publisher: [this.data.research!=null?this.data.research.publisher:'', [Validators.required]],
+    category: [this.data.research!=null?this.data.research.category:'', [Validators.required]],
+    subcategory: [this.data.research!=null?this.data.research.subcategory:'', [Validators.required]],
+    coAuthors: [this.data.research!=null?this.data.research.coAuthors:'', [Validators.required]],
+    guideName: [this.data.research!=null?this.data.research.guideName:'', [Validators.required]],
+    journalConferenceName: [this.data.research!=null?this.data.research.journalConferenceName:'', [Validators.nullValidator]],
   });
 
   options = ['Journal', 'Conference'];
@@ -73,21 +74,21 @@ export class ProfileDialogComponent implements OnInit {
 
   // interships and form
   addInternshipForm: FormGroup = this.fb.group({
-    subject: ['', [Validators.required]],
-    companyName: ['', [Validators.required]],
-    city: ['', [Validators.required]],
-    state: ['', [Validators.required]],
-    country: ['', [Validators.required]],
-    startDate: [Date, [Validators.required]],
-    endDate: [Date, [Validators.required]],
+    subject: [this.data.internship!=null?this.data.internship.subject:'', [Validators.required]],
+    companyName: [this.data.internship!=null?this.data.internship.companyName:'', [Validators.required]],
+    city: [this.data.internship!=null?this.data.internship.city:'', [Validators.required]],
+    state: [this.data.internship!=null?this.data.internship.state:'', [Validators.required]],
+    country: [this.data.internship!=null?this.data.internship.country:'', [Validators.required]],
+    startDate: [this.data.internship!=null?this.data.internship.startDate:Date, [Validators.required]],
+    endDate: [this.data.internship!=null?this.data.internship.endDate:Date, [Validators.required]],
   });
   // exams and form
   addCompExamForm: FormGroup = this.fb.group({
-    nameOfExam: ['', [Validators.required]],
-    rank: ['', [Validators.required]],
-    registrationNo: ['', [Validators.required]],
-    year: ['', [Validators.required]],
-    score: ['', [Validators.required]],
+    nameOfExam: [this.data.compExam!=null?this.data.compExam.nameOfExam:'', [Validators.required]],
+    rank: [this.data.compExam!=null?this.data.compExam.rank:'', [Validators.required]],
+    registrationNo: [this.data.compExam!=null?this.data.compExam.registrationNo:'', [Validators.required]],
+    year: [this.data.compExam!=null?this.data.compExam.year:'', [Validators.required]],
+    score: [this.data.compExam!=null?this.data.compExam.score:'', [Validators.nullValidator]],
   });
   // placement
   addPlacementForm: FormGroup = this.fb.group({
@@ -107,16 +108,17 @@ export class ProfileDialogComponent implements OnInit {
     achievement: ['', [Validators.required]],
   });
 
-  technicalActivityoptions = ['Attended', 'Organised'];
+  technicalActivityoptions = ['Attended', 'Organized'];
+  technicalActivityTypes = ['Workshop', 'Seminar', 'Technical Event'];
   //Technical Activities form
   addTechnicalActivitiesForm: FormGroup = this.fb.group({
-    attendedOrganized: ['', [Validators.required]],
-    fromDate: [Date, [Validators.required]],
-    nameOfCoordinator: ['', [Validators.required]],
-    place: ['', [Validators.required]],
-    topicSubject: ['', [Validators.required]],
-    toDate: [Date, [Validators.required]],
-    type: ['', [Validators.required]],
+    attendedOrganized: [this.data.event!= null? this.data.event.attendedOrganized: '', [Validators.required]],
+    fromDate: [this.data.event!= null? this.data.event.fromDate: Date, [Validators.required]],
+    nameOfCoordinator: [this.data.event!= null? this.data.event.nameOfCoordinator: '', [Validators.required]],
+    place: [this.data.event!= null? this.data.event.place: '', [Validators.required]],
+    topicSubject: [this.data.event!= null? this.data.event.topicSubject: '', [Validators.required]],
+    toDate: [this.data.event!= null? this.data.event.toDate: Date, [Validators.required]],
+    type: [this.data.event!= null? this.data.event.type: '', [Validators.required]],
   });
   // workshop
   addWorkshopForm: FormGroup = this.fb.group({
@@ -129,7 +131,31 @@ export class ProfileDialogComponent implements OnInit {
     type: ['', [Validators.required]],
   });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.data.type);
+    
+    if(this.data.type==='expEdit'){
+      console.log(this.data.type);
+      
+      this.exp = this.data.exp;
+      console.log(this.exp);
+      // this.data.type = 'exp';
+      
+    }
+
+    if(this.data.type==='editEducation'){
+      console.log(this.data.edu.degreeCertificate);
+      let education = this.data.edu; 
+      // this.editEducationForm.controls['degreeCertificate'].setValue(this.data.edu.degreeCertificate);
+  //   this.editEducationForm.patchValue({
+  //     degreeCertificate: education.degreeCertificate,
+
+  //  });
+  }
+ 
+
+  }
+  
   prepareData(form: FormGroup) {
     let obj = cloneDeep(form.getRawValue());
 

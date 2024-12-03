@@ -214,7 +214,13 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
       }
       console.log(this.gridData);
       
+      
       for(let data of this.gridData){
+        console.log(String(data.faculty));
+        console.log(String(this.fullName));
+        
+        
+        console.log(String(data.faculty).includes(String(this.fullName)));
         if(data.type === 'Lecture' && this.userType==='head')
           this.gridDataTheory.push(data);
         else{
@@ -223,11 +229,15 @@ dateChange: EventEmitter<MatDatepickerInputEvent<any>> = new EventEmitter();
         }
         // .filter((d:any)=> d.faculty.contains(this.fullName)));
 
-        if(data.type === 'Lab' && this.userType==='head')
+        if(data.type === 'Lab' && this.userType==='head'){
+          console.log(this.gridDataLab);
           this.gridDataLab.push(data);
-        else{
-          if(data.type  === 'Lab' && this.userType==='faculty' && String(data.faculty).includes(String(this.fullName)))
+        }else{
+          if(data.type  === 'Lab' && this.userType==='faculty' && String(data.faculty).includes(String(this.fullName))){
+            console.log(String(data.faculty));
+          console.log(this.gridDataLab);
             this.gridDataLab.push(data);
+          }
         }
       }
       console.log(this.gridDataTheory);

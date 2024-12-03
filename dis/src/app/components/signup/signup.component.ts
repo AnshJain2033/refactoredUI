@@ -34,9 +34,10 @@ export class SignupComponent {
     }
   ]
 
-  userType = ['faculty','head','student','staff'];
+  userType = ['faculty','head','student','staff','admin'];
   designations:any = [
     {userType: 'head', designations: ['HOD:I']},
+    {userType: 'admin', designations: ['Admin:I']},
     {userType: 'faculty', designations: ['Professor:I', 'Associate Professor:I', 'Assistant Professor:II']},
     {userType: 'staff', designations: ['Lab Technician:III', 'Lab Incharge:III', 'Lab Staff:IV', 'Computer Operator:III']},
     // {userType: 'staff', designations:['TA', 'PhD']}

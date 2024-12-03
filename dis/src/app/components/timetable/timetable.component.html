@@ -73,15 +73,16 @@
 <!-- <form>    
 <button mat-raised-button color="warn">Create Schedule</button>
 </form> -->
+
     <h2 id="schedule-heading" [hidden]="!showGrid" >Time Table</h2>
-    
-    <div class="schedule" [hidden]="!showGrid" aria-labelledby="schedule-heading">
+    <div  *ngIf="gridData.length==0 && showGrid" class="session session-7 track-all" style="grid-column: times / Friday-end;">
+      <h3 class="session-title">No data to display!</h3>
+  </div>
+    <div class="schedule" [hidden]="gridData.length==0 || gridDataTheory.length==0 || labGroups.length==0 " aria-labelledby="schedule-heading">
         
         <ng-container *ngFor="let col of colDefs"><span aria-hidden="true" class="track-slot" [ngStyle]="{'grid-column': col.field}">{{col.field}}</span></ng-container>
         <!-- <ng-container><span aria-hidden="true" class="track-slot">   </span></ng-container> -->
-        <div  *ngIf="gridData.length==0 && showGrid" class="session session-7 track-all" style="grid-column: times / Friday-end;">
-            <h3 class="session-title">No data to display!</h3>
-        </div>
+        
         <ng-container *ngIf="gridDataTheory.length>0 && labGroups.length>0">
         <ng-container  *ngFor="let i of ['09:00','10:00','11:00', '12:00','13:00','14:00','15:00','16:00','17:00','18:00']">
             <h2 class="time-slot" *ngIf="convertTimeToNumber(i)<12" [ngStyle]="getRowStyle(i)">{{i}} am</h2>

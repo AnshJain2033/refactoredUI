@@ -53,18 +53,24 @@ export const serviceUrls: any = {
     addStaffBasicProfile: urls.user + '/addStaffBasicProfile',
     userWorkExperience: urls.user + '/userWorkExperience',
     addUserWorkExperience: urls.user + '/addUserWorkExperience',
+    deleteUserWorkExperience: urls.user + '/deleteUserWorkExperience',
     userQualification: urls.user + '/userQualification',
     addUserQualification: urls.user + '/addUserQualification',
+    deleteUserQualification: urls.user + '/deleteUserQualification',
     userResearchWork: urls.user + '/userResearchWork',
     addUserResearchWork: urls.user + '/addUserResearchWork',
+    deleteUserResearchWork: urls.user + '/deleteUserResearchWork',
     userInternship: urls.user + '/userInternship',
     addUserInternship: urls.user + '/addUserInternship',
+    deleteUserInternship: urls.user + '/deleteUserInternship',
     userCompetitiveExams: urls.user + '/userCompetitiveExams',
     addUserCompetitiveExams: urls.user + '/addUserCompetitiveExams',
+    deleteUserCompetitiveExams: urls.user + '/deleteUserCompetitiveExam',
     userCulturalActivityAchievements: urls.user + '/userCulturalActivityAchievements',
     userTechnicalActivity: urls.user + '/userTechnicalActivity',
     addUserCulturalActivityAchievements: urls.user + '/addUserCulturalActivityAchievements',
     addUserTechnicalActivity: urls.user + '/addUserTechnicalActivity',
+    deleteUserTechnicalActivity: urls.user + '/deleteUserTechnicalActivity',
     getStaffdata: urls.user + '/staffProfile/getStaffData',
     getPanelOfTheory: urls.user + '/panel/getPanelOfTheory',
     createPanelOfTheory: urls.user + '/panel/createPanelOfTheory',
@@ -132,6 +138,9 @@ export const serviceUrls: any = {
     getAllEnrolledCourses: urls.moodle + '/moodle/getAllEnrolledCourses',
 
 
+    //admin
+
+    uploadCsv: urls.file+ '/file/upload',
 
 
   };
