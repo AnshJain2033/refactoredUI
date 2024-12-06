@@ -17,8 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NoGuardGuard } from './shared/guard/noguard.guard';
 import { HeadGuard } from './shared/guard/head.guard';
-import { StudentGuard } from './shared/guard/student.guard';
 import { FacultyGuard } from './shared/guard/faculty.guard';
+import { StudentGuard } from './shared/guard/student.guard';
 import { WelcomePageComponent } from './components/welcome-page/welcome-page.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
@@ -32,7 +32,12 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UploadCsvDialogComponent } from './components/admin/upload-csv-dialog/upload-csv-dialog.component';
+import { TimeTableDialogComponent } from './components/timetable/time-table-dialog/time-table-dialog.component';
+import { ProfileDialogComponent } from './components/profile/profile-dialog/profile-dialog.component';
 import { MoodleComponent } from './components/moodle/moodle.component';
+
+
+
 
 
 @NgModule({
@@ -48,7 +53,10 @@ import { MoodleComponent } from './components/moodle/moodle.component';
     ContactComponent,
     ProfileComponent,
     UploadCsvDialogComponent,
+    TimeTableDialogComponent,
+    ProfileDialogComponent,
     MoodleComponent,
+    // TimetableComponent,
     
     
     // FooterComponent,

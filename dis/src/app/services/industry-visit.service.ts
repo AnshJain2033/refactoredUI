@@ -25,6 +25,13 @@ export class IndustryVisitService {
     return this.http.get<any>(this.serviceUrls.getAllIndustryVisitsByStatus+"/"+status, {headers: this.headers});
   }
 
+  public getIndustryVisitById(id:string){
+    this.spinnerService.addSpinner();
+    
+    return this.http.get<any>(this.serviceUrls.getIndustryVisitById+"/"+id,{headers: this.headers});
+    
+  }
+
   public deleteIndustryVisit(visitId: any){
     this.spinnerService.addSpinner();
     return this.http.delete<any>(this.serviceUrls.deleteIndustryVisit+"/"+visitId,{headers: this.headers});
@@ -33,5 +40,10 @@ export class IndustryVisitService {
   public updateIndustryVisit(data: any, visitId:any){
     this.spinnerService.addSpinner();
     return this.http.put<any>(this.serviceUrls.editIndustryVisit+"/"+visitId, data, {headers: this.headers});
+  }
+
+  public updateIndustryVisitByStatus(status:any,id:any, file:any){
+    this.spinnerService.addSpinner();
+    return lastValueFrom(this.http.put<any>(this.serviceUrls.updateIndustryVisitStatus+"/"+status+"/"+id,file, {headers: this.headers}));
   }
 }

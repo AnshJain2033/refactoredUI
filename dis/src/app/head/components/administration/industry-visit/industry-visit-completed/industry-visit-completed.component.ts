@@ -28,33 +28,47 @@ export class IndustryVisitCompletedComponent implements OnInit {
   colDefs: ColDef[] = [
     {
       field: 'date',
+      minWidth: 200,
       cellStyle: function (params) {
         return { fontWeight: 'bold' };
       },
     },
     {
       field: 'time',
+      minWidth: 200,
     },
     {
       field: 'companyName',
+      minWidth: 200,
     },
     {
       field: 'participants',
+      minWidth: 200,
     },
     {
       field: 'coordinator1',
+      minWidth: 200,
     },
     {
       field: 'coordinator2',
+      minWidth: 200,
     },
 
     {
-      headerName: 'Actions',
-      cellRenderer: 'actionsCellRenderer',
-      cellRendererParams: {
-        onDelete: this.onDelete.bind(this),
+      field: 'status',
+      minWidth: 200,
+      cellStyle: function (params) {
+        return { color: 'green' };
       },
     },
+    // {
+    //   headerName: 'Actions',
+    //   minWidth: 200,
+    //   cellRenderer: 'actionsCellRenderer',
+    //   cellRendererParams: {
+    //     onDelete: this.onDelete.bind(this),
+    //   },
+    // },
   ];
 
  
@@ -67,7 +81,7 @@ export class IndustryVisitCompletedComponent implements OnInit {
   public defaultColDef: ColDef = {
     flex: 1,
     sortable: true,
-    // filter: true,
+    filter: true,
     resizable: true,
     floatingFilter: true,
     enableRowGroup: true,
@@ -81,7 +95,7 @@ export class IndustryVisitCompletedComponent implements OnInit {
   }
 
   constructor(private industryService: IndustryVisitService, private toastService: HotToastService, private spinnerService: SpinnerService, private commomService: CommonService, private http: HttpClient) {
-    this.onDelete = this.onDelete.bind(this);
+    // this.onDelete = this.onDelete.bind(this);
   }
 
   ngOnInit(): void {
@@ -111,26 +125,26 @@ export class IndustryVisitCompletedComponent implements OnInit {
     },
   };
 
-  onDelete(rowData: any) {
-    console.log('on delete clicked');
-    // console.log("on delete clicked")
-    console.log(rowData);
+  // onDelete(rowData: any) {
+  //   console.log('on delete clicked');
+  //   // console.log("on delete clicked")
+  //   console.log(rowData);
 
-    this.industryService.deleteIndustryVisit(rowData.industryVisitId).subscribe({
-      next: (result: any) => {
-        this.toastService.success(result.message);
-      },
-      error: (error) => {
-        console.log(error);
-        this.toastService.error('Failed to delete visit');
-        this.spinnerService.removeSpinner();
-      },
-      complete: () => {
-        this.fetchData['getAllIndustryVisitsByStatus']();
-        this.spinnerService.removeSpinner();
-      },
-    });
-  }
+  //   this.industryService.deleteIndustryVisit(rowData.industryVisitId).subscribe({
+  //     next: (result: any) => {
+  //       this.toastService.success(result.message);
+  //     },
+  //     error: (error) => {
+  //       console.log(error);
+  //       this.toastService.error('Failed to delete visit');
+  //       this.spinnerService.removeSpinner();
+  //     },
+  //     complete: () => {
+  //       this.fetchData['getAllIndustryVisitsByStatus']();
+  //       this.spinnerService.removeSpinner();
+  //     },
+  //   });
+  // }
 
   exportData() {
     this.commomService.exportToCsv(this.completedList, 'taskList.csv');

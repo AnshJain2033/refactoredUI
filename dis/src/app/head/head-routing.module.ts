@@ -23,13 +23,21 @@ import { AdminComponent } from '../components/admin/admin.component';
 import { IndustryVisitPendingComponent } from './components/administration/industry-visit/industry-visit-pending/industry-visit-pending.component';
 import { IndustryVisitUpcomingComponent } from './components/administration/industry-visit/industry-visit-upcoming/industry-visit-upcoming.component';
 import { IndustryVisitCompletedComponent } from './components/administration/industry-visit/industry-visit-completed/industry-visit-completed.component';
-// import { FacultiesComponent } from './components/faculty-page/faculties/faculties.component';
-// import { StaffComponent } from './components/faculty-page/staff/staff.component';
-
+import { LaboratoryComponent } from './components/infrastructure/laboratory/laboratory.component';
+import { ClassroomComponent } from './components/infrastructure/classroom/classroom.component';
+import { FacultyRoomComponent } from './components/infrastructure/faculty-room/faculty-room.component';
+import { OtherComponent } from './components/infrastructure/other/other.component';
+import { MoodleComponent } from './components/moodle/moodle.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
 import { EventCompletedComponent } from './components/administration/event/event-completed/event-completed.component';
 import { EventComponent } from './components/administration/event/event.component';
 import { EventOngoingComponent } from './components/administration/event/event-ongoing/event-ongoing.component';
 import { EventUpcomingComponent } from './components/administration/event/event-upcoming/event-upcoming.component';
+
+// import { FacultiesComponent } from './components/faculty-page/faculties/faculties.component';
+// import { StaffComponent } from './components/faculty-page/staff/staff.component';
 
 const routes: Routes = [
   {
@@ -126,10 +134,6 @@ const routes: Routes = [
             path: 'systemAdmin',
             component: AdminComponent,
           },
-          {
-            path: 'infrastructure',
-            component: InfrastructureComponent,
-          },
         ]
       },
       {
@@ -154,6 +158,29 @@ const routes: Routes = [
       {
         path: 'infrastructure',
         component: InfrastructureComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'laboratory',
+            pathMatch: 'full',
+          },
+          {
+            path: 'laboratory',
+            component: LaboratoryComponent,
+          },
+          {
+            path: 'classroom',
+            component: ClassroomComponent,
+          },
+          {
+            path: 'facultyRoom',
+            component: FacultyRoomComponent,
+          },
+          {
+            path: 'other',
+            component: OtherComponent,
+          },
+        ]
       },
       
       {
@@ -190,6 +217,22 @@ const routes: Routes = [
       {
         path: 'contact',
         component: ContactComponent,
+      },
+      {
+        path: 'moodle',
+        component: MoodleComponent,
+      },
+      {
+        path: 'complaints',
+        component: ComplaintsComponent,
+      },
+      {
+        path: 'notifications',
+        component: NotificationsComponent,
+      },
+      {
+        path: 'leaves',
+        component: LeavesComponent,
       },
     ]
   },

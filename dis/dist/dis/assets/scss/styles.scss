@@ -1,0 +1,13 @@
+@import './icons.scss';
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: inherit;
+  }
+}
+
+.mat-mdc-dialog-content {
+  max-height: 100% !important;
+}

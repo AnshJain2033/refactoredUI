@@ -67,7 +67,7 @@ export class IndustryVisitPendingComponent implements OnInit {
       cellRendererParams: {
         onDelete: this.onDelete.bind(this),
         onEdit: this.onEdit.bind(this),
-        //onStatus: this.onStatus.bind(this)
+        onStatus: this.onStatus.bind(this)
       },
     },
   ];
@@ -116,6 +116,24 @@ export class IndustryVisitPendingComponent implements OnInit {
       }
     },
   };
+
+  onStatus(rowData: any) {
+
+    console.log('on status clicked');
+    // alert(rowData);
+    console.log(rowData);
+    const dialogRef = this.dialog.open(IndustryVisitEditDialogComponent, {
+      data: {
+        type: 'status',
+        data : rowData
+
+      },
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => this.fetchData['getAllIndustryVisitsByStatus']());
+
+
+  }
 
   onDelete(rowData: any) {
     console.log('on delete clicked');

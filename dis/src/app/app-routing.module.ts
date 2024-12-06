@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'full' },
   {
     path: 'login',
-    component: LoginComponent,
+    component: WelcomePageComponent,
   //  canActivate: [NoGuardGuard],
   },
   {
@@ -25,6 +25,10 @@ const routes: Routes = [
     path: 'faculty',
     loadChildren: () => import('./faculty/faculty.module').then((m) => m.FacultyModule),
    
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then((m) => m.AdminModule),
   },
   {
     path: 'student',
@@ -66,4 +70,3 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, {useHash : true})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }

@@ -23,10 +23,13 @@ import { TasksComponent } from './components/tasks/tasks.component';
 import { EditTaskDialogComponent } from './components/tasks/edit-task-dialog/edit-task-dialog.component';
 import { ActionsCellRendererTaskComponent } from './components/tasks/actions-cell-renderer-task/actions-cell-renderer-task.component';
 import { IndustryVisitComponent } from './components/administration/industry-visit/industry-visit.component';
+import { IndustryVisitEditDialogComponent } from './components/administration/industry-visit/industry-visit-edit-dialog/industry-visit-edit-dialog.component';
 import { IndustryVisitPendingComponent } from './components/administration/industry-visit/industry-visit-pending/industry-visit-pending.component';
 import { IndustryDialogComponent } from './components/administration/industry-visit/industry-dialog/industry-dialog.component';
 import { IndustryVisitUpcomingComponent } from './components/administration/industry-visit/industry-visit-upcoming/industry-visit-upcoming.component';
 import { IndustryVisitCompletedComponent } from './components/administration/industry-visit/industry-visit-completed/industry-visit-completed.component';
+import { MeetingsComponent } from './components/meetings/meetings.component';
+import { MeetingDialogComponent } from './components/meetings/meeting-dialog/meeting-dialog.component';
 
 import { EventComponent } from './components/administration/event/event.component';
 import { EventDialogComponent } from './components/administration/event/event-dialog/event-dialog.component';
@@ -37,11 +40,24 @@ import { EventFetchComponent } from './components/administration/event/event-fet
 import { EventDetailComponent } from './components/administration/event/event-detail/event-detail.component';
 import { UploadsPyqComponent } from './components/service/uploads-pyq/uploads-pyq.component';
 
+import { TableComponent } from '../components/table/table.component';
+import { InfrastructureComponent } from './components/infrastructure/infrastructure.component';
+import { LaboratoryComponent } from './components/infrastructure/laboratory/laboratory.component';
+import { ClassroomComponent } from './components/infrastructure/classroom/classroom.component';
+import { FacultyRoomComponent } from './components/infrastructure/faculty-room/faculty-room.component';
+import { OtherComponent } from './components/infrastructure/other/other.component';
+import { InfrastructureDialogComponent } from './components/infrastructure/infrastructure-dialog/infrastructure-dialog.component';
+import { MoodleComponent } from './components/moodle/moodle.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+
 import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StudentLeaveAplcationComponentComponent } from './components/administration/student-leave-application-component/student-leave-application-component.component';
 import { StudentLeaveDetailComponent } from './components/administration/student-leave-detail/student-leave-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -62,6 +78,19 @@ import { StudentLeaveDetailComponent } from './components/administration/student
     IndustryDialogComponent,
     IndustryVisitUpcomingComponent,
     IndustryVisitCompletedComponent,
+    MeetingsComponent,
+    MeetingDialogComponent,
+    InfrastructureComponent,
+    LaboratoryComponent,
+    ClassroomComponent,
+    FacultyRoomComponent,
+    OtherComponent,
+    InfrastructureDialogComponent,
+    MoodleComponent,
+    LeavesComponent,
+    ComplaintsComponent,
+    NotificationsComponent,
+    IndustryVisitEditDialogComponent,
     EventComponent,
     EventDialogComponent,
     EventCompletedComponent,
@@ -73,6 +102,8 @@ import { StudentLeaveDetailComponent } from './components/administration/student
     UploadsPyqComponent,
     StudentLeaveAplcationComponentComponent,
     StudentLeaveDetailComponent
+    // TableComponent,
+    
     // 
   ],
   imports: [
@@ -85,15 +116,7 @@ import { StudentLeaveDetailComponent } from './components/administration/student
     AgGridModule,
     FlexLayoutModule,
     FullCalendarModule,
-    MatTabsModule,
-    FacultyRoutingModule,
-    MaterialModule,
-    SharedModule,
-    FormsModule,
-    ReactiveFormsModule,
-    AgGridModule,
-    FlexLayoutModule,
-    FullCalendarModule
+    MatTabsModule
   ],
   providers: [
     {

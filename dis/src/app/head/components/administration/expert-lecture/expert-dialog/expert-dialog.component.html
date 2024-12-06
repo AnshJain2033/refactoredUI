@@ -150,7 +150,8 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Time</mat-label>
-          <input matInput [ngxMatTimepicker]="pickert" formControlName="time">  
+          <input matInput [ngxMatTimepicker]="pickert" formControlName="time">
+          <ngx-mat-timepicker-toggle matIconSuffix [for]=pickert></ngx-mat-timepicker-toggle>  
           <ngx-mat-timepicker #pickert></ngx-mat-timepicker> 
           <!-- <input matTimepicker id="t1" #t1="matTimepicker" mode="12h" formControlName="time"> -->
     <!-- <mat-icon matSuffix (click)="t1.showDialog()">access_time</mat-icon> -->

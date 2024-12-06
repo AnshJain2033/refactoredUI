@@ -253,7 +253,9 @@
           </ul>
         </button>
     </ng-container>
-        <button mat-button *ngIf="isLoggedIn"  [matMenuTriggerFor]="usermenu" class="nav-link text-white" style="bottom: 0;"><img src={{images[loginUser]}} alt="image" style="height: 40px;"/></button>
+        <button mat-button *ngIf="isLoggedIn"  [matMenuTriggerFor]="usermenu" class="nav-link text-white" style="bottom: 0;"><img *ngIf="images[loginUser]" src={{images[loginUser]}} alt="HOD_image" style="height: 40px;"/>
+          <img *ngIf="!images[loginUser]" src={{img}} alt="image" style="height:40px"/>
+        </button>
         <mat-menu #usermenu="matMenu">
             <button mat-menu-item (click)="navigateToProfile()">View Profile</button>
             <mat-divider></mat-divider>

@@ -30,12 +30,14 @@
           <mat-label>Start Time</mat-label>
           <!-- <ngx-mat-timepicker formControlName="time"></ngx-mat-timepicker> -->
           <input matInput [ngxMatTimepicker]="picker2" formControlName="time">  
+          <ngx-mat-timepicker-toggle matIconSuffix [for]="picker2"></ngx-mat-timepicker-toggle>
           <ngx-mat-timepicker #picker2></ngx-mat-timepicker> 
           <!-- <input matInput placeholder="Start Time" type="time" formControlName="time" /> -->
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>End Time</mat-label>
           <input matInput [ngxMatTimepicker]="picker3" formControlName="endTime">  
+          <ngx-mat-timepicker-toggle matIconSuffix [for]="picker3"></ngx-mat-timepicker-toggle>
           <ngx-mat-timepicker #picker3></ngx-mat-timepicker> 
         </mat-form-field>
         <!-- <mat-form-field appearance="outline">

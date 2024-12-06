@@ -23,7 +23,8 @@ export class ExpertEditDialogComponent {
   facultyList: any[] = [];
   expertList: any[] = [];
   expertLecture: any;
-  statusOptions : any = ["Pending","Upcoming","Completed"];
+  statusOptions : any = ["Pending","Completed"];
+  pendingStatusOptions : any = ["Upcoming"];
   notesheet : any ;
   attendanceSheet: any;
   photosSheet: any;
@@ -233,6 +234,7 @@ export class ExpertEditDialogComponent {
       formData.append('file',this.notesheet);
     }else{
       formData.append('file',this.attendanceSheet);
+      formData.append('photos',this.photosSheet);
     }
     let response3: any = { message: '' };
     try {

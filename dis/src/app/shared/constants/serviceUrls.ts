@@ -47,21 +47,30 @@ export const serviceUrls: any = {
     updateInfrastructure: urls.infrastructure + '/infrastructure/updateInfrastructure',
     addNewInfrastructureLocation: urls.infrastructure + '/infrastructure/addNewInfrastructureLocation',
     searchTaskByUserId: urls.user + '/task/searchTaskByUserId',
+    searchTaskByTaskId: urls.user + '/task/searchTaskByTaskId',
     getMyUserId: urls.user + '/staffProfile/getMyUserID',
     getStaffBasicProfile: urls.user + '/staffBasicProfile',
     addStaffBasicProfile: urls.user + '/addStaffBasicProfile',
     userWorkExperience: urls.user + '/userWorkExperience',
     addUserWorkExperience: urls.user + '/addUserWorkExperience',
+    deleteUserWorkExperience: urls.user + '/deleteUserWorkExperience',
+    userQualification: urls.user + '/userQualification',
+    addUserQualification: urls.user + '/addUserQualification',
+    deleteUserQualification: urls.user + '/deleteUserQualification',
     userResearchWork: urls.user + '/userResearchWork',
     addUserResearchWork: urls.user + '/addUserResearchWork',
+    deleteUserResearchWork: urls.user + '/deleteUserResearchWork',
     userInternship: urls.user + '/userInternship',
     addUserInternship: urls.user + '/addUserInternship',
+    deleteUserInternship: urls.user + '/deleteUserInternship',
     userCompetitiveExams: urls.user + '/userCompetitiveExams',
     addUserCompetitiveExams: urls.user + '/addUserCompetitiveExams',
+    deleteUserCompetitiveExams: urls.user + '/deleteUserCompetitiveExam',
     userCulturalActivityAchievements: urls.user + '/userCulturalActivityAchievements',
     userTechnicalActivity: urls.user + '/userTechnicalActivity',
     addUserCulturalActivityAchievements: urls.user + '/addUserCulturalActivityAchievements',
     addUserTechnicalActivity: urls.user + '/addUserTechnicalActivity',
+    deleteUserTechnicalActivity: urls.user + '/deleteUserTechnicalActivity',
     getStaffdata: urls.user + '/staffProfile/getStaffData',
     getPanelOfTheory: urls.user + '/panel/getPanelOfTheory',
     createPanelOfTheory: urls.user + '/panel/createPanelOfTheory',
@@ -79,7 +88,9 @@ export const serviceUrls: any = {
     getUGCourseBatches: urls.user + '/guideAllotment/getAllBatches',
     getCategoryList: urls.user + '/task/getTaskCategoryList',
     getTaskByCategory: urls.user + '/task/getTasksFromCategoryId',
+    getCategoryByTask: urls.user + '/task/searchCategoryIdByTaskId',
     assignTask: urls.user + '/task/assignTask',
+    updateTask: urls.user + '/task/updateTask',
     deleteTask: urls.user + '/task/deleteTask',
     addMemberDetails: urls.user + '/staffProfile/addNewMember',
     getExpertLectureByStatus: urls.academics + '/expertLecture/getExpertLecturesByStatus',
@@ -92,6 +103,7 @@ export const serviceUrls: any = {
     addExpertLecture: urls.academics + '/expertLecture/addExpertLecture',
     updateExpertLectureByStatus: urls.academics + '/expertLecture/updateExpertLectureStatus',
     editExpertLecture: urls.academics + '/expertLecture/editExpertLecture',
+    getCourseList: urls.academics + '/timeTable/getCourseList',
     updatePanel: urls.user + '/panelOfPractical',
     getAllExternals: urls.user + '/externalExaminer',
     getAllIndustryVisitsByStatus: urls.academics + '/industryVisit/getIndustryVisits',
@@ -99,7 +111,10 @@ export const serviceUrls: any = {
     deleteIndustryVisit: urls.academics + '/industryVisit/deleteIndustryVisit',
     editIndustryVisit: urls.academics + '/industryVisit/editIndustryVisit',
     updateIndustryVisitStatus: urls.academics + '/industryVisit/updateIndustryVisitStatus',
+    getIndustryVisitById: urls.academics + '/industryVisit/viewIndustryVisitDetails',
+    getTimeTableByTypeCourseAndSemester: urls.academics + '/timeTable/getTimeTableByTypeCourseAndSem',
     updateTaskStatus : urls.user + '/task/updateTaskStatus',
+
 
     // Url For Magazine Module
     deleteMagazine: urls.academics + '/magazine/deleteMagazine',
@@ -121,11 +136,18 @@ export const serviceUrls: any = {
     getAllGrades : urls.moodle + '/moodle/getUserGradeReport',
     getAssignmentDetails : urls.moodle + '/moodle/getAssignmentDetails',
     getAllEnrolledCourses: urls.moodle + '/moodle/getAllEnrolledCourses',
-    //Student Service URLS
+
+    //Student
     addLeave: urls.administration+'/home/addLeave',
     getLeaveByStudentId:urls.administration+'/home/getLeaveByStudentId',
     deleteLeaveByLeaveId:urls.administration+'/home/deleteLeaveByLeaveId',
     getLeaveByAssignedID:urls.administration+'/home/getLeaveByAssignedToId',
     putLeaveStatusByLeaveId:urls.administration+'/home/putLeaveStatusByLeaveId',
     addLeaveSupportingDocument:urls.administration+'/home/postLeaveSupportingDocumentById'
+
+    //admin
+
+    uploadCsv: urls.file+ '/file/upload',
+
+
   };

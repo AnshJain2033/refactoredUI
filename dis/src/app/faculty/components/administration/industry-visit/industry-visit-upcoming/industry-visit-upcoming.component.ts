@@ -6,6 +6,8 @@ import { SpinnerService } from 'src/app/services/spinner.service';
 import { CommonService } from 'src/app/services/common.service';
 import { HttpClient } from '@angular/common/http';
 import { IndustryVisitService } from 'src/app/services/industry-visit.service';
+import { MatDialog } from '@angular/material/dialog';
+import { IndustryVisitEditDialogComponent } from '../industry-visit-edit-dialog/industry-visit-edit-dialog.component';
 
 @Component({
   selector: 'app-industry-visit-upcoming',
@@ -23,36 +25,47 @@ export class IndustryVisitUpcomingComponent implements OnInit {
   api: any;
   gridOptions: any = {
     rowSelection: 'multiple',
+    alwaysShowHorizontalScroll: true,
+    alwaysShowVerticalScroll: true,
   };
 
   colDefs: ColDef[] = [
     {
       field: 'date',
+      minWidth: 200,
       cellStyle: function (params) {
         return { fontWeight: 'bold' };
       },
     },
     {
       field: 'time',
+      minWidth: 200,
     },
     {
       field: 'companyName',
+      minWidth: 200,
     },
     {
       field: 'participants',
+      minWidth: 200,
     },
     {
       field: 'coordinator1',
+      minWidth: 200,
     },
     {
       field: 'coordinator2',
+      minWidth: 200,
     },
 
     {
       headerName: 'Actions',
+      minWidth: 200,
       cellRenderer: 'actionsCellRenderer',
       cellRendererParams: {
         onDelete: this.onDelete.bind(this),
+        onEdit: this.onEdit.bind(this),
+        onStatus: this.onStatus.bind(this)
       },
     },
   ];
@@ -66,11 +79,12 @@ export class IndustryVisitUpcomingComponent implements OnInit {
   public defaultColDef: ColDef = {
     flex: 1,
     sortable: true,
-    // filter: true,
+    filter: true,
     resizable: true,
     floatingFilter: true,
     enableRowGroup: true,
-
+    enablePivot: true,
+    width: 2
   };
 
   getDate(value: string) {
@@ -78,8 +92,9 @@ export class IndustryVisitUpcomingComponent implements OnInit {
     return new Date(Number(dateParts[2]), Number(dateParts[1]) - 1, Number(dateParts[0]));
   }
 
-  constructor(private industryService: IndustryVisitService, private toastService: HotToastService, private spinnerService: SpinnerService, private commomService: CommonService, private http: HttpClient) {
+  constructor(private industryService: IndustryVisitService, private dialog:MatDialog, private toastService: HotToastService, private spinnerService: SpinnerService, private commomService: CommonService, private http: HttpClient) {
     this.onDelete = this.onDelete.bind(this);
+    this.onEdit = this.onEdit.bind(this);
   }
 
   ngOnInit(): void {
@@ -129,6 +144,42 @@ export class IndustryVisitUpcomingComponent implements OnInit {
     });
   }
   
+
+  onEdit(rowData: any) {
+
+    console.log('on edit clicked');
+    // alert(rowData);
+    console.log(rowData);
+    const dialogRef = this.dialog.open(IndustryVisitEditDialogComponent, {
+      data: {
+        type: 'edit',
+        data : rowData
+
+      },
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => this.fetchData['getAllIndustryVisitsByStatus']());
+
+
+  }
+
+  onStatus(rowData: any) {
+
+    console.log('on status clicked');
+    // alert(rowData);
+    console.log(rowData);
+    const dialogRef = this.dialog.open(IndustryVisitEditDialogComponent, {
+      data: {
+        type: 'upcoming',
+        data : rowData
+
+      },
+      disableClose: true,
+    });
+    dialogRef.afterClosed().subscribe(() => this.fetchData['getAllIndustryVisitsByStatus']());
+
+
+  }
 
   exportData() {
     this.commomService.exportToCsv(this.upcomingList, 'taskList.csv');

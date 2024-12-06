@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NavItem } from 'src/app/head/constants';
 import { ExpertDialogComponent } from './expert-dialog/expert-dialog.component';
@@ -10,7 +10,7 @@ import { MatTabNav, MatTabNavPanel } from '@angular/material/tabs';
   templateUrl: './expert-lecture.component.html',
   styleUrls: ['./expert-lecture.component.scss']
 })
-export class ExpertLectureComponent {
+export class ExpertLectureComponent implements OnInit{
   @ViewChild( 'tabPanel' ) tabPanel?: MatTabNavPanel;
   //selectedTab: string = 'expert-lecture-pending';
   navItemList: NavItem[] = [

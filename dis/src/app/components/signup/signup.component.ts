@@ -34,7 +34,15 @@ export class SignupComponent {
     }
   ]
 
-  userType = ['faculty','head','student'];
+  userType = ['faculty','head','student','staff','admin'];
+  designations:any = [
+    {userType: 'head', designations: ['HOD:I']},
+    {userType: 'admin', designations: ['Admin:I']},
+    {userType: 'faculty', designations: ['Professor:I', 'Associate Professor:I', 'Assistant Professor:II']},
+    {userType: 'staff', designations: ['Lab Technician:III', 'Lab Incharge:III', 'Lab Staff:IV', 'Computer Operator:III']},
+    // {userType: 'staff', designations:['TA', 'PhD']}
+  ];
+  currentDesignations: any =[];
 
   constructor(private authService: AuthService, private router: Router,  private spinnerService: SpinnerService, private fb: FormBuilder, private toastService: HotToastService) {}
   signupForm = this.fb.group(
@@ -46,6 +54,8 @@ export class SignupComponent {
       mobileNo: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')]],
       confirm_password: ['', [Validators.required]],
       userType: ['', [Validators.required]],
+      fullName: ['', [Validators.required]],
+      // designation: ['', [Validators.required]],
     },
     // {
     //   validator: PasswordValidation.passwordConfirmingValidator,
@@ -63,6 +73,18 @@ export class SignupComponent {
       this.isText ? (this.type = 'text') : (this.type = 'password');
     }
 
+    onUserTypeSelect(event:any){
+      console.log(event.value);
+      
+      for(let d of this.designations){
+        console.log(d);
+        
+      if(d['userType'] === event.value){
+        this.currentDesignations = d['designations'];
+        break;
+      }
+    }
+    }
     onSubmit() {
       // if (!this.form.invalid) {
       //   this.isValidated = true;
@@ -77,7 +99,9 @@ export class SignupComponent {
       password: formData.password,
       mobileNo: formData.mobileNo,
       confirm_password:formData.confirm_password,
-      userType: formData.userType
+      userType: formData.userType,
+      fullName: formData.fullName,
+      // designation: formData.designation
         }
         this.authService.signup(data).subscribe({
           next: (response) => {
@@ -98,10 +122,14 @@ export class SignupComponent {
           },
           error: (response) => {
           //  this.submitted = false;
+            console.log(response);
+            
             this.spinnerService.removeSpinner();
-            this.toastService.error(response);
+            this.toastService.error(response.error.message);
           },
         });
+      }else{
+        this.toastService.error("Password and confirm password fields do not match")
       }
     }
   

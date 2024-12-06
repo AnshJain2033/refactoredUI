@@ -44,11 +44,21 @@ import { IndustryVisitPendingComponent } from './components/administration/indus
 import { IndustryVisitUpcomingComponent } from './components/administration/industry-visit/industry-visit-upcoming/industry-visit-upcoming.component';
 import { IndustryVisitCompletedComponent } from './components/administration/industry-visit/industry-visit-completed/industry-visit-completed.component';
 import { IndustryVisitEditDialogComponent } from './components/administration/industry-visit/industry-visit-edit-dialog/industry-visit-edit-dialog.component';
+import { TimetableComponent } from '../components/timetable/timetable.component';
+import { FacultyRoomComponent } from './components/infrastructure/faculty-room/faculty-room.component';
+import { LaboratoryComponent } from './components/infrastructure/laboratory/laboratory.component';
+import { OtherComponent } from './components/infrastructure/other/other.component';
+import { ClassroomComponent } from './components/infrastructure/classroom/classroom.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ComplaintsComponent } from './components/complaints/complaints.component';
+import { LeavesComponent } from './components/leaves/leaves.component';
+import { MoodleComponent } from './components/moodle/moodle.component';
 import { EventComponent } from './components/administration/event/event.component';
 import { EventCompletedComponent } from './components/administration/event/event-completed/event-completed.component';
 import { EventOngoingComponent } from './components/administration/event/event-ongoing/event-ongoing.component';
 import { EventUpcomingComponent } from './components/administration/event/event-upcoming/event-upcoming.component';
 import { EventDialogComponent } from './components/administration/event/event-dialog/event-dialog.component';
+
 // import { FacultyDialogComponent } from './components/faculty-page/faculties/faculty-dialog/faculty-dialog.component';
 
 //import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
@@ -64,7 +74,7 @@ import { EventDialogComponent } from './components/administration/event/event-di
     CommonDashboardComponent,
     DashboardSidenavComponent,
     MeetingsComponent,
-    TableComponent,
+    // TableComponent,
     MeetingDialogComponent,
     ExpertDialogComponent,
     ExpertLecturePendingComponent,
@@ -86,11 +96,21 @@ import { EventDialogComponent } from './components/administration/event/event-di
     IndustryVisitUpcomingComponent,
     IndustryVisitCompletedComponent,
     IndustryVisitEditDialogComponent,
+    TimetableComponent,
+    FacultyRoomComponent,
+    LaboratoryComponent,
+    OtherComponent,
+    ClassroomComponent,
+    NotificationsComponent,
+    ComplaintsComponent,
+    LeavesComponent,
+    MoodleComponent,
     EventComponent,
     EventCompletedComponent,
     EventOngoingComponent,
     EventUpcomingComponent,
     EventDialogComponent
+    
     
    
   ],

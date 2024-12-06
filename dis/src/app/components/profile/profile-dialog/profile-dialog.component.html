@@ -1,0 +1,441 @@
+<div>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'add'">Edit Profile</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'exp'">Add Experience</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'education'">Add Education</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'research'">Add Research Work</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'internship'">Add Internships</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'compExams'">Add Exams</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'placement'">Add Placement</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'cultural'">Add Curtural Activities</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'technical'">Add Technical Activity</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'workshop'">Add Workshop/Seminar</h1>
+
+    <div mat-dialog-content style="min-width: 400px">
+        <!-- edit profile -->
+        <form *ngIf="this.data.type === 'add'" [formGroup]="editProfileForm" class="d-flex flex-column py-2">
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Area Of Specialization</mat-label>
+            <input matInput type="text" formControlName="areaOfSpecialization" [(ngModel)]="this.data.facultyProfile.areaOfSpecialization" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Blood Group</mat-label>
+            <input matInput type="text" formControlName="bloodGroup" [(ngModel)]="this.data.facultyProfile.bloodGroup" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Date of Birth</mat-label>
+            <!-- <input matInput type="date" formControlName="dob" [(ngModel)]="this.data.facultyProfile.dob" /> -->
+            <input matInput [matDatepicker]="picker1" formControlName="dob" [(ngModel)]="this.data.facultyProfile.dob"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker [startAt]="this.data.facultyProfile.dob" #picker1></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" [(ngModel)]="this.data.facultyProfile.email" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Mobile No</mat-label>
+            <input matInput type="number" formControlName="mobileNo" [(ngModel)]="this.data.facultyProfile.mobileNo" />
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Alternate Mobile No</mat-label>
+            <input matInput type="text" formControlName="alternateMobileNo" [(ngModel)]="this.data.facultyProfile.alternateMobileNo" />
+          </mat-form-field>
+        </form>
+        <!--Add/Edit Exp  -->
+        <form *ngIf="this.data.type === 'exp' || this.data.type === 'expEdit'" [formGroup]="addExpForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Organization Name</mat-label>
+              <input matInput type="text" formControlName="organizationName" />
+              <!-- <input matInput placeholder="Name" value="{{ this.selectedExpert.name }}" type="text" formControlName="name" /> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Designation</mat-label>
+              <input matInput type="text" formControlName="designation" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Date Of Joining</mat-label>
+              <!-- <input matInput type="date" formControlName="dateOfJoining" /> -->
+              <input matInput [matDatepicker]="picker2" formControlName="dateOfJoining"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Date Of Leaving</mat-label>
+              <!-- <input matInput type="date" formControlName="dateOfLeaving" /> -->
+              <input matInput [matDatepicker]="picker3" formControlName="dateOfLeaving"/>
+              <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>City</mat-label>
+              <input matInput type="text" formControlName="city" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>State</mat-label>
+              <input matInput type="text" formControlName="state" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Country</mat-label>
+              <input matInput type="text" formControlName="country" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Payscale</mat-label>
+              <input matInput type="number" formControlName="payScale" />
+            </mat-form-field>
+          </div>
+        </form>
+        
+    <!-- education form  -->
+        <form *ngIf="this.data.type === 'education' || this.data.type === 'editEducation'" [formGroup]="addEducationForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Degree/Certificate</mat-label>
+              <input matInput type="text" formControlName="degreeCertificate" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>College/School</mat-label>
+              <input matInput type="text" formControlName="collegeSchool" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>University/Board</mat-label>
+              <input matInput type="text" formControlName="universityBoard" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Specialization</mat-label>
+              <input matInput type="text" formControlName="specialization" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Year Of Passing</mat-label>
+              <input matInput formControlName="yearOfPassing" type="number" />
+              <!-- <mat-error *ngIf="addEducationForm.controls['yearOfPassing'].hasError('pattern')">Enter valid year</mat-error> -->
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Percentage/CGPA</mat-label>
+              <input matInput type="number" formControlName="percentageCgpa" />
+            </mat-form-field>
+          </div>
+        </form>
+        
+        <!-- Add Research -->
+        <form *ngIf="this.data.type === 'research' || this.data.type === 'editResearch'" [formGroup]="addResearchForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Title </mat-label>
+              <input matInput type="text" formControlName="title" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Year Of Publication</mat-label>
+              <input matInput type="number" formControlName="yearOfPublication" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Publisher</mat-label>
+              <input matInput type="text" formControlName="publisher" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Category</mat-label>
+              <!-- <input matInput type="text" formControlName="category" > -->
+              <mat-select placeholder="category" formControlName="category">
+                <mat-option *ngFor="let option of options" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Sub-category</mat-label>
+              <mat-select placeholder=" sub category" formControlName="subcategory">
+                <mat-option *ngFor="let option of subOptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Co-Authors</mat-label>
+              <input matInput type="text" formControlName="coAuthors" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Guide Name</mat-label>
+              <input matInput type="text" formControlName="guideName" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Conference/Journal Name</mat-label>
+              <input matInput type="text" formControlName="journalConferenceName" />
+            </mat-form-field>
+          </div>
+        </form>
+        <!-- Add Internship -->
+        <form *ngIf="this.data.type === 'internship'" [formGroup]="addInternshipForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Subject Area of work/Domain</mat-label>
+              <input matInput type="text" formControlName="subject" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Company Name</mat-label>
+              <input matInput type="text" formControlName="companyName" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>City</mat-label>
+              <input matInput type="text" formControlName="city" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>State</mat-label>
+              <input matInput type="text" formControlName="state" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Country</mat-label>
+              <input matInput type="text" formControlName="country" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Start Date</mat-label>
+              <!-- <input matInput type="date" formControlName="startDate" /> -->
+              <input matInput [matDatepicker]="picker6" formControlName="startDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker6"></mat-datepicker-toggle>
+              <mat-datepicker #picker6></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>End Date</mat-label>
+              <!-- <input matInput type="date" formControlName="endDate" /> -->
+              <input matInput [matDatepicker]="picker7" formControlName="endDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker7"></mat-datepicker-toggle>
+              <mat-datepicker #picker7></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </form>
+        <!-- Add Comp Exams -->
+        <form *ngIf="this.data.type === 'compExams'" [formGroup]="addCompExamForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Name Of Exam </mat-label>
+              <input matInput type="text" formControlName="nameOfExam" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Rank</mat-label>
+              <input matInput type="text" formControlName="rank" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Year</mat-label>
+              <input matInput type="text" formControlName="year" />
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Registration No.</mat-label>
+              <input matInput type="text" formControlName="registrationNo" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Score</mat-label>
+              <input matInput type="text" formControlName="score" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- Placement form  -->
+        <form *ngIf="this.data.type === 'placement'"[formGroup]="addPlacementForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Name Of Organisation</mat-label>
+              <input matInput type="text" formControlName="nameOfExam" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Payscale</mat-label>
+              <input matInput type="text" formControlName="rank" />
+            </mat-form-field>
+          </div>
+    
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Year</mat-label>
+              <input matInput type="text" formControlName="year" />
+            </mat-form-field>
+    
+            <!-- <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>registrationNo</mat-label>
+              <input matInput type="text" formControlName="registrationNo" />
+            </mat-form-field> -->
+          </div>
+          <!-- <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>score</mat-label>
+              <input matInput type="text" formControlName="score" />
+            </mat-form-field>
+          </div> -->
+        </form>
+    
+        <!-- Cultural Activities form -->
+        <form *ngIf="this.data.type === 'cultural'" [formGroup]="addCulturalActivitiesForm" class="d-flex flex-column py-2">
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Name of Activity</mat-label>
+              <input matInput type="text" formControlName="nameOfActivity" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Type</mat-label>
+              <input matInput type="text" formControlName="type" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Date</mat-label>
+              <!-- <input matInput type="date" formControlName="date" /> -->
+              <input matInput [matDatepicker]="picker8" formControlName="date" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker8"></mat-datepicker-toggle>
+              <mat-datepicker #picker8></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Place</mat-label>
+              <input matInput type="text" formControlName="place" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Achievement</mat-label>
+              <input matInput type="text" formControlName="achievement" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- Technical Activities form -->
+        <form *ngIf="this.data.type === 'technical'" [formGroup]="addTechnicalActivitiesForm" d-flex flex-column py-2>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Category</mat-label>
+              <mat-select placeholder="category" formControlName="attendedOrganized">
+                <mat-option *ngFor="let option of technicalActivityoptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Coordinator Name</mat-label>
+              <input matInput type="text" formControlName="nameOfCoordinator" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Start Date</mat-label>
+              <!-- <input matInput type="date" formControlName="fromDate" /> -->
+              <input matInput [matDatepicker]="picker9" formControlName="fromDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker9"></mat-datepicker-toggle>
+              <mat-datepicker #picker9></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>End Date</mat-label>
+              <!-- <input matInput type="date" formControlName="toDate" /> -->
+              <input matInput [matDatepicker]="picker10" formControlName="toDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker10"></mat-datepicker-toggle>
+              <mat-datepicker #picker10></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Place</mat-label>
+              <input matInput type="text" formControlName="place" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Subject Topic</mat-label>
+              <input matInput type="text" formControlName="topicSubject" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Type</mat-label>
+              <!-- <input matInput type="text" formControlName="type" /> -->
+              <mat-select placeholder="Type" formControlName="type">
+                <mat-option *ngFor="let option of technicalActivityTypes" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </form>
+    
+        <!-- workshop form  -->
+        <form *ngIf="this.data.type === 'workshop'" [formGroup]="addWorkshopForm" d-flex flex-column py-2>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Category</mat-label>
+              <mat-select placeholder="category" formControlName="attendedOrganized">
+                <mat-option *ngFor="let option of technicalActivityoptions" [value]="option">{{ option }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Coordinator Name</mat-label>
+              <input matInput type="text" formControlName="nameOfCoordinator" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Start Date</mat-label>
+              <!-- <input matInput type="date" formControlName="fromDate" /> -->
+              <input matInput [matDatepicker]="picker11" formControlName="fromDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker11"></mat-datepicker-toggle>
+              <mat-datepicker #picker11></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>End Date</mat-label>
+              <!-- <input matInput type="date" formControlName="toDate" /> -->
+              <input matInput [matDatepicker]="picker12" formControlName="toDate" />
+              <mat-datepicker-toggle matIconSuffix [for]="picker12"></mat-datepicker-toggle>
+              <mat-datepicker #picker12></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Place</mat-label>
+              <input matInput type="text" formControlName="place" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Subject Topic</mat-label>
+              <input matInput type="text" formControlName="topicSubject" />
+            </mat-form-field>
+          </div>
+          <div class="d-flex">
+            <mat-form-field appearance="outline" class="ms-1 w-50">
+              <mat-label>Type</mat-label>
+              <input matInput type="text" formControlName="type" />
+            </mat-form-field>
+          </div>
+        </form>
+    
+      </div>
+      <div mat-dialog-actions [align]="'end'">
+        <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+        <button *ngIf="type === 'add'" mat-raised-button color="primary" cdkFocusInitial (click)="editProfile()">Save</button>
+        <button *ngIf="type === 'exp' || type==='expEdit'" mat-raised-button color="primary" cdkFocusInitial (click)="addExp()" [disabled]="!addExpForm.valid">Save</button>
+        <button *ngIf="type === 'education'|| type==='editEducation'" mat-raised-button color="primary" cdkFocusInitial (click)="addEducation()" [disabled]="!addEducationForm.valid">Save</button>
+        <button *ngIf="type === 'research'|| type==='editResearch'" mat-raised-button color="primary" cdkFocusInitial (click)="addResearch()" [disabled]="!addResearchForm.valid">Save</button>
+        <button *ngIf="type === 'internship'" mat-raised-button color="primary" cdkFocusInitial (click)="addInternship()">Save</button>
+        <button *ngIf="type === 'compExams'" mat-raised-button color="primary" cdkFocusInitial (click)="addExam()">Save</button>
+        <button *ngIf="type === 'placement'" mat-raised-button color="primary" cdkFocusInitial (click)="addPlacement()">Save</button>
+        <button *ngIf="type === 'cultural'" mat-raised-button color="primary" cdkFocusInitial (click)="addCulturalActivity()">Save</button>
+        <button *ngIf="type === 'technical'" mat-raised-button color="primary" cdkFocusInitial (click)="addTechnicalActivity()">Save</button>
+        <button *ngIf="type === 'workshop'"mat-raised-button color="primary" cdkFocusInitial (click)="addWorkshop()">Save</button>
+      </div>
+    </div>
+    

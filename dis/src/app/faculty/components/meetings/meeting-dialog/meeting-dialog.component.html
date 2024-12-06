@@ -1,0 +1,15 @@
+<button mat-icon-button style="float:right; margin: 0px" matDialogClose>
+    <mat-icon>close</mat-icon>
+</button>
+<h1 class="meeting-dialog-title" *ngIf="type == 'viewsummary'">Summary</h1>
+<h1 class="meeting-dialog-title" *ngIf="type == 'viewAttendees' || type == 'attendance'">List of Attendees</h1>
+<div mat-dialog-content style="min-width: 400px">
+<mat-list *ngIf="type == 'viewAttendees'">
+    <mat-list-item *ngFor="let attendee of attendees">{{attendee.name}}</mat-list-item>
+  </mat-list>
+ 
+<mat-form-field style="min-width: 350px" *ngIf="type == 'viewsummary'" appearance="outline">
+<mat-label>Summary </mat-label>
+  <textarea matInput readonly>{{ data.data }}</textarea>
+</mat-form-field>
+</div>

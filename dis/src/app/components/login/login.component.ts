@@ -58,6 +58,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('tokenType', response.tokenType);
         sessionStorage.setItem('username', response.username);
         sessionStorage.setItem('userType', response.userType);
+        // sessionStorage.setItem('userId', response.userId);
         this.authService.getUserId(response.accessToken).subscribe({
           next: (response) => {
             console.log(response);
