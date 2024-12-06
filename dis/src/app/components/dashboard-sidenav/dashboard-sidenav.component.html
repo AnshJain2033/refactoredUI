@@ -1,0 +1,18 @@
+<div class="side-navigation">
+    <div class="profile-content">
+      <div class="profile-icon"><img src={{images[this.userName]}} alt="HOD_image" style="height:150px;width:150px"/></div>
+      <div class="txt-info main" *ngIf="userData">
+        <h4 style="font-size: 20px">{{ userData.name }}</h4>
+  
+        <h5>Designation: {{ userData.currentDesignation }}</h5>
+        <div class="profile-links">
+          <a href="#">Username: {{ userData.username }}</a>
+        </div>
+      </div>
+      <div>
+        <i class="fa fa-list-alt fa-4x" aria-hidden="true"></i>
+        <h5><a class="nav-link" routerLink="meetings">Meetings</a></h5>
+      </div>
+    </div>
+  </div>
+  

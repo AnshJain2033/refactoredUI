@@ -1,0 +1,69 @@
+/* Ensure the main container takes the full screen */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7; 
+} 
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for a card-like effect */
+  width: 80%; /* Adjust width to take most of the screen */
+  max-width: 900px; /* Slightly reduced max-width for a more compact look */
+  left: 0;
+}
+
+h2 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333; /* Dark gray text for headers */
+  text-align: center; /* Center the header */
+}
+
+ul {
+  list-style-type: none; /* Remove bullets from the list */
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: #f0f0f0; /* Light gray background for list items */
+  margin-bottom: 12px;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 18px;
+  color: #555; /* Dark gray text for list items */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+li:hover {
+  background-color: #e0e0e0; /* Slightly darker gray on hover */
+  transform: translateY(-3px); /* Lift effect on hover */
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  li {
+    font-size: 16px;
+    padding: 14px;
+  }
+}

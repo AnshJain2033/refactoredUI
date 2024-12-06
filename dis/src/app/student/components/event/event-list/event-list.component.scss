@@ -1,0 +1,93 @@
+/* Container for the event list */
+.event-list-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Heading styles */
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+  }
+  
+  /* Table styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 1em;
+  }
+  
+  th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Header styling */
+  th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Row hover effect */
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Table cell styles */
+  td {
+    color: #333;
+    vertical-align: middle;
+  }
+  
+  /* Responsive design */
+  @media screen and (max-width: 768px) {
+    table {
+      font-size: 0.9em;
+    }
+  
+    th, td {
+      padding: 10px 12px;
+    }
+  }
+  
+  /* Status styles based on class */
+  .active-status {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  .upcoming-status {
+    color: #ffc107;
+    font-weight: bold;
+  }
+  
+  .completed-status {
+    color: #dc3545;
+    font-weight: bold;
+  }
+  
+  /* Adjusting the table for smaller screens */
+  @media screen and (max-width: 600px) {
+    .event-list-container {
+      padding: 10px;
+    }
+  
+    table {
+      font-size: 0.85em;
+    }
+  
+    th, td {
+      padding: 8px 10px;
+    }
+  }
+  

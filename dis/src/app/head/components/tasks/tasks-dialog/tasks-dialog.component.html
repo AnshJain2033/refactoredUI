@@ -1,0 +1,58 @@
+<div>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'assign'">Assign new task</h1>
+    <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="this.data.type === 'update'">Update task</h1>
+  
+    <div mat-dialog-content style="min-width: 400px">
+      <!-- Assing Task -->
+      <form *ngIf="this.data.type === 'assign'" [formGroup]="assignTaskForm" class="d-flex flex-column py-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select (selectionChange)="onSelect($event)" formControlName="categoryId">
+            <mat-option *ngFor="let option of categoryIdList" placeholder="Category" [value]="option.id"> {{ option.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Tasks</mat-label>
+          <mat-select placeholder="Tasks" formControlName="taskId">
+            <mat-option *ngFor="let option of taskList" placeholder="Tasks" [value]="option.id"> {{ option.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Staff</mat-label>
+          <mat-select placeholder="staff" formControlName="userId">
+            <mat-option *ngFor="let option of facultyList" [value]="option.userId">{{ option.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <!-- <mat-form-field appearance="outline" class="ms-1 w-50">
+                
+                  <mat-label>Task</mat-label>
+                  <mat-select placeholder="Task" (change)="onSelectTask($event)" formControlName="taskId">
+                      <mat-option value="" selected disabled>Task</mat-option>
+                      <mat-option *ngFor="let task of taskList" [value]="task.id">
+                        {{task.name}}
+                      </mat-option>
+                    </mat-select>
+              </mat-form-field> -->
+        <mat-form-field appearance="outline">
+          <mat-label>Deadline</mat-label>
+          <!-- <input matInput type="date" formControlName="deadline" /> -->
+          <input matInput [matDatepicker]="picker" formControlName="deadline" [min]="todayDate" />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <input matInput type="text" formControlName="description" />
+        </mat-form-field>
+      </form>
+    </div>
+    <div mat-dialog-actions [align]="'end'">
+      <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+  
+      <button (click)="onClick()" *ngIf="type === 'assign'" mat-raised-button color="primary" [disabled]="!assignTaskForm.valid" cdkFocusInitial>Add</button>
+      <button *ngIf="type === 'update'" mat-raised-button color="primary" cdkFocusInitial>update</button>
+    </div>
+  </div>
+  

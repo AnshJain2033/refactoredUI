@@ -1,0 +1,89 @@
+.tabs-container {
+  position: absolute; 
+  top: 60px; /* Shifting the container 50px below from the top */
+  left: 0; /* Align to the left */
+  max-width: 800px; 
+  margin-left: 20px; /* Optional: Add margin to the left */
+  margin-right: 20px; /* Optional: Add margin to the right */
+  padding: 20px; /* Adjust padding as needed */
+  text-align: left; /* Align text to the left */
+}
+
+.heading{
+  margin-left: 20px;
+}
+
+.tabs {
+  display: flex;
+  /* Removed border-bottom to eliminate the common underline */
+}
+
+.tab {
+  padding: 15px 20px; /* Increased padding for better touch targets */
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+  position: relative; /* Needed for the active tab underline */
+  transition: color 0.3s ease; /* Smooth transition for active state */
+}
+
+.tab:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+/* Active tab underline using ::after pseudo-element */
+.tab.active::after {
+  content: ""; /* Create an empty content for the underline */
+  position: absolute;
+  bottom: -2px; /* Position the underline below the tab */
+  left: 0;
+  right: 0; /* Stretch it to full width */
+  height: 2px; /* Height of the underline */
+  background-color: #007bff; /* Color of the underline */
+}
+
+.tab-content {
+  margin-top: 20px; /* Space between tabs and content */
+  font-size: 16px; /* Slightly larger font for better readability */
+  color: #444; /* Darker text for contrast */
+  text-align: left; /* Align content text to the left */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%; /* Make the list full width */
+}
+
+li {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 10px; /* Space between items */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: calc(100% - 40px); /* Ensure full width with padding accounted for */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background-color: #007bff; /* Primary button color */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Increase padding for a better look */
+  color: #fff; /* White text */
+  font-weight: bold; /* Bold text for emphasis */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}

@@ -1,0 +1,61 @@
+<app-addCompanyForm #Form></app-addCompanyForm>
+<mat-icon class="open-pdf-icon" (click)="openPDF()">picture_as_pdf</mat-icon>
+
+<div class="container">
+
+  <div class="section">
+    <h2>Super Dream Companies</h2>
+    <mat-icon class="edit_square-icon" (click)="Form.openForm(); setcategory('Super Dream')">edit_square</mat-icon>
+    <div *ngIf="superdream.length > 0; else noData">
+      <div class="card-container"> <!-- Add card container here -->
+        <div *ngFor="let company of superdream">
+          <app-card [company]="company"></app-card> <!-- Pass company data to app-card -->
+        </div>
+      </div>
+    </div>
+    
+    <ng-template #noData>
+      <p>No companies found.</p>
+    </ng-template>
+  
+    </div>
+    
+
+  <div class="section">
+    <h2>Dream Companies</h2>
+    <mat-icon class="edit_square-icon" (click)="Form.openForm(); setcategory('Dream')">edit_square</mat-icon>
+    <div *ngIf="dream.length > 0; else noData">
+      <div class="card-container"> <!-- Add card container here -->
+        <div *ngFor="let company of dream">
+          <app-card [company]="company"></app-card> <!-- Pass company data to app-card -->
+        </div>
+      </div>
+    </div>
+    
+    <ng-template #noData>
+      <p>No companies found.</p>
+    </ng-template>
+
+
+  </div>
+
+  <div class="section">
+    <h2>Non-Dream Companies</h2>
+    <mat-icon class="edit_square-icon" (click)="Form.openForm(); setcategory('Non Dream')">edit_square</mat-icon>
+    <!-- <app-card></app-card>
+    <app-card></app-card>
+    <app-card></app-card> -->
+    <div *ngIf="nondream.length > 0; else noData">
+      <div class="card-container"> 
+        <div *ngFor="let company of nondream">
+          <app-card [company]="company"></app-card> 
+        </div>
+      </div>
+    </div>
+    
+    <ng-template #noData>
+      <p>No companies found.</p>
+    </ng-template>
+
+  </div>
+</div>

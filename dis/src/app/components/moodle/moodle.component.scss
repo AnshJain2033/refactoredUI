@@ -1,0 +1,13 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full viewport height */
+  }
+  
+  .header, .footer {
+    flex: 0 0 auto; /* Fixed height */
+  }
+  
+  .content {
+    flex: 1; /* Flexible height, takes up remaining space */
+  }

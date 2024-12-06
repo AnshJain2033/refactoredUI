@@ -1,0 +1,67 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700">Add Industry Visit</h1>
+<div mat-dialog-content style="min-width: 400px; height: 60vh">
+  <form [formGroup]="addIndustryForm" class="d-flex flex-column py-2">
+    <mat-form-field appearance="outline">
+      <mat-label>Participants</mat-label>
+      <mat-select formControlName="participants">
+        <mat-option *ngFor="let participant of participants" [value]="participant">{{ participant }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Coordinator-1</mat-label>
+      <mat-select formControlName="coordinator1">
+        <mat-option *ngFor="let faculty of facultyList" [value]="faculty.name">{{ faculty.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Coordinator-2</mat-label>
+      <mat-select formControlName="coordinator2">
+        <mat-option *ngFor="let faculty of facultyList" [value]="faculty.name">{{ faculty.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Date</mat-label>
+      <!-- <input matInput placeholder="date" type="date" formControlName="date" /> -->
+      <input matInput [matDatepicker]="picker1" formControlName="date" [min]="todayDate"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error *ngIf="addIndustryForm.controls['date'].touched && addIndustryForm.controls['date'].invalid">Invalid Date</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Start Time</mat-label>
+      <!-- <input matInput placeholder="Start Time" type="time" formControlName="time" /> -->
+      <input matInput [ngxMatTimepicker]="pickert" formControlName="time">  
+      <ngx-mat-timepicker #pickert></ngx-mat-timepicker> 
+          
+      <mat-error *ngIf="addIndustryForm.controls['time'].touched && addIndustryForm.controls['time'].invalid">Invalid Time</mat-error>
+    </mat-form-field>
+
+    <h6>Company Details</h6>
+    <mat-form-field appearance="outline">
+      <mat-label>Company Name</mat-label>
+      <input matInput placeholder="Company Name" type="text" formControlName="companyName" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Address</mat-label>
+      <input matInput placeholder="address" type="text" formControlName="address" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="city" type="text" formControlName="city" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>State</mat-label>
+      <input matInput placeholder="state" type="text" formControlName="state" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Pincode</mat-label>
+      <input matInput placeholder="pin code" type="text" formControlName="pin" minlength="6" maxlength="6" pattern="^[1-9]{1}[0-9]{5}$" />
+      <mat-error *ngIf="addIndustryForm.controls['pin'].hasError('minlength') || addIndustryForm.controls['pin'].hasError('pattern')">Enter valid pin code</mat-error>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions [align]="'end'">
+  <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+
+  <button (click)="onAddVisit()" mat-raised-button color="primary" [disabled]="!addIndustryForm.valid" cdkFocusInitial>Add Visit</button>
+</div>

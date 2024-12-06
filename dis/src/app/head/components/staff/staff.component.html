@@ -1,0 +1,15 @@
+<div style="display: table-row" *ngFor="let faculty of staffList; let i = index">
+    <mat-card style="width: 400px; height: 130px; margin: 10px" class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <div class="profile-icon"><img src={{img}} alt="HOD_image" style="height:100px;width:100px"/></div>
+          <mat-card-title style="margin-bottom: 10px">{{ faculty.name }}</mat-card-title>
+  
+          <mat-card-subtitle>{{ faculty.currentDesignation }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ faculty.email }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ faculty.mobileNo }}</mat-card-subtitle>
+        </mat-card-title-group>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  

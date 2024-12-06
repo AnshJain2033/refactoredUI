@@ -1,0 +1,65 @@
+<!-- 
+<div class="row">
+<app-dashboard-sidenav class="col-lg-3"></app-dashboard-sidenav>
+<div class="col-lg-9 home-page-tabs">
+    <mat-tab-group style="padding: 5px 20px;position: relative;opacity: inherit;">
+        <mat-tab label="Calender">
+          <full-calendar [options]="calendarOptions" ></full-calendar>
+        </mat-tab>
+        <mat-tab label="Time Table"> Time Table </mat-tab>
+      </mat-tab-group>
+
+</div>
+</div> -->
+
+<div class="row">
+  <!-- Side navigation bar -->
+  <app-dashboard-sidenav class="col-lg-3"></app-dashboard-sidenav>
+
+  <!-- Main content area -->
+  <div class="col-lg-6 home-page-tabs">
+    <mat-tab-group style="padding: 5px 20px; position: relative; opacity: inherit;">
+      <!-- Calendar tab -->
+      <mat-tab label="Calendar">
+        <full-calendar [options]="calendarOptions"></full-calendar>
+      </mat-tab>
+
+      <!-- Time Table tab -->
+      <mat-tab label="Time Table">
+        Time Table
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <!-- Permanent Event Section fixed to the right -->
+  <div class="col-lg-3 event-section">
+    <h3>Events</h3>
+    
+    <!-- Button to view all events -->
+    <button class="view-all-events-button" (click)="viewAllEvents()">View All Events</button>
+    
+    <!-- Event content section -->
+    <div class="event-content">
+      <div class="events-wrapper">
+        <div class="event-container" *ngFor="let event of events">
+          
+          <!-- Date section of the event -->
+          <div class="event-date">
+            <div class="event-day">{{ event.date | date: 'd' }}</div>
+            <div class="event-month-year">
+              <span>{{ event.date | date: 'MMM' }}</span><br />
+              <span>{{ event.date | date: 'yyyy' }}</span>
+            </div>
+          </div>
+          
+          <!-- Information about the event -->
+          <div class="event-info">
+            <p>{{ event.name }}</p>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

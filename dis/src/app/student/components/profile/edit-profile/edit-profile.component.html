@@ -1,0 +1,73 @@
+<div class="edit-profile-container">
+  <h2>Edit Profile</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+    <!-- Email -->
+    <div>
+      <label for="email">Email:</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Enter your email"
+      />
+    </div>
+
+    <!-- Branch -->
+    <div>
+      <label for="branch">Branch:</label>
+      <input
+        id="branch"
+        type="text"
+        formControlName="branch"
+        placeholder="Enter your branch"
+      />
+    </div>
+
+    <!-- Specification -->
+    <div>
+      <label for="specification">Specification:</label>
+      <input
+        id="specification"
+        type="text"
+        formControlName="specification"
+        placeholder="Enter your specification"
+      />
+    </div>
+
+    <!-- Year of Admission -->
+    <div>
+      <label for="admissionYear">Year of Admission:</label>
+      <input
+        id="admissionYear"
+        type="number"
+        formControlName="admissionYear"
+        placeholder="Enter the year"
+      />
+    </div>
+
+    <!-- Date of Birth -->
+    <div>
+      <label for="dob">Date of Birth:</label>
+      <input
+        id="dob"
+        type="date"
+        formControlName="dob"
+        placeholder="Select your date of birth"
+      />
+    </div>
+
+    <!-- Mobile Number -->
+    <div>
+      <label for="mobileNo">Mobile Number:</label>
+      <input
+        id="mobileNo"
+        type="text"
+        formControlName="mobileNo"
+        placeholder="Enter your mobile number"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="!editForm.valid">Save Changes</button>
+  </form>
+</div>

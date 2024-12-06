@@ -1,0 +1,27 @@
+.add-button-container {
+  position: fixed;  /* Sticks to the viewport */
+  bottom: 192px;    /* Distance from the bottom of the viewport */
+  right: 20px;      /* Distance from the right of the viewport */
+  display: flex;
+  justify-content: flex-end;  /* Align button to the right */
+  align-items: center;        /* Center vertically */
+}
+
+.add-button {
+  background-color: #007bff;  /* Button color */
+  color: white;
+  padding: 5px 10px;          /* Adjust padding for button size */
+  border: none; 
+  border-radius: 5px;         /* Rounded corners */
+  cursor: pointer; 
+  transition: background-color 0.3s;
+  margin-top: 2px;
+}
+
+.add-button:hover {
+  background-color: #0056b3;  /* Change color on hover */
+}
+mat-toolbar {
+  border-bottom: none; /* Remove any border if present */
+  box-shadow: none; /* Remove any shadow */
+}

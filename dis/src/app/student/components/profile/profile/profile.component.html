@@ -1,0 +1,31 @@
+<mat-card appearance="outlined">
+  <!-- Top Profile Section -->
+  <div class="top-profile" style="display: flex; justify-content: space-between; padding: 20px;">
+    <h3>{{ student?.username }}</h3> <!-- Changed to username -->
+    <h3>Enrollment ID: {{ student?.enrollment }}</h3> <!-- Changed to student.id -->
+  </div>
+
+  <!-- Divider -->
+  <mat-divider></mat-divider>
+
+  <!-- Bottom Profile Section -->
+  <div class="bottom-profile" style="display: flex; justify-content: space-around; padding: 20px; align-items: center;">
+    <!-- Details -->
+    <div class="details">
+      <ul>
+        <li><strong>Email:</strong> {{ student?.email }}</li>
+        <li><strong>Branch:</strong> {{ student?.branch }}</li>
+        <li><strong>Specification:</strong> {{ student?.specification }}</li>
+        <li><strong>Year of Admission:</strong> {{ student?.admissionYear }}</li> <!-- Changed to admissionYear -->
+        <li><strong>Date of Birth:</strong> {{ student?.dob | date }}</li> <!-- Updated to dob, and formatted date -->
+        <li><strong>Mobile Number:</strong> {{ student?.mobileNo }}</li>
+
+      </ul>
+
+      <!-- Edit Profile Button -->
+      <button mat-raised-button color="primary" (click)="editProfile()">
+        Edit Profile <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,24 @@
+<div style="display: table-row" *ngFor="let faculty of facultyList; let i = index">
+    <mat-card style="width: 400px; height: 130px; margin: 10px" class="example-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <div class="profile-icon"><img *ngIf="images[faculty.userName]"  src={{images[faculty.userName]}} alt="image" style="height:100px;width:100px"/>
+            <img *ngIf="!images[faculty.userName]"src={{img}} alt="image" style="height:100px;width:100px"/>
+          </div>
+          <mat-card-title style="margin-bottom: 10px">{{ faculty.name }}</mat-card-title>
+  
+          <mat-card-subtitle>{{ faculty.currentDesignation }}</mat-card-subtitle>
+          <mat-card-subtitle >{{ faculty.email }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ faculty.mobileNo }}</mat-card-subtitle>
+  
+          <!-- <img mat-card-sm-image src="https://www.vhv.rs/viewpic/ioJTTRo_clip-art-grey-profile-picture-circle-hd-png/"> -->
+        </mat-card-title-group>
+      </mat-card-header>
+    </mat-card>
+  </div>
+  <!-- <button mat-fab color="primary" style="position: fixed; bottom: 4rem; right: 1rem; z-index: 999" aria-label="Add"
+    (click)="addFacultyDialog()">
+    <i class="bi bi-plus" style="font-size: 24px"></i>
+  </button>
+   -->
+  

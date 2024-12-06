@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px;
+  background-color: #fafafa;
+}
+
+.section {
+  position: relative;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.section:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.section h2 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.section .card-container {
+  display: flex;
+  justify-content: flex-start;  /* Align items to the left */
+  flex-wrap: wrap;              /* Allow wrapping if cards overflow */
+  gap: 16px;                    /* Space between cards */
+}
+
+.section app-card {
+  display: inline-block;
+  flex: 1 1 200px;
+  max-width: 220px;              /* Define max-width for each card */
+  min-width: 200px;
+  margin: 10px;
+}
+
+.edit_square-icon {
+  position: absolute;
+  top: 30px;
+  right: 25px;
+  color: #757272;
+  cursor: pointer;
+  font-size: 25px;
+  transition: color 0.3s ease;
+}
+
+.edit_square-icon:hover {
+  color: #333;
+}
+
+/* Empty data text styling */
+p {
+  font-size: 1.1rem;
+  color: #888;
+}
+
+.open-pdf-icon {
+  font-size: 36px; /* Icon size */
+  color: #3f51b5; /* Icon color */
+  cursor: pointer; /* Pointer cursor on hover */
+  position: fixed; /* Fix the icon at the bottom-right */
+  bottom: 60px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  z-index: 1000; /* Ensure the icon is above other content */
+}
+
+.open-pdf-icon:hover {
+  color: #ff4081; /* Change color on hover */
+}

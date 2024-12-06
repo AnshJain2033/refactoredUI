@@ -1,0 +1,136 @@
+<!-- <p>dashboard works!</p>
+
+<div class="row">
+
+    <div class="side-navigation">
+        <div class="profile-content">
+       
+          <div class="txt-info main" *ngIf="userData">
+            <h4 style="font-size: 20px">{{ userData.name }}</h4>
+      
+            <h5>Designation: {{ userData.currentDesignation }}</h5>
+            <div class="profile-links">
+              <a href="#">Username: {{ userData.username }}</a>
+            </div>
+          </div>
+          <div>
+            <i class="fa fa-list-alt fa-4x" aria-hidden="true"></i>
+            <h5><a class="nav-link" routerLink="meetings"></a></h5>
+          </div>
+        </div>
+      </div>
+
+    <div class="col-lg-6 home-page-tabs">
+      <mat-tab-group style="padding: 5px 20px; position: relative; opacity: inherit;">
+
+        <mat-tab label="Calendar">
+          <full-calendar [options]="calendarOptions"></full-calendar>
+        </mat-tab>
+
+        <mat-tab label="Time Table">
+          Time Table
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+
+    <div class="col-lg-3 event-section">
+      <h3>Events</h3>
+
+      <button class="view-all-events-button" (click)="viewAllEvents()">View All Events</button>
+
+      <div class="event-content">
+        <div class="events-wrapper">
+          <div class="event-container" *ngFor="let event of events">
+
+            <div class="event-date">
+              <div class="event-day">{{ event.date | date: 'd' }}</div>
+              <div class="event-month-year">
+                <span>{{ event.date | date: 'MMM' }}</span><br />
+                <span>{{ event.date | date: 'yyyy' }}</span>
+              </div>
+            </div>
+            <div class="event-info">
+              <p>{{ event.name }}</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+   -->
+
+   <p>dashboard works!</p>
+
+   <div class="row">
+     <!-- Side navigation section -->
+     <div class="side-navigation col-lg-3">
+       <div class="profile-content">
+         <!-- User profile image -->
+         <div class="profile-icon" *ngIf="userName">
+           <img src="{{ images[userName] }}" alt="User Image" style="height:150px; width:150px;" />
+         </div>
+   
+         <!-- User profile info -->
+         <div class="txt-info main" *ngIf="userData">
+           <h4 style="font-size: 20px;">{{ userData.name }}</h4>
+           <h5>Designation: {{ userData.currentDesignation }}</h5>
+           <div class="profile-links">
+             <a href="#">Username: {{ userData.username }}</a>
+           </div>
+         </div>
+   
+         <!-- Navigation links -->
+         <div>
+           <i class="fa fa-list-alt fa-4x" aria-hidden="true"></i>
+           <h5><a class="nav-link" routerLink="meetings">Meetings</a></h5>
+         </div>
+       </div>
+     </div>
+   
+     <!-- Main content section -->
+     <div class="col-lg-6 home-page-tabs">
+       <mat-tab-group style="padding: 5px 20px; position: relative; opacity: inherit;">
+         <!-- Calendar Tab -->
+         <mat-tab label="Calendar">
+           <full-calendar [options]="calendarOptions"></full-calendar>
+         </mat-tab>
+   
+         <!-- Time Table Tab -->
+         <mat-tab label="Time Table">
+           <p>Time Table Content Goes Here</p>
+         </mat-tab>
+       </mat-tab-group>
+     </div>
+   
+     <!-- Events section -->
+     <div class="col-lg-3 event-section">
+       <h3>Events</h3>
+   
+       <!-- Button to view all events -->
+       <button class="view-all-events-button" (click)="viewAllEvents()">View All Events</button>
+   
+       <!-- Events list -->
+       <div class="event-content">
+         <div class="events-wrapper">
+           <div class="event-container" *ngFor="let event of events">
+             <!-- Event Date -->
+             <div class="event-date">
+               <div class="event-day">{{ event.date | date: 'd' }}</div>
+               <div class="event-month-year">
+                 <span>{{ event.date | date: 'MMM' }}</span><br />
+                 <span>{{ event.date | date: 'yyyy' }}</span>
+               </div>
+             </div>
+   
+             <!-- Event Info -->
+             <div class="event-info">
+               <p>{{ event.name }}</p>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+   

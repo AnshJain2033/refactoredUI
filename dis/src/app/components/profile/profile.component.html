@@ -1,0 +1,248 @@
+<div *ngIf="facultyProfile" style="display: flex; flex-direction: row; justify-content: space-evenly">
+    <div class="col-lg-9" style="margin-inline: 20px">
+      <!-- profile card -->
+      <mat-card appearance="outlined">
+        <!-- top comp -->
+        <div class="top-profile" style="display: flex; justify-content: space-between; padding: 20px">
+          <h3>{{ this.facultyProfile?.name }}</h3>
+          <div style="display: flex; flex-direction: row; justify-content: space-between">
+            <h3>Employee ID:{{ this.facultyProfile?.employeeId }}</h3>
+            <!-- <button mat-raised-button color="primary" style="margin-left: 30px;">edit</button> -->
+          </div>
+        </div>
+        <!-- divider -->
+        <mat-divider></mat-divider>
+        <div class="bottom-profile" style="display: flex; flex-direction: row; justify-content: space-around; padding: 20px">
+          <!-- photograph -->
+          <div class="photograph" style="height: 200px; width: 200px; border: 1px solid grey"><img src="{{images[this.username]}}" alt="image" style="height: 200px; width: 200px" /></div>
+          <!-- details and edit icon -->
+          <div class="details">
+            <ul>
+              <li>Email: {{ this.facultyProfile?.email }}</li>
+              <!-- <li>Mobile Number: {{ this.facultyProfile?.mobileNo }}</li> -->
+              <!-- <li>DOB: {{ this.facultyProfile?.dob }}</li> -->
+              <li>Specialization: {{ this.facultyProfile?.areaOfSpecialization }}</li>
+            </ul>
+            <!-- <button mat-raised-button color="primary" (click)="editProfile()">
+              Edit Profile
+              <i class="bi bi-pencil-fill"></i>
+            </button> -->
+          </div>
+        </div>
+      </mat-card>
+  
+      <!-- activities card -->
+      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Experience</h3>
+          <button mat-raised-button color="primary" (click)="addExp()">Add</button>
+        </div>
+   -->
+        <!-- dynamically list updated -->
+        <!-- <mat-card-content>
+          <mat-list *ngFor="let workExp of expList; let i = index">
+            <mat-list-item>
+              <mat-icon matListItemIcon>note</mat-icon>
+              <div matListItemTitle>{{ workExp.organizationName }}</div>
+              <div matListItemLine>{{ workExp.designation }}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Education</h3>
+          <button mat-raised-button color="primary" (click)="addEducation()">Add</button>
+        </div>
+        <mat-card-content>
+          <mat-list *ngFor="let edu of eduList; let i = index">
+            <mat-list-item>
+              <mat-icon matListItemIcon>note</mat-icon>
+              <div matListItemTitle>{{ edu.degree }}</div>
+              <div matListItemLine>{{ edu.institute }}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+        
+      </mat-card>
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Research Work</h3>
+          <button mat-raised-button color="primary" (click)="addResearch()">Add</button>
+        </div>
+  
+        <mat-card-content>
+          <mat-list *ngFor="let workExp of researchList; let i = index">
+            <mat-list-item>
+              <mat-icon matListItemIcon>note</mat-icon>
+              <div matListItemTitle>{{ workExp.title }}</div>
+              <div matListItemLine>{{ workExp.yearOfPublication }}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Internships</h3>
+          <button mat-raised-button color="primary" (click)="addInternship()">Add</button>
+        </div>
+  
+        <mat-card-content>
+          <mat-list *ngFor="let internship of internshipList; let i = index">
+            <mat-list-item>
+              <mat-icon matListItemIcon>note</mat-icon>
+              <div matListItemTitle>{{ internship.subject }}</div>
+              <div matListItemLine>{{ internship.companyName }}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Competitive Exams</h3>
+          <button mat-raised-button color="primary" (click)="addCompExams()">Add</button>
+        </div>
+  
+        <mat-card-content>
+          <mat-list *ngFor="let val of compExamList; let i = index">
+            <mat-list-item style="height: fit-content; margin-bottom: 10px">
+              <mat-icon matListItemIcon>note</mat-icon>
+  
+              <div matListItemTitle>{{ val.nameOfExam }}</div>
+              <div matListItemLine>
+                Year : {{ val.year }}<br />
+                Score : {{ val.score }}<br />
+                Rank : {{ val.rank }}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Placements</h3>
+          <button mat-raised-button color="primary" (click)="addPlacement()">Add</button>
+        </div>
+  
+        <mat-card-content>
+          <mat-list *ngFor="let val of placementList; let i = index">
+            <mat-list-item style="height: fit-content; margin-bottom: 10px">
+              <mat-icon matListItemIcon>note</mat-icon>
+  
+              <div matListItemTitle>{{ val.nameOfExam }}</div>
+              <div matListItemLine>
+                Year : {{ val.year }}<br />
+                Score : {{ val.score }}<br />
+                Rank : {{ val.rank }}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+  
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Cultural Activities/Achievements</h3>
+          <button mat-raised-button color="primary" (click)="addCultural()">Add</button>
+        </div>
+        <mat-card-content>
+          <mat-list *ngFor="let activity of culturalActivityList; let i = index">
+            <mat-list-item style="height: fit-content; margin-bottom: 10px">
+              <mat-icon matListItemIcon>note</mat-icon>
+  
+              <div matListItemTitle>{{ activity.nameOfActivity }}</div>
+              <div matListItemLine>
+                Date : {{ activity.date }}<br />
+                Achievement : {{ activity.achievement }}<br />
+                Place : {{ activity.place }}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Technical Activities/Achievements</h3>
+          <button mat-raised-button color="primary" (click)="addTechnical()">Add</button>
+        </div>
+        <mat-card-content>
+          <mat-list *ngFor="let activity of technicalActivityList; let i = index">
+            <mat-list-item style="height: fit-content; margin-bottom: 10px">
+              <mat-icon matListItemIcon>note</mat-icon>
+  
+              <div matListItemTitle>{{ activity.type }}</div>
+              <div matListItemLine>
+                Name of Coordinator : {{ activity.nameOfCoordinator }}<br />
+                topic : {{ activity.topicSubject }}<br />
+                Place : {{ activity.place }}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card> -->
+      <!-- <mat-card appearance="outlined" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px; margin-block: 20px">
+        <div style="display: flex; flex-direction: row; justify-content: space-between; padding: 10px">
+          <h3>Workshops/Seminar</h3>
+          <button mat-raised-button color="primary" (click)="addWorkshop()">Add</button>
+        </div>
+        <mat-card-content>
+          <mat-list *ngFor="let activity of technicalActivityList; let i = index">
+            <mat-list-item style="height: fit-content; margin-bottom: 10px">
+              <mat-icon matListItemIcon>note</mat-icon>
+  
+              <div matListItemTitle>{{ activity.type }}</div>
+              <div matListItemLine>
+                Name of Coordinator : {{ activity.nameOfCoordinator }}<br />
+                topic : {{ activity.topicSubject }}<br />
+                Place : {{ activity.place }}
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </mat-list>
+        </mat-card-content>
+      </mat-card> 
+    </div>-->
+    <!-- faculty list comp -->
+    <!-- <div class="col-lg-3" style="margin-inline: 20px">
+      <mat-card appearance="outlined">
+        <mat-card-header style="justify-content: space-evenly; padding: 20px">
+          <h3>Employees</h3>
+          <button mat-raised-button color="primary">Download</button>
+        </mat-card-header>
+        <mat-divider></mat-divider>
+  
+        <!-- list for now hard coded -->
+        <!-- <mat-list *ngFor="let faculty of facultyList; let i = index"> 
+          <mat-list-item>
+            {{ faculty.name }}
+            <!-- <div class="row">
+                      <div class="col-3">
+                        <div><img class="othersprofile" src="../../../assets/images/img_avatar2.png" alt="" /></div>
+                      </div>
+                      <div class="col-9">
+                        <h6><a (click)="loadProfile(val.userId,val.userType)">{{val.name}} [{{val.nameAcronym}}]</a></h6>
+                        <p style="font-size:13px;">{{val.currentDesignation}}<br />
+                          <i class="fa fa-envelope mr-1" aria-hidden="true"></i>{{val.email}}<br />
+                          <i class="fa fa-mobile mr-1" aria-hidden="true"></i>{{val.mobileNo}}
+                        </p>
+                      </div>
+          
+                    </div> -->
+          <!-- </mat-list-item> 
+        </mat-list>
+      </mat-card>
+    </div>
+  </div> -->
+  <!-- <button mat-fab color="primary" style="position: fixed; bottom: 4 rem; right: 1rem; z-index: 9999" aria-label="Add meeting" (click)="logout()">
+    <i class="bi bi-box-arrow-right" style="font-size: 24px"></i>
+  </button> -->
+  

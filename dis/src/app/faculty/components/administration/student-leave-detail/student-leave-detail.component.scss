@@ -1,0 +1,58 @@
+.dialog-container {
+    position: relative;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    padding: auto;
+    margin-bottom: 15px; /* Add padding between form groups */
+  }
+  label {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+  
+  span {
+    flex: 1 0 auto;
+  }
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px; /* Add padding to the button container */
+  }
+  .btn {
+    /* Style your buttons here */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Add padding to each button */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .success-button {
+    background-color: green;
+  }
+  
+  .reject-button {
+    background-color: red;
+  }
+  .close-button{
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px; /* Add padding to each button */
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+  }

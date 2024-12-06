@@ -1,0 +1,52 @@
+
+  <h4>4-Year Previous Question Papers</h4>
+  <form [formGroup]="questionPaperForm" (ngSubmit)="onGenerate()">
+    <mat-form-field appearance="fill">
+      <mat-label>Select Semester</mat-label>
+      <mat-select formControlName="semester">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    
+  
+    <mat-form-field appearance="fill">
+      <mat-label>Select Subject</mat-label>
+      <mat-select formControlName="course">
+        <mat-option *ngFor="let course of courses" [value]="course">{{ course }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  
+    <button mat-raised-button color="primary" type="submit">Generate</button>
+  </form>
+<!-- Display the list of PYQs -->
+<div *ngIf="pyqList.length > 0">
+  <h5>{{pyqList[0]?.course}} PYQ</h5>
+  <ul>
+    <li *ngFor="let pyq of pyqList">
+      <span>{{pyq.course}}-{{ pyq.year }}</span>
+      <button mat-button color="primary" (click)="previewAndDownloadFile(pyq.filePath)">Download</button>
+    </li>
+  </ul>
+</div>
+
+
+<div *ngIf="pyqList && pyqList.length === 0">
+  <p>No question papers found for the selected filters.</p>
+</div>
+<!-- 
+<div class="add-button-container">
+  <button mat-icon-button [routerLink]="['pyq','upload-pyq']" class="add-button">
+    <mat-icon>add</mat-icon>
+  </button>
+</div> -->
+<!-- <button mat-fab color="primary" style="position: fixed; bottom: 4rem; right: 1rem; z-index: 999" aria-label="Add" (click)="navigateToUploadPyq()">
+  <i class="bi bi-plus-lg" style="font-size: 24px"></i>
+</button> -->

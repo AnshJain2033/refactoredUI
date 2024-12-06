@@ -1,0 +1,13 @@
+<p>event works!</p>
+
+<button mat-fab color="primary" style="position: fixed; bottom: 4rem; right: 1rem; z-index: 999" aria-label="Add" (click)="addEventDialog()">
+    <i class="bi bi-plus-lg" style="font-size: 24px"></i>
+  </button>
+  
+  <nav mat-tab-nav-bar #tabs [tabPanel]="tabPanel" style="padding: 5px 20px">
+    <a mat-tab-link *ngFor="let navItem of navItemList" [routerLink]="navItem.code" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">{{ navItem.value }}</a>
+  </nav>
+  <mat-tab-nav-panel #tabPanel>
+    <router-outlet></router-outlet>
+    <div style="padding-bottom: 100px"></div>
+  </mat-tab-nav-panel>

@@ -1,0 +1,25 @@
+<div class="form-container" *ngIf="isVisible">
+    <div class="form-header">
+      <h2>Add Question</h2>
+      <button (click)="closeForm()">Close</button>
+    </div>
+    <form (ngSubmit)="onSubmit()" #Form="ngForm">
+      <div class="dropdown-container">
+        <label for="options">Choose an option:</label>
+        <select id="options" name="selectedOption" [(ngModel)]="selectedOption" (change)="onOptionChange()">
+        <option value="" disabled selected>Select topic</option>
+        <option *ngFor="let option of topicList" [value]="option.id">{{option.name}}</option>
+        <option  [value]="0">Other</option>
+        </select>
+      </div>
+      <div *ngIf="showOtherInput" id="other-input-container">
+        <label for="other-input">New topic:</label>
+        <input type="text" id="other-input" name= " otherOption" [(ngModel)]="otherOption" placeholder="Enter value">
+      </div>
+      <div class="form-group">
+        <label for="description">Question:</label>
+        <textarea id="question" name="question" [(ngModel)]="question"></textarea>
+      </div>
+      <button type="submit">Save</button>
+    </form>
+  </div>

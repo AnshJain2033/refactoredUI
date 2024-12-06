@@ -1,0 +1,75 @@
+/* General styles for the page */
+h1 {
+    text-align: center;
+    color: #0056b3;
+    margin-bottom: 20px;
+  }
+  
+  /* Container for the event photo and details */
+  .event-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; /* Space below the details container */
+  }
+  
+  /* Style for the event photo */
+  .event-photo {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .event-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  
+  /* Style for the event details */
+  .event-details {
+    flex: 2;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Details section styling */
+  .details-section {
+    margin-bottom: 20px;
+  }
+  
+  .details-section h3 {
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 1.2em;
+  }
+  
+  .details-section p {
+    color: #555;
+    font-size: 1em;
+    margin: 5px 0;
+  }
+  
+  /* Style for the event images below the details */
+  .event-images {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .event-images img {
+    width: 100%;
+    max-width: 300px; /* Adjust as needed */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+  }
+  

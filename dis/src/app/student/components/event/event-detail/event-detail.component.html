@@ -1,0 +1,31 @@
+
+<p>event-detail works!</p>
+<button class="view-all-events-button" (click)="viewAllEvents()">View All Events</button>
+<h1>Event Details for {{ eventName }}</h1>
+
+<div class="event-detail-container">
+  <div class="event-photo">
+    <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" />
+  </div>
+
+  <div class="event-details">
+    <h2>{{ event.name }}</h2>
+    <div class="details-section">
+      <h3>Details</h3>
+      <p><strong>Date:</strong> {{ event.date | date: 'MMMM d, y' }}</p>
+      <!-- <p><strong>Time:</strong> {{ event.time | date: 'shortTime' }}</p> -->
+      <p><strong>Time:</strong> {{ event.time }}</p>
+      <p><strong>Venue:</strong> {{ event.venue }}</p>
+      <p><strong>Description:</strong> {{ event.description }}</p>
+      <p><strong>Faculty Coordinator:</strong> {{ event.facultycoordinator }}</p>
+      <p><strong>Total Registrations:</strong> {{ event.totalRegistrations }}</p>
+      <!-- <p><strong>Total Registration:</strong> {{ event.registrationCount }}</p> -->
+       
+    </div>
+
+    <div class="event-images">
+      <!-- <img *ngFor="let image of event.images" [src]="image" alt="Event Image" /> -->
+      <img *ngIf="event.eventImages" [src]="'data:image/jpeg;base64,' + event.eventImages" alt="Event Image" width="200" height="200"/>
+    </div>
+  </div>
+</div>

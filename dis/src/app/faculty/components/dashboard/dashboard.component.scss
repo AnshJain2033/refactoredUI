@@ -1,0 +1,355 @@
+// ::ng-deep {
+//     a {
+//       color: black !important;
+//       text-decoration: none;
+//     }
+//   }
+  
+//   .side-navigation{
+//     margin-bottom: 2%;
+// }
+// .profile-content{
+//     box-shadow: -1px 3px 3px -3px rgb(0 0 0 / 35%);
+//     border: 1px solid #bfbfbf;
+//     text-align: center;
+//     padding: 20px 5px;
+//     .txt-info {
+//         border-bottom: 1px solid #c1c1c1;
+//         margin: 15px 4%;
+//         padding-bottom: 20px;
+//         h4 {
+//             color: #fe6601;
+//             font-size: 20px;
+//           }
+//     }
+// }
+
+//   /* Main content tabs styling */
+//   .home-page-tabs {
+//     padding: 20px 5px;
+//     background-color: #fff;
+//     border: 1px solid #bfbfbf;
+//     box-shadow: -1px 3px 3px -3px rgb(0 0 0 / 35%);
+//     margin-top: 0; /* Ensure no gap between navbar and main section */
+//   }
+  
+//   /* Event section styling */
+//   .event-section {
+//     position: fixed;
+//     right: 0;
+//     top: 120px; /* Adjust to match the height of your navbar if necessary */
+//     height: calc(100% - 60px); /* Subtract the navbar height to ensure full page fit */
+//     width: 25%; /* Adjust width as necessary */
+//     padding: 20px;
+//     background-color: #f8f9fa;
+//     border-left: 1px solid #ddd;
+//     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+//     overflow-y: auto;
+//     z-index: 10;
+//   }
+  
+//   /* Event content styling */
+//   .event-content {
+//     margin-top: 50px; /* Adjust as needed */
+//   }
+  
+//   /* Styling for the Events heading */
+//   .event-section h3 {
+//     font-size: 1.5rem;
+//     font-weight: bold;
+//     color: #333;
+//     margin-bottom: 20px;
+//     border-bottom: 2px solid #ddd;
+//     padding-bottom: 10px;
+//     text-transform: uppercase; /* Optional for a bolder look */
+//   }
+  
+//   @media (max-width: 991px) {
+//     .event-section {
+//       position: relative;
+//       width: 100%;
+//       height: auto;
+//       border-left: none;
+//       box-shadow: none;
+//       top: 0;
+//     }
+  
+//     .home-page-tabs {
+//       padding-right: 0;
+//       margin-top: 0; /* Fix gap for smaller screens */
+//     }
+//   }
+  
+  
+//   .events-wrapper {
+//     flex-direction: column;
+//     left:1100px;
+//   }
+  
+//   .event-container {
+//     display: flex;
+//     align-items: center;
+//     margin: 15px 0;
+//     left:1100px;
+//   }
+  
+//   .event-date {
+//     display: flex;
+//     align-items: center;
+//     background-color: #2196F3; /* Blue background for date */
+//     color: #fff;
+//     padding: 10px;
+//     text-align: center;
+//     width: 70px;
+//     height: 70px;
+//     border-radius: 5px;
+//     margin-right: 15px;
+//   }
+  
+//   .event-day {
+//     font-size: 22px;
+//     font-weight: bold;
+//   }
+  
+//   .event-month-year {
+//     font-size: 14px;
+//   }
+  
+//   .event-info {
+//     flex-grow: 1;
+//     padding-left: 10px;
+//     font-size: 16px;
+//     font-weight: bold;
+//     color: #333;
+//   }
+// /* Container for the whole dashboard layout */
+// .dashboard-container {
+//     display: flex;
+//     justify-content: space-between; /* Ensures columns are spread evenly */
+//     gap: 20px; /* Adds space between columns */
+//     padding: 20px;
+//   }
+  
+//   /* Side Navigation Styling */
+//   .side-navigation {
+//     width: 20%; /* Adjust as necessary */
+//     margin-bottom: 2%;
+//     border: 1px solid #ddd;
+//     background-color: #f8f9fa;
+//     padding: 15px;
+//     box-shadow: -1px 3px 3px -3px rgba(0, 0, 0, 0.35);
+//   }
+  
+//   /* Calendar Section (Center Column) Styling */
+//   .calendar-section {
+//     flex-grow: 1; /* Takes up the remaining space between the side nav and events */
+//     padding: 20px;
+//     background-color: #fff;
+//     border: 1px solid #bfbfbf;
+//     box-shadow: -1px 3px 3px -3px rgba(0, 0, 0, 0.35);
+//   }
+  
+//   /* Event Section Styling */
+//   .event-section {
+//     width: 25%; /* Adjust as necessary */
+//     padding: 20px;
+//     background-color: #f8f9fa;
+//     border-left: 1px solid #ddd;
+//     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+//     overflow-y: auto;
+//   }
+  
+//   /* Styling for the Events heading */
+//   .event-section h3 {
+//     font-size: 1.5rem;
+//     font-weight: bold;
+//     color: #333;
+//     margin-bottom: 20px;
+//     border-bottom: 2px solid #ddd;
+//     padding-bottom: 10px;
+//     text-transform: uppercase;
+//   }
+  
+//   /* Responsive adjustments for smaller screens */
+//   @media (max-width: 991px) {
+//     .dashboard-container {
+//       flex-direction: column;
+//     }
+  
+//     .side-navigation, 
+//     .calendar-section, 
+//     .event-section {
+//       width: 100%;
+//       padding: 10px;
+//       margin-bottom: 20px;
+//     }
+  
+//     .event-section {
+//       border-left: none;
+//       box-shadow: none;
+//     }
+//   }
+  
+//   /* Event content styling */
+//   .event-container {
+//     display: flex;
+//     align-items: center;
+//     margin: 15px 0;
+//   }
+  
+//   .event-date {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     background-color: #2196F3; /* Blue background for date */
+//     color: #fff;
+//     padding: 10px;
+//     text-align: center;
+//     width: 70px;
+//     height: 70px;
+//     border-radius: 5px;
+//     margin-right: 15px;
+//   }
+  
+//   .event-day {
+//     font-size: 22px;
+//     font-weight: bold;
+//   }
+  
+//   .event-month-year {
+//     font-size: 14px;
+//   }
+  
+//   .event-info {
+//     flex-grow: 1;
+//     padding-left: 10px;
+//     font-size: 16px;
+//     font-weight: bold;
+//     color: #333;
+//   }
+  
+.side-navigation{
+  margin-bottom: 2%;
+}
+.profile-content{
+  box-shadow: -1px 3px 3px -3px rgb(0 0 0 / 35%);
+  border: 1px solid #bfbfbf;
+  text-align: center;
+  padding: 20px 5px;
+  .txt-info {
+      border-bottom: 1px solid #c1c1c1;
+      margin: 15px 4%;
+      padding-bottom: 20px;
+      h4 {
+          color: #fe6601;
+          font-size: 20px;
+        }
+  }
+}
+
+
+::ng-deep {
+  a {
+    color: black !important;
+    text-decoration: none;
+  }
+}
+
+/* Main content tabs styling */
+.home-page-tabs {
+  padding: 20px 5px;
+  background-color: #fff;
+  border: 1px solid #bfbfbf;
+  box-shadow: -1px 3px 3px -3px rgb(0 0 0 / 35%);
+  margin-top: 0; /* Ensure no gap between navbar and main section */
+}
+
+/* Event section styling */
+.event-section {
+  position: fixed;
+  right: 0;
+  top: 120px; /* Adjust to match the height of your navbar if necessary */
+  height: calc(100% - 60px); /* Subtract the navbar height to ensure full page fit */
+  width: 25%; /* Adjust width as necessary */
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-left: 1px solid #ddd;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  z-index: 10;
+}
+
+/* Event content styling */
+.event-content {
+  margin-top: 50px; /* Adjust as needed */
+}
+
+/* Styling for the Events heading */
+.event-section h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  text-transform: uppercase; /* Optional for a bolder look */
+}
+
+@media (max-width: 991px) {
+  .event-section {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-left: none;
+    box-shadow: none;
+    top: 0;
+  }
+
+  .home-page-tabs {
+    padding-right: 0;
+    margin-top: 0; /* Fix gap for smaller screens */
+  }
+}
+
+
+.events-wrapper {
+  flex-direction: column;
+  left:1100px;
+}
+
+.event-container {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  left:1100px;
+}
+
+.event-date {
+  display: flex;
+  align-items: center;
+  background-color: #2196F3; /* Blue background for date */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  margin-right: 15px;
+}
+
+.event-day {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.event-month-year {
+  font-size: 14px;
+}
+
+.event-info {
+  flex-grow: 1;
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}

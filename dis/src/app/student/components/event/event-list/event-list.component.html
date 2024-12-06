@@ -1,0 +1,37 @@
+<p>event-list works!</p>
+
+
+<div class="event-list-container">
+    <h2>Event List</h2>
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Role</th>
+          <th>Certificate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events">
+          <td>{{ event.name }}</td>
+          <td>{{ event.eventDate | date:'shortDate' }}</td>
+          <td [ngClass]="getStatusClass(event.status)">{{ event.status }}</td>
+          <td>{{ event.role }}</td>
+          <td>
+            <!-- <ng-container *ngIf="event.certificate && event.certificate !== 'No Certificate'; else noCert">
+              <button (click)="downloadCertificate(event.certificate)">Download</button>
+            </ng-container> -->
+            <ng-container *ngIf="event.certificate && event.certificate !== 'No Certificate'; else noCert"></ng-container>
+              <button (click)="downloadCertificate(extractFileName(event.certificate))">Download</button>
+            
+            <ng-template #noCert>
+              No Certificate
+            </ng-template>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

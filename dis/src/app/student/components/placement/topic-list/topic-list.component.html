@@ -1,0 +1,52 @@
+<div *ngIf="company" class="tabs-container"> <!-- Added container class -->
+    <div class="heading">
+        <h1>{{ company.name }}</h1>  <!-- Display company name -->
+    </div>
+
+    <div class="tabs">
+        <div class="tab" [class.active]="activeTab === 'overview'" (click)="setActiveTab('overview')">Overview</div>
+        <div class="tab" [class.active]="activeTab === 'Online Assessment'" (click)="setActiveTab('Online Assessment')">Online Assessment</div>
+        <div class="tab" [class.active]="activeTab === 'Interview'" (click)="setActiveTab('Interview')">Interview</div>
+        <div class="tab" [class.active]="activeTab === 'Experience'" (click)="setActiveTab('Experience')">Experience</div>
+    </div>
+
+    <div class="tab-content">
+        <div *ngIf="activeTab === 'overview'">
+            <h4>About</h4>
+            <p>{{ company.description }}</p>
+            <p>For more details, visit {{ company.website }}</p>
+            <h4>Eligibility</h4>
+            <p>{{ company.eligibility }}</p>
+            <h4>Package Offered</h4>
+            <p>{{ company.package }}</p>
+            <h4>Designation</h4>
+            <p>{{ company.designation }}</p>
+        </div>
+        <div *ngIf="activeTab === 'Online Assessment'">
+            <h3>Frequently asked topics</h3>
+            <ul class="list-group mt-4">
+                <li *ngFor="let topic of categorizedTopics.onlineAssessment" class="list-group-item" (click)="navigateToQuestionList(topic.id)">
+                    {{ topic.name }}
+                </li>
+            </ul>
+            <button class="btn btn-primary mt-3" (click)="addQuestion('Online Assessment')">Add Questions</button>
+            <app-addQuestion *ngIf="isFormVisible"></app-addQuestion>
+
+
+        </div>
+        <div *ngIf="activeTab === 'Interview'">
+            <h3>Frequently asked topics</h3>
+            <ul class="list-group mt-4">
+                <li *ngFor="let topic of categorizedTopics.interview" class="list-group-item" (click)="navigateToQuestionList(topic.id)">
+                    {{ topic.name }}
+                </li>
+            </ul>
+            <button class="btn btn-primary mt-3" (click)="addQuestion('Interview')">Add Questions</button>
+
+        </div>
+        <div *ngIf="activeTab === 'Experience'">
+            <h3>Share Experience</h3>
+            <p>This is the experience content.</p>
+        </div>
+    </div>
+</div>

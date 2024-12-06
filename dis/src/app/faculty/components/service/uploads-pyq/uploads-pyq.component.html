@@ -1,0 +1,47 @@
+
+
+<h4>Upload 4-Year Previous Question Papers</h4>
+
+<div class="form-container">
+  <form [formGroup]="questionPaperForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Select Semester</mat-label>
+      <mat-select formControlName="semester">
+        <mat-option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Select Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">{{ type }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Select Subject</mat-label>
+      <mat-select formControlName="course" (selectionChange)="onCourseSelection($event.value)">
+        <mat-option *ngFor="let course of courses" [value]="course">{{ course }}</mat-option>
+        <!-- <mat-option value="other">Other</mat-option> -->
+      </mat-select>
+    </mat-form-field>
+<!--     
+    Conditionally show text input if 'Other' is selected -->
+    <!-- <mat-form-field *ngIf="otherCourseSelected" appearance="fill" class="full-width">
+      <mat-label>Enter Course Name</mat-label>
+      <input matInput formControlName="otherCourse" placeholder="Enter course name" />
+    </mat-form-field> -->
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Enter the year of the paper</mat-label>
+      <input matInput formControlName="year" placeholder="eg.2020" />
+    </mat-form-field>
+
+    <div class="full-width">
+      <label for="file-upload">Upload PDF</label>
+      <input id="file-upload" type="file" formControlName="file" (change)="onFileSelected($event)" />
+    </div>
+
+    <button mat-raised-button color="primary" type="submit" class="full-width">Submit</button>
+  </form>
+</div>

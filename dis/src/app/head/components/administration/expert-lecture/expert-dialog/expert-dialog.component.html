@@ -1,0 +1,292 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'add'">Expert Actions</h1>
+
+<mat-dialog-content style="height: 70vh">
+  <mat-tab-group #tabGroup (selectedTabChange)="onTabButtonClick()">
+    <mat-tab label="Add Expert">
+      <form style="margin-top: 5px" [formGroup]="addExpertForm" class="d-flex flex-column py-2">
+        <h6 style="margin-bottom: 5px; color: black; font-weight: bold">Personal Details</h6>
+        <br />
+       
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" type="text" formControlName="name" />
+        </mat-form-field>
+      
+        <mat-form-field appearance="outline">
+          <mat-label>Designation</mat-label>
+          <input matInput placeholder="Designation" type="text" formControlName="designation" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email" formControlName="email" pattern="[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+(\.[-a-zA-Z0-9~!$%^&amp;*_=+}{'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.([cC][oO][mM]))(:[0-9]{1,5})?"/>
+          <mat-error *ngIf="addExpertForm.controls['email'].hasError('pattern')">Enter valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile No.</mat-label>
+          <input matInput placeholder="Mobile No." formControlName="mobileNo" minlength="10" maxlength="10" pattern="^((\\+91-?)|0)?[0-9]{10}$" required/>
+          <!-- <mat-icon matPrefix>phone</mat-icon> -->
+          <mat-error *ngIf="addExpertForm.controls['mobileNo'].hasError('pattern')||addExpertForm.controls['mobileNo'].hasError('minlength')||addExpertForm.controls['mobileNo'].hasError('maxlength') ">Enter valid mobile number</mat-error>
+        </mat-form-field>
+        <!-- <div style='color: rgb(248, 226, 226) ; float:left ; font-size: 10px;' class="required" item-end no-lines >
+
+          <span class="error" *ngIf="addExpertForm.controls['mobileNo'].hasError('required') && addExpertForm.controls['mobileNo'].touched">
+              Phone number Required
+            </span>
+
+            <span class="error" *ngIf="addExpertForm.controls['mobileNo'].hasError('maxLength') && addExpertForm.controls['mobileNo'].touched">
+              Min 10 digit
+            </span>
+
+          </div> -->
+        <!-- <mat-form-field appearance="outline">
+                    <mat-label>Date Of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field> -->
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob" [max]="todayDate" />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Father's / Husband's Name</mat-label>
+          <input matInput placeholder="Father's / Husband's Name" type="text" formControlName="fathersName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Office Address</mat-label>
+          <input matInput placeholder="office Address" type="text" formControlName="officeAddress" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="City" type="text" formControlName="city" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput placeholder="State" type="text" formControlName="state" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput placeholder="country" type="text" formControlName="country" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Pin Code</mat-label>
+          <input matInput placeholder="pinCode" formControlName="pinCode" minlength="6" maxlength="6" pattern="^[1-9]{1}[0-9]{5}$" />
+          <mat-error *ngIf="addExpertForm.controls['pinCode'].hasError('minlength') || addExpertForm.controls['pinCode'].dirty || addExpertForm.controls['pinCode'].touched || addExpertForm.controls['pinCode'].hasError('pattern')">Enter valid pin code</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Adhaar number</mat-label>
+          <input matInput placeholder="aadhaarNo" formControlName="aadhaarNo" minlength="12" maxlength="12" pattern="^[1-9]{1}[0-9]{11}$"/>
+          <mat-error *ngIf="addExpertForm.controls['aadhaarNo'].hasError('minlength') || addExpertForm.controls['aadhaarNo'].hasError('maxlength') || addExpertForm.controls['aadhaarNo'].hasError('pattern')">Enter valid aadhaar number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Pan Card</mat-label>
+          <input matInput placeholder="panNo"  formControlName="panNo" minlength="10" maxlength="10"  pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$"/>
+          <mat-error *ngIf="addExpertForm.controls['panNo'].hasError('minlength') || addExpertForm.controls['panNo'].hasError('maxlength') || addExpertForm.controls['panNo'].hasError('pattern')">Enter valid pan number</mat-error>
+         
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>GST no.</mat-label>
+          <input matInput placeholder="gstNo" type="text" formControlName="gstNo" />
+        </mat-form-field>
+        <h6 style="margin-bottom: 5px; color: black; font-weight: bold">Bank Details</h6>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>Bank Name</mat-label>
+          <input matInput placeholder="bankName" type="Text" formControlName="bankName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Account No.</mat-label>
+          <input matInput placeholder="accountNo" type="number" formControlName="accountNo" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>IFSC</mat-label>
+          <input matInput placeholder="ifsc" type="text" formControlName="ifsc" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Account Type</mat-label>
+          <input matInput placeholder="type" type="text" formControlName="type" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Unique Teqip Id</mat-label>
+          <input matInput placeholder="uniqueTeqipId" type="text" formControlName="uniqueTeqipId" />
+        </mat-form-field>
+      </form>
+    </mat-tab>
+    <mat-tab label="Add Expert Lecture">
+      <form [formGroup]="addExpertLectureForm" class="d-flex flex-column py-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Topic</mat-label>
+          <input matInput placeholder="topic" type="text" formControlName="topic" required/>
+          <mat-error *ngIf="addExpertLectureForm.controls['topic'].hasError('required')">Enter valid topic</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Coordinators</mat-label>
+          <mat-select formControlName="coordinator" multiple>
+            <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option>
+            <mat-option *ngFor="let coordinator of facultyList" [value]="coordinator.userId">{{ coordinator.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Audience</mat-label>
+          <mat-select formControlName="audience" multiple>
+            <mat-option (click)="selectAllAudience()" [value]="0">Select All</mat-option>
+            <mat-option *ngFor="let option of options" [value]="option.value">{{ option.label }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Expert</mat-label>
+          <mat-select formControlName="expertName" (selectionChange)="handleSelect($event)">
+            <mat-option *ngFor="let expert of expertList" [value]="expert">{{ expert.name + ' | ' + expert.designation }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date </mat-label>
+          <!-- <input matInput placeholder="Date" type="date" formControlName="date" /> -->
+          <input matInput [matDatepicker]="picker2" formControlName="date" [min]="todayDate"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Time</mat-label>
+          <input matInput [ngxMatTimepicker]="pickert" formControlName="time">  
+          <ngx-mat-timepicker #pickert></ngx-mat-timepicker> 
+          <!-- <input matTimepicker id="t1" #t1="matTimepicker" mode="12h" formControlName="time"> -->
+    <!-- <mat-icon matSuffix (click)="t1.showDialog()">access_time</mat-icon> -->
+    <mat-error *ngIf="addExpertLectureForm.controls['time'].touched && addExpertLectureForm.controls['time'].invalid">Invalid Time</mat-error>
+          <!-- <input matInput placeholder="Time" type="time" formControlName="time" /> -->
+          <!-- <ngb-timepicker formControlName="time"></ngb-timepicker> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Venue</mat-label>
+          <input matInput placeholder="venue" type="text" formControlName="venue" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>conveyance</mat-label>
+          <input matInput placeholder="conveyance" formControlName="conveyance"  pattern="^[1-9]*[0-9]*" />
+          <mat-error *ngIf="addExpertLectureForm.controls['conveyance'].hasError('pattern')">Enter valid value</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>honorarium</mat-label>
+          <input matInput placeholder="honorarium" formControlName="honorarium" pattern="^[1-9]*[0-9]*"/>
+          <mat-error *ngIf="addExpertLectureForm.controls['honorarium'].hasError('pattern')">Enter valid value</mat-error>
+        </mat-form-field>
+      </form>
+    </mat-tab>
+    <mat-tab label="Edit Expert">
+      <form style="margin-top: 5px" [formGroup]="editExpertForm" class="d-flex flex-column py-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Expert</mat-label>
+          <mat-select (selectionChange)="onSelect($event)">
+            <mat-option *ngFor="let expert of expertList" [value]="expert">{{ expert.name + ' | ' + expert.designation }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <h6 style="margin-bottom: 5px; color: black; font-weight: bold">Personal Details</h6>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" value="{{ this.selectedExpert.name }}" type="text" formControlName="name" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Designation</mat-label>
+          <input matInput placeholder="Designation" value="{{ this.selectedExpert.designation }}" type="text" formControlName="designation" readonly/>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email" value="{{ this.selectedExpert.email }}" formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"/>
+          <mat-error *ngIf="editExpertForm.controls['email'].hasError('pattern')">Enter valid email</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile No.</mat-label>
+          <input matInput placeholder="Mob No." value="{{ this.selectedExpert.mobileNo }}" formControlName="mobileNo"  minlength="10" maxlength="10" pattern="^((\\+91-?)|0)?[0-9]{10}$" required/>
+          <!-- <mat-icon matSuffix>phone</mat-icon> -->
+          <mat-error *ngIf="editExpertForm.controls['mobileNo'].hasError('pattern')||editExpertForm.controls['mobileNo'].hasError('minlength')||editExpertForm.controls['mobileNo'].hasError('maxlength') ">Enter valid mobile number</mat-error>
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
+                    <mat-label>Date Of Birth</mat-label>
+                    <input matInput [matDatepicker]="picker" formControlName="dob">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field> -->
+        <mat-form-field appearance="outline">
+          <mat-label>Date of Birth</mat-label>
+          <!-- <input matInput placeholder="Date of Birth" value="{{ this.selectedExpert.dob }}" formControlName="dob" /> -->
+          <input matInput [matDatepicker]="picker3" formControlName="dob" [value]="selectedExpertDob"/>
+          <mat-datepicker-toggle matIconSuffix [for]="picker3"></mat-datepicker-toggle>
+          <mat-datepicker [startAt]="selectedExpertDob" #picker3></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Father's / Husband's Name</mat-label>
+          <input matInput placeholder="Father's / Husband's Name" value="{{ this.selectedExpert.fathersName }}" type="text" formControlName="fathersName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Office Address</mat-label>
+          <input matInput placeholder="office Address" value="{{ this.selectedExpert.officeAddress }}" type="text" formControlName="officeAddress" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="City" type="text" value="{{ this.selectedExpert.city }}" formControlName="city" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>State</mat-label>
+          <input matInput placeholder="State" type="text" value="{{ this.selectedExpert.state }}" formControlName="state" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput placeholder="country" type="text" value="{{ this.selectedExpert.country }}" formControlName="country" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Pin Code</mat-label>
+          <input matInput placeholder="pinCode" value="{{ this.selectedExpert.pinCode }}" formControlName="pinCode" minlength="6" maxlength="6" pattern="^[1-9]{1}[0-9]{5}$" />
+          <mat-error *ngIf="editExpertForm.controls['pinCode'].hasError('minlength') || editExpertForm.controls['pinCode'].hasError('pattern')">Enter valid pin code</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Adhaar number</mat-label>
+          <input matInput placeholder="aadhaarNo" value="{{ this.selectedExpert.aadhaarNo }}" formControlName="aadhaarNo" minlength="12" maxlength="12" pattern="^[1-9]{1}[0-9]{11}$"/>
+          <mat-error *ngIf="editExpertForm.controls['aadhaarNo'].hasError('minlength') || editExpertForm.controls['aadhaarNo'].hasError('maxlength') || editExpertForm.controls['aadhaarNo'].hasError('pattern')">Enter valid aadhaar number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Pan Card</mat-label>
+          <input matInput placeholder="panNo" value="{{ this.selectedExpert.panNo }}" formControlName="panNo" minlength="10" maxlength="10"  pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$"/>
+          <mat-error *ngIf="editExpertForm.controls['panNo'].hasError('minlength') || editExpertForm.controls['panNo'].hasError('maxlength') || editExpertForm.controls['panNo'].hasError('pattern')">Enter valid pan number</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>GST no.</mat-label>
+          <input matInput placeholder="gstNo" type="text" value="{{ this.selectedExpert.gstNo }}" formControlName="gstNo" />
+        </mat-form-field>
+        <h6 style="margin-bottom: 5px; color: black; font-weight: bold">Bank Details</h6>
+        <br />
+        <mat-form-field appearance="outline">
+          <mat-label>bankName</mat-label>
+          <input matInput placeholder="bankName" type="Text" value="{{ this.selectedExpert.bankName }}" formControlName="bankName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>accountNo</mat-label>
+          <input matInput placeholder="accountNo" type="number" value="{{ this.selectedExpert.accountNo }}" formControlName="accountNo" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>ifsc</mat-label>
+          <input matInput placeholder="ifsc" type="text" value="{{ this.selectedExpert.ifsc }}" formControlName="ifsc" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>type</mat-label>
+          <input matInput placeholder="type" type="text" value="{{ this.selectedExpert.type }}" formControlName="type" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>uniqueTeqipId</mat-label>
+          <input matInput placeholder="uniqueTeqipId" type="text" value="{{ this.selectedExpert.uniqueTeqipId }}" formControlName="uniqueTeqipId" />
+        </mat-form-field>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</mat-dialog-content>
+
+<div mat-dialog-actions [align]="'end'">
+  <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+
+  <button (click)="onAddExpert()" *ngIf="currentTab === 0" mat-raised-button color="primary" [disabled]="!addExpertForm.valid" cdkFocusInitial>Add Expert</button>
+  <button (click)="onAddExpertLecture()" *ngIf="currentTab === 1" mat-raised-button color="primary"  cdkFocusInitial>Add Lecture</button>
+  <button (click)="editExpert()" *ngIf="currentTab === 2" mat-raised-button color="primary" cdkFocusInitial>Update</button>
+  <button (click)="deleteExpert()" *ngIf="currentTab === 2" mat-stroked-button color="warn" cdkFocusInitial>Delete</button>
+</div>

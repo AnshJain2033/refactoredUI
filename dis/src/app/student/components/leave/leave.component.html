@@ -1,0 +1,42 @@
+<!-- <p>LEAVE COMPONENT LOADING</p> -->
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Leave ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Status</th>
+        <th>Assigned To</th>
+        <!-- <th>Upload Document</th> -->
+      </tr>
+    </thead> 
+    <tbody>
+    <tr *ngFor = "let leave of leaves">
+        <td>{{ leave.id }}</td>
+        <td>{{ leave.startDate| date:'dd-MM-yyyy'}}</td>
+        <td>{{ leave.endDate| date:'dd-MM-yyyy'}}</td>
+        <td>
+          <span [ngClass]="{'pending': leave.status === 'PENDING', 'accepted': leave.status === 'ACCEPTED', 'rejected': leave.status === 'REJECTED'}">{{ leave.status }}</span>
+        </td>
+        <!-- <td>{{ leave.status }}</td>  -->
+        <td>{{leave.assignedTo}}</td> 
+        <td>
+          <!-- File Upload Field -->
+          <!-- <div>
+            <label>Attachment (PDF only)</label>
+            <label for="fileInput">
+              <img src="assets/images/upload.png" alt="Upload" /> </label>
+            <input type="file" id="fileInput" accept="application/pdf" (change)="onFileSelected($event,leave.id)" style="display: none;" />
+          </div> -->
+
+        </td>
+        <td>
+          <!-- <button class="btn btn-primary btn-sm" (click)="editLeave(leave)">Edit</button> -->
+           <button class="btn btn-danger btn-sm" (click)="deleteLeave(leave.id)">Delete</button> 
+        </td> 
+
+      </tr>
+    </tbody> 
+  </table>
+  
+  <button class="btn btn-primary" (click)="addLeave()">Add Leave</button>

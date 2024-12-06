@@ -1,0 +1,36 @@
+<mat-toolbar style="position: fixed; bottom: 0; width: 100%; z-index: 1000">
+  <span style="text-align: center; font-size: 16px" class="text-white">Copyright 2023-24 All right reserved by SGSITS</span>
+  <div fxFlex fxLayoutAlign="end" fxLayout>
+   
+    <button mat-button *ngFor="let data of footerList" >
+      <a class="nav-link text-white" [routerLink]="[data.route]"
+            routerLinkActive="active-header">
+            <span>{{ data.text }}</span>
+          </a>
+    </button>
+  </div>
+
+</mat-toolbar>
+<!-- <mat-toolbar style="position: fixed; bottom: 0; width: 100%; z-index: 1000">
+  <nav class="navbar navbar-expand-lg bg-dark text-white nav-main" style="height: 50px">
+    <div class="container-fluid" style="max-width: 1400px">
+      <a class="navbar-brand d-flex align-items-center" routerLink="/">
+        <span style="text-align: center; font-size: 16px" class="text-white">Copyright 2023-24 All right reserved by SGSITS</span>
+      </a>
+      <div style="display: flex; justify-content: end; flex: 1">
+        <a style="margin-inline: 10px">
+          <span>Contributers</span>
+        </a>
+        <a style="margin-inline: 10px">
+          <span>Suggestion Box</span>
+        </a>
+        <a style="margin-inline: 10px">
+          <span>Contact us</span>
+        </a>
+        <a style="margin-inline: 10px">
+          <span>Gallery</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</mat-toolbar> -->

@@ -1,0 +1,96 @@
+    <button mat-icon-button style="float:right; margin: 0px" matDialogClose>
+        <mat-icon>close</mat-icon>
+    </button>
+    <h1 class="meeting-dialog-title" *ngIf="type == 'summary'">Summary</h1>
+    <h1 class="meeting-dialog-title" *ngIf="type == 'add'">Create Meeting</h1>
+    <h1 class="meeting-dialog-title" *ngIf="type == 'update'">Update Meeting</h1>
+    <h1 class="meeting-dialog-title" *ngIf="type == 'viewAttendees' || type == 'attendance'">List of Attendees</h1>
+
+<!-- <h1 mat-dialog-title style="font-size: 20px; font-weight: 700" *ngIf="type == 'summary'">Summary</h1> -->
+<!-- <header><h4 mat-dialog-title *ngIf="type == 'summary'">Summary</h4></header> -->
+
+<div mat-dialog-content style="min-width: 400px">
+    <form *ngIf="type == 'update' || type == 'add'" [formGroup]="meetingForm" class="d-flex flex-column py-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Objective</mat-label>
+          <input matInput placeholder="Objective" type="text" formControlName="objective" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Venue</mat-label>
+          <input matInput placeholder="Venue" type="text" formControlName="venue" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" [min]="todayDate" />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <!-- <input matInput placeholder="date" type="date" formControlName="date" /> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Start Time</mat-label>
+          <!-- <ngx-mat-timepicker formControlName="time"></ngx-mat-timepicker> -->
+          <input matInput [ngxMatTimepicker]="picker2" formControlName="time">  
+          <ngx-mat-timepicker #picker2></ngx-mat-timepicker> 
+          <!-- <input matInput placeholder="Start Time" type="time" formControlName="time" /> -->
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>End Time</mat-label>
+          <input matInput [ngxMatTimepicker]="picker3" formControlName="endTime">  
+          <ngx-mat-timepicker #picker3></ngx-mat-timepicker> 
+        </mat-form-field>
+        <!-- <mat-form-field appearance="outline">
+          <mat-label>Duration (HH:MM)</mat-label>
+          <input matInput placeholder="Duration(HH:MM)" type="text" pattern="[0-2][0-9]:[0-5][0-9]" formControlName="duration" />
+        </mat-form-field> -->
+        <mat-form-field appearance="outline">
+          <mat-label>Attendees</mat-label>
+          <mat-select formControlName="attendees" multiple>
+            <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option>
+            <mat-option *ngFor="let faculty of facultyList" [value]="faculty.userId" >{{ faculty.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <!-- <mat-form-field>
+          <input matInput [ngxMatDatetimePicker]="nnpicker" placeholder="Choose a date" formControlName="date"
+             [min]="todayDate" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <ngx-mat-datetime-picker #nnpicker [showSeconds]="true"
+              [enableMeridian]="true" 
+             [disableMinute]="false" [hideTime]=false>
+          </ngx-mat-datetime-picker>
+       </mat-form-field> -->
+      </form>
+    <mat-form-field style="min-width: 400px" *ngIf="type == 'summary' || type == 'edit summary' || type == 'updateSummary'">
+        <mat-label>Summary </mat-label>
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10" [(ngModel)]="summary"></textarea>
+      </mat-form-field>
+      <!-- <mat-form-field style="min-width: 400px" *ngIf="type == 'viewAttendees'"> -->
+        <!-- <mat-label>Attendees</mat-label> -->
+        <mat-list *ngIf="type == 'viewAttendees'">
+          <mat-list-item *ngFor="let attendee of attendees">{{attendee.name}}</mat-list-item>
+        </mat-list>
+        <mat-selection-list #attendeeList *ngIf="type == 'attendance'" multiple (selectionChange)="markAttendance(attendeeList.selectedOptions.selected)" style="overflow: auto; max-height: 300px;">
+          <mat-list-option (click)="selectAll()" [value]="0">Select All</mat-list-option>
+          <mat-list-option *ngFor="let attendee of attendees" [value]="attendee" [selected] = "allPresent">{{ attendee.name }}</mat-list-option>
+        </mat-selection-list>
+    <mat-form-field style="min-width: 350px" *ngIf="type == 'viewsummary'" appearance="outline">
+      <mat-label>Summary </mat-label>
+        <textarea matInput readonly>{{ data.data }}</textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions [align]="'end'">
+    <ng-container *ngIf="type == 'add' || type == 'updateSummary'">
+        <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Cancel</button>
+        <button mat-raised-button color="primary" cdkFocusInitial (click)="saveMeeting()" [disabled]="!meetingForm.valid && type != 'updateSummary'">Save</button>
+      </ng-container>
+      <ng-container *ngIf="type == 'update'">
+        <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Cancel</button>
+        <button mat-raised-button color="primary" cdkFocusInitial (click)="updateMeeting()" [disabled]="!meetingForm.valid">Update</button>
+      </ng-container>
+    <ng-container *ngIf="type == 'summary' || type == 'viewsummary'">
+        <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Close</button>
+      </ng-container>
+      <ng-container *ngIf="type == 'attendance'">
+        <button mat-stroked-button color="warn" cdkFocusInitial (click)="closeDialog()">Cancel</button>
+        <button mat-raised-button color="primary" cdkFocusInitial (click)="saveAttendance()">Save</button>
+      </ng-container>
+</div>

@@ -1,0 +1,170 @@
+// /* Style for the mat-toolbar */
+// mat-toolbar {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 10px 20px;
+//     background-color: #007bff;
+//     color: #fff;
+//     font-weight: bold;
+//   }
+  
+//   /* Style for the profile section */
+//   .profile-section {
+//     display: flex;
+//     justify-content: space-between;
+//     padding: 20px;
+//     margin-bottom: 20px;
+//     border: 1px solid #ddd;
+//     border-radius: 10px;
+//     background-color: #fafafa;
+//   }
+  
+//   /* Style for left content in the profile section */
+//   .left-content {
+//     flex: 1;
+//     padding-right: 20px;
+//   }
+  
+//   /* Add spacing between each field */
+//   .left-content p {
+//     margin-bottom: 15px;
+//     font-weight: bold;
+//     font-size: 16px;
+//   }
+  
+//   /* Style for right content in the profile section */
+//   .right-content {
+//     flex: 0 0 350px;
+//     height: 400px;
+//     text-align: center;
+//   }
+  
+//   /* Style for profile picture frame */
+//   .profile-picture-frame {
+//     position: relative;
+//     width: 350px;
+//     height: 400px;
+//     border: 2px solid #ccc;
+//     border-radius: 10px;
+//     overflow: hidden;
+//     background-color: #f0f0f0;
+//     margin-bottom: 20px;
+//   }
+  
+//   /* Style for profile picture */
+//   .profile-picture-frame img {
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+//     border-radius: 10px;
+//   }
+  
+//   /* Style for the skills dropdown */
+//   mat-form-field {
+//     width: 100%;
+//     margin-bottom: 20px;
+//   }
+  
+//   .mat-select {
+//     border-radius: 5px;
+//     background-color: #f5f5f5;
+//   }
+  
+//   .mat-option {
+//     font-size: 14px;
+//   }
+  
+//   /* Style for selected skills display */
+//   .selected-skills {
+//     margin-top: 10px;
+//   }
+  
+//   .skill-item {
+//     display: inline-flex;
+//     align-items: center;
+//     background-color: #e0e0e0;
+//     border-radius: 5px;
+//     padding: 8px 12px;
+//     margin-right: 5px;
+//     margin-top: 10px;
+//     font-weight: bold;
+//   }
+  
+//   .skill-item button {
+//     margin-left: 8px;
+//   }
+  
+//   /* Style for action buttons */
+//   .action-buttons {
+//     display: flex;
+//     justify-content: flex-end;
+//     padding: 20px;
+//     border-top: 1px solid #ccc;
+//     background-color: #fafafa;
+//   }
+  
+//   .bottom-button {
+//     margin-left: 15px;
+//     padding: 10px 20px;
+//     font-weight: bold;
+//     color: #fff;
+//     background-color: #007bff;
+//     border: none;
+//     border-radius: 5px;
+//     transition: background-color 0.3s ease;
+//   }
+  
+//   .bottom-button:hover {
+//     background-color: #0056b3;
+//   }
+  
+//   /* Add padding and margin for textareas */
+//   textarea.matInput {
+//     width: 100%;
+//     margin-top: 15px;
+//     padding: 15px;
+//     border-radius: 5px;
+//     border: 1px solid #ccc;
+//     font-size: 14px;
+//   }
+  
+//   /* Add spacing between all sections and form elements */
+//   .profile-section p,
+//   .profile-section mat-form-field,
+//   .profile-section textarea {
+//     margin-bottom: 20px;
+//   }
+  
+//   /* Adjust for mobile view */
+//   @media (max-width: 768px) {
+//     .profile-section {
+//       flex-direction: column;
+//     }
+    
+//     .right-content {
+//       margin-top: 20px;
+//     }
+//   }
+.top-profile h3 {
+  font-weight: 500;
+  margin: 0;
+}
+
+.photograph img {
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.details ul li {
+  margin-bottom: 8px;
+}
+
+button {
+  margin-top: 20px;
+}

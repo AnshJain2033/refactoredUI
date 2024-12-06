@@ -1,0 +1,98 @@
+<!-- <p>event-fetch works!</p>
+ -->
+
+<button class="view-all-events-button" (click)="viewYourEvents()">View Your Events</button>
+
+<div class="custom-tab-container">
+  <!-- Tabs Navigation -->
+  <div class="custom-tab-nav">
+    <button class="custom-tab-button" (click)="selectTab(0)">Completed</button>
+    <button class="custom-tab-button" (click)="selectTab(1)">Ongoing</button>
+    <button class="custom-tab-button" (click)="selectTab(2)">Upcoming</button>
+  </div>
+  
+  <!-- Tabs Content -->
+  <div class="custom-tab-content" *ngIf="selectedTab === 0">
+    <div class="event-card" *ngFor="let event of completedEvents" >
+      <div class="event-card-header">
+        <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" />
+        <!-- <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" width="100" height="100"/> -->
+        </div>
+      <div class="event-card-body">
+        <h3>{{ event.name }}</h3>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Time:</strong> {{ event.time }}</p>
+        <p><strong>Venue:</strong> {{ event.venue }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+        <p><strong>Faculty Coordinator:</strong> {{ event.facultyCoordinator }}</p>
+        <p><strong>Total Registrations:</strong> {{ event.totalRegistrations }}</p>
+        <button (click)="goToEventDetail(event.name)">Details</button>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Content for Ongoing -->
+  <div class="custom-tab-content" *ngIf="selectedTab === 1">
+    <div class="event-card" *ngFor="let event of ongoingEvents" >
+      <div class="event-card-header">
+        <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" />
+        <!-- <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" width="100" height="100"/> -->
+        </div>
+      <div class="event-card-body">
+        <h3>{{ event.name }}</h3>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Time:</strong> {{ event.time }}</p>
+        <p><strong>Venue:</strong> {{ event.venue }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+        <p><strong>Faculty Coordinator:</strong> {{ event.facultyCoordinator }}</p>
+        <p><strong>Total Registrations:</strong> {{ event.totalRegistrations }}</p>
+        <button (click)="goToEventDetail(event.name)">Details</button>
+      </div>
+    </div>
+    <!-- Ongoing events content here -->
+  </div>
+
+  <!-- Content for Upcoming -->
+  <div class="custom-tab-content" *ngIf="selectedTab === 2">
+    <div class="event-card" *ngFor="let event of upcomingEvents" >
+      <div class="event-card-header">
+        <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" />
+        <!-- <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" width="100" height="100"/> -->
+        </div>
+      <div class="event-card-body">
+        <h3>{{ event.name }}</h3>
+        <p><strong>Date:</strong> {{ event.date }}</p>
+        <p><strong>Time:</strong> {{ event.time }}</p>
+        <p><strong>Venue:</strong> {{ event.venue }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+        <p><strong>Faculty Coordinator:</strong> {{ event.facultyCoordinator }}</p>
+        <p><strong>Total Registrations:</strong> {{ event.totalRegistrations }}</p>
+        <button (click)="registerForEvent(event.name)">Register</button>
+
+        <!-- <button (click)="goToEventDetail(event.name)">Register</button> -->
+      </div>
+    </div>
+    <!-- Upcoming events content here -->
+  </div>
+</div>
+
+
+<div *ngIf="eventDetails.length > 0; else noEvents">
+    <!-- <h2>Event Details</h2>
+    <div *ngFor="let event of eventDetails" class="event-card">
+      <h3>{{ event.name }}</h3>
+      <p><strong>Date:</strong> {{ event.date }}</p>
+      <p><strong>Time:</strong> {{ event.time }}</p>
+      <p><strong>Venue:</strong> {{ event.venue }}</p>
+      <p><strong>Description:</strong> {{ event.description }}</p>
+      <p><strong>Faculty Coordinator:</strong> {{ event.facultyCoordinator }}</p>
+      <p><strong>Total Registrations:</strong> {{ event.totalRegistrations }}</p>
+      <img *ngIf="event.logo" [src]="'data:image/jpeg;base64,' + event.logo" alt="Logo" width="100" height="100"/>
+      <img *ngIf="event.eventImages" [src]="'data:image/jpeg;base64,' + event.eventImages" alt="Event Image" width="200" height="200"/>
+    </div> -->
+  </div>
+  
+  <ng-template #noEvents>
+    <p>No events available.</p>
+  </ng-template>
+  

@@ -1,0 +1,30 @@
+<h1 mat-dialog-title style="font-size: 20px; font-weight: 700" >Leave Application Details</h1>
+<mat-dialog-content style="height:80vh ;width: 70vw; overflow-y: scroll; max-width: 100vh;">
+<div class="dialog-container">
+      <div class="form-group">
+        <label for="subject">Subject:</label>
+        <span>{{ leaveDetail.subject }}</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="startDate">Start Date:</label>
+        <span>{{ leaveDetail.startDate | date:'yyyy-MM-dd' }}</span>
+      </div>
+  
+      <div class="form-group">
+        <label for="endDate">End Date:</label>
+        <span>{{ leaveDetail.endDate | date:'yyyy-MM-dd' }}</span>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <p>{{ leaveDetail.description }}</p>
+      </div>
+      
+  </div>
+  <div class="button-container ">
+    <button class="close-button" (click)="closeDialog()">Close</button>
+    <button class="btn success-button" (click)="onAccept(leaveDetail.id)">Accept</button>
+    <button class="btn reject-button"(click)="onReject(leaveDetail.id)">Reject</button>
+  </div>
+</mat-dialog-content>
