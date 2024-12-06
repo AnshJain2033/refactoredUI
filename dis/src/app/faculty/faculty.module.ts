@@ -128,6 +128,6 @@ import { StudentLeaveDetailComponent } from './components/administration/student
       useValue: {}
     },
  ],
- // schemas: [CUSTOM_ELEMENTS_SCHEMA]
+ schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FacultyModule { }

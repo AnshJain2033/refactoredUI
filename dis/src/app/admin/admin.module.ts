@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -20,9 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AdminRoutingModule,
     MaterialModule,
-    SharedModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+    SharedModule
+  ],
 })
 export class AdminModule { }

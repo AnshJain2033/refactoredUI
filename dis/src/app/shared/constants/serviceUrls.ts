@@ -143,7 +143,7 @@ export const serviceUrls: any = {
     deleteLeaveByLeaveId:urls.administration+'/home/deleteLeaveByLeaveId',
     getLeaveByAssignedID:urls.administration+'/home/getLeaveByAssignedToId',
     putLeaveStatusByLeaveId:urls.administration+'/home/putLeaveStatusByLeaveId',
-    addLeaveSupportingDocument:urls.administration+'/home/postLeaveSupportingDocumentById'
+    addLeaveSupportingDocument:urls.administration+'/home/postLeaveSupportingDocumentById',
 
     //admin
 

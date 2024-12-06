@@ -72,7 +72,7 @@ import { EventDialogComponent } from './components/administration/event/event-di
     ExpertLectureComponent,
     TasksComponent,
     CommonDashboardComponent,
-    DashboardSidenavComponent,
+    // DashboardSidenavComponent,
     MeetingsComponent,
     // TableComponent,
     MeetingDialogComponent,

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -66,7 +66,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ReactiveFormsModule,
     FormsModule,
     StudentRoutingModule,
-    SharedModule,
     MatFormFieldModule,
     ReactiveFormsModule,
     MaterialModule,
@@ -82,5 +81,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
       useValue: {}
     },
  ],
+ schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class StudentModule { }

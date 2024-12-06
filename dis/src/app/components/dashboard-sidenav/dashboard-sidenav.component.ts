@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, Component, NgModule, OnInit } from '@angular/core';
 import { UserData } from './constant';
 import { images } from 'src/assets/images';
 import { SpinnerService } from 'src/app/services/spinner.service';
@@ -8,8 +8,9 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-dashboard-sidenav',
   templateUrl: './dashboard-sidenav.component.html',
-  styleUrls: ['./dashboard-sidenav.component.scss']
+  styleUrls: ['./dashboard-sidenav.component.scss'],
 })
+
 export class DashboardSidenavComponent implements OnInit {
   userData: UserData | undefined;
   images : any = images;
