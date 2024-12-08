@@ -35,6 +35,7 @@ import { EventCompletedComponent } from './components/administration/event/event
 import { EventComponent } from './components/administration/event/event.component';
 import { EventOngoingComponent } from './components/administration/event/event-ongoing/event-ongoing.component';
 import { EventUpcomingComponent } from './components/administration/event/event-upcoming/event-upcoming.component';
+import { StudentLeaveApplicationComponent } from './components/administration/student-leave-application/student-leave-application.component';
 
 // import { FacultiesComponent } from './components/faculty-page/faculties/faculties.component';
 // import { StaffComponent } from './components/faculty-page/staff/staff.component';
@@ -60,6 +61,10 @@ const routes: Routes = [
           {
             path: 'myTasks',
             component: TasksComponent,
+          },
+          {
+            path: 'leaves',
+            component:StudentLeaveApplicationComponent,
           },
           {
             path: 'expertLecture',

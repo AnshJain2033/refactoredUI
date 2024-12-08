@@ -1,17 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { StudentLeaveDetailComponent } from '../student-leave-detail/student-leave-detail.component';
+import { StudentLeaveService } from 'src/app/services/student-leave.service';
 import { HotToastService } from '@ngneat/hot-toast';
 import { SpinnerService } from 'src/app/services/spinner.service';
-import { StudentLeaveService } from 'src/app/services/student-leave.service';
-import { StudentLeaveDetailComponent } from '../student-leave-detail/student-leave-detail.component';
 
 @Component({
-  selector: 'app-student-leave-application-component',
-  templateUrl: './student-leave-application-component.component.html',
-  styleUrls: ['./student-leave-application-component.component.scss']
+  selector: 'app-student-leave-application',
+  templateUrl: './student-leave-application.component.html',
+  styleUrls: ['./student-leave-application.component.scss']
 })
-export class StudentLeaveApplicationComponentComponent implements OnInit {
+export class StudentLeaveApplicationComponent implements OnInit {
   username:any
   leaves:any[]
   

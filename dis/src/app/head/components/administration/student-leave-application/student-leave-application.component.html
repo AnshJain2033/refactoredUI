@@ -1,0 +1,21 @@
+<!-- <p>student-leave-aplcation-component works!</p> -->
+<!-- <p>LEAVE COMPONENT LOADING</p> -->
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+      </tr>
+    </thead> 
+    <tbody>
+    <tr *ngFor = "let leave of leaves">
+        <td>{{ leave.studentId }}</td>
+        <td>{{ leave.startDate| date:'dd-MM-yyyy'}}</td>
+        <td>{{ leave.endDate| date:'dd-MM-yyyy'}}</td>
+        <td>
+         <button class="btn btn-primary btn-sm" (click)="detailedView(leave)">Details</button>
+        </td> 
+      </tr>
+    </tbody> 
+  </table>

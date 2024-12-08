@@ -12,3 +12,26 @@
     color: white;
     background-color: red;
   }
+  .circular-button {
+    width: 50px; /* Set the size of the button */
+    height: 50px; /* Set the size of the button */
+    background-color: blue; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Make the button circular */
+    font-size: 30px; /* Increase the size of the "+" symbol */
+    display: flex; /* Use flexbox for centering content */
+    justify-content: center; /* Center the "+" horizontally */
+    align-items: center; /* Center the "+" vertically */
+    cursor: pointer; /* Change cursor to indicate it's clickable */
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+  }
+  
+  .circular-button:hover {
+    background-color: darkblue; /* Darker blue color on hover */
+  }
+  
+  .circular-button:focus {
+    outline: none; /* Remove the outline on focus */
+  }
+  

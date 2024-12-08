@@ -144,10 +144,12 @@ export const serviceUrls: any = {
     getLeaveByAssignedID:urls.administration+'/home/getLeaveByAssignedToId',
     putLeaveStatusByLeaveId:urls.administration+'/home/putLeaveStatusByLeaveId',
     addLeaveSupportingDocument:urls.administration+'/home/postLeaveSupportingDocumentById',
-
+    getLeaveWhichArePendingToBeAssigned:urls.administration+'/home/getLeaveWhichArePendingToBeAssigned',
+    putAssignedToByLeaveId:urls.administration+'/home/putAssignedToByLeaveId',
+    getLastFiveDayLeave:urls.administration+'/home/getLastFiveDayLeave',
     //admin
 
     uploadCsv: urls.file+ '/file/upload',
-
+    
 
   };

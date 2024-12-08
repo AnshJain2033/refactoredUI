@@ -14,7 +14,13 @@ export class StudentLeaveService {
     
     private serviceUrls = serviceUrls;
   
+    
     constructor(private http: HttpClient, private spinnerService: SpinnerService) { }
+    public getLeaveWhichArePendingToBeAssigned():Observable<any>{
+      this.spinnerService.addSpinner();
+      const headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
+      return this.http.get<any>(this.serviceUrls.getLeaveWhichArePendingToBeAssigned,{headers:headers});
+    }
     public addLeaveSupportingDocument(leaveId:any,data:any):Observable<any>{
       this.spinnerService.addSpinner();
       const headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
@@ -56,4 +62,21 @@ export class StudentLeaveService {
       // params.set('status',status)
       return this.http.put<any>(this.serviceUrls.putLeaveStatusByLeaveId+"?"+'leaveId'+"="+leaveId+"&"+'status'+"="+status,{headers:headers});
     }
+    public putAssignedToByLeaveId(id:any,assignedTo:any):Observable<any>{
+      this.spinnerService.addSpinner();
+      const headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
+      const params = new HttpParams();
+      // console.log(leaveId)
+      // console.log(status)
+      params.set('id',id)
+      params.set('assignedTo',assignedTo)
+      return this.http.put<any>(this.serviceUrls.putAssignedToByLeaveId+"?"+'id'+"="+id+"&"+'assignedTo'+"="+assignedTo,{headers:headers});
+    }
+    public getLastFiveDayLeave():Observable<any>{
+      this.spinnerService.addSpinner();
+      const headers = new HttpHeaders({'Access-Control-Allow-Origin':'*'});
+      return this.http.get<any>(this.serviceUrls.getLastFiveDayLeave,{headers:headers});
+    }
+    
+
 }

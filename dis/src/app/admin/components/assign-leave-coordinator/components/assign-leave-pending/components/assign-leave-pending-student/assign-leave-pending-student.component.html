@@ -1,0 +1,43 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Assigned To</th>
+        <th>Send Request</th>
+      </tr>
+    </thead> 
+    <tbody>
+    <!-- <tr *ngFor = "let leave of leaves">
+        <td>{{ leave.studentId }}</td>
+        <td>{{ leave.startDate| date:'dd-MM-yyyy'}}</td>
+        <td>{{ leave.endDate| date:'dd-MM-yyyy'}}</td>
+        <mat-form-field appearance="outline">
+          <mat-label>Coordinators</mat-label>
+          <mat-select formControlName="coordinator">
+            <mat-option #all (click)="selectAllFaculties()" [value]="0">Select All</mat-option> -->
+            <!-- <mat-option *ngFor="let coordinator of facultyList" [value]="coordinator.userId">{{ coordinator.name }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button (click)="setAssignedCoordinator(leave.id,coordinator.userId)">Send</button>
+      </tr> -->
+      <tr *ngFor="let leave of leaves; let i = index">
+        <td>{{ leave.studentId }}</td>
+        <td>{{ leave.startDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ leave.endDate | date: 'dd-MM-yyyy' }}</td>
+        <td>
+          <mat-form-field appearance="outline">
+            <mat-label>Coordinators</mat-label>
+            <mat-select [formControl]="formControls[i]">
+              <mat-option *ngFor="let coordinator of facultyList" [value]="coordinator.userName">
+                {{ coordinator.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </td>
+          <button class="btn btn-primary btn-sm" (click)="setAssignedCoordinator(leave.id, formControls[i].value)">Send</button>
+      </tr>
+      
+    </tbody> 
+  </table>

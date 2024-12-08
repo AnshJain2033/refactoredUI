@@ -13,8 +13,8 @@ export class StudentLeaveDetailComponent{
     constructor(private dialog:MatDialog,private dialogRef:MatDialogRef<StudentLeaveDetailComponent>,private toastService:HotToastService,@Inject(MAT_DIALOG_DATA)public leave:any,private leaveService:StudentLeaveService){
       this.leaveDetail=leave
     }
-    onAccept(leaveId:any):void{
-      this.leaveService.putLeaveStatusByLeaveId(leaveId,"ACCEPTED").subscribe({
+    async onAccept(leaveId:any){
+      await this.leaveService.putLeaveStatusByLeaveId(leaveId,"ACCEPTED").subscribe({
         next:(res)=>{
           console.log(res)
         },
@@ -25,8 +25,8 @@ export class StudentLeaveDetailComponent{
       this.dialogRef.close();
     }
 
-     onReject(leaveId:any):void{
-       this.leaveService.putLeaveStatusByLeaveId(leaveId,"REJECTED").subscribe({
+     async onReject(leaveId:any){
+       await this.leaveService.putLeaveStatusByLeaveId(leaveId,"REJECTED").subscribe({
         next:(res)=>{
           console.log(res) 
         },

@@ -55,7 +55,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { StudentLeaveAplcationComponentComponent } from './components/administration/student-leave-application-component/student-leave-application-component.component';
+import { StudentLeaveApplicationComponentComponent } from './components/administration/student-leave-application-component/student-leave-application-component.component';
 import { StudentLeaveDetailComponent } from './components/administration/student-leave-detail/student-leave-detail.component';
 
 
@@ -100,7 +100,7 @@ import { StudentLeaveDetailComponent } from './components/administration/student
     DashboardComponent,
     EventDetailComponent,
     UploadsPyqComponent,
-    StudentLeaveAplcationComponentComponent,
+    StudentLeaveApplicationComponentComponent,
     StudentLeaveDetailComponent
     // TableComponent,
     

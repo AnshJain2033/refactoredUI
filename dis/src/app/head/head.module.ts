@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -58,6 +58,9 @@ import { EventCompletedComponent } from './components/administration/event/event
 import { EventOngoingComponent } from './components/administration/event/event-ongoing/event-ongoing.component';
 import { EventUpcomingComponent } from './components/administration/event/event-upcoming/event-upcoming.component';
 import { EventDialogComponent } from './components/administration/event/event-dialog/event-dialog.component';
+import { StudentLeaveApplicationComponent } from './components/administration/student-leave-application/student-leave-application.component';
+import { StudentLeaveDetailComponent } from './components/administration/student-leave-detail/student-leave-detail.component';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 // import { FacultyDialogComponent } from './components/faculty-page/faculties/faculty-dialog/faculty-dialog.component';
 
@@ -109,7 +112,9 @@ import { EventDialogComponent } from './components/administration/event/event-di
     EventCompletedComponent,
     EventOngoingComponent,
     EventUpcomingComponent,
-    EventDialogComponent
+    EventDialogComponent,
+    StudentLeaveApplicationComponent,
+    StudentLeaveDetailComponent,
     
     
    
@@ -124,6 +129,17 @@ import { EventDialogComponent } from './components/administration/event/event-di
     ReactiveFormsModule,
     AgGridModule,
     SharedModule,
-  ]
+  ],
+  providers: [
+    {
+      provide: MatDialogRef,
+      useValue: {}
+    },
+    {
+      provide: MAT_DIALOG_DATA,
+      useValue: {}
+    },
+ ],
+ schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HeadModule { }

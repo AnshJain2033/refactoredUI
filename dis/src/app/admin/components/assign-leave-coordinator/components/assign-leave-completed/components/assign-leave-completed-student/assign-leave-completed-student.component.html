@@ -1,0 +1,19 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Assigned To</th>
+        <!-- <th>Send Request</th> -->
+      </tr>
+    </thead> 
+    <tbody>
+        <tr *ngFor="let leave of leaves; let i = index">
+            <td>{{ leave.studentId }}</td>
+            <td>{{ leave.startDate | date: 'dd-MM-yyyy' }}</td>
+            <td>{{ leave.endDate | date: 'dd-MM-yyyy' }}</td>
+            <td>{{ leave.assignedTo}}</td>
+            </tr>
+        </tbody> 
+      </table>

@@ -29,6 +29,7 @@ export class LeaveComponent implements OnInit{
 
 
    getLeaveFunction():void{
+    this.leaves = new Array();
     this.username = sessionStorage.getItem('username')
     this.leaveService.getLeaveByStudentId(this.username).subscribe({
       next:(res)=>{
@@ -51,13 +52,20 @@ export class LeaveComponent implements OnInit{
   }
 
   addLeave(){
-    this.dialogRef = this.dialog.open(LeaveFormComponent)
+    let dialogRef = this.dialog.open(LeaveFormComponent,{
+      disableClose:true,
+    }).afterClosed().subscribe(()=>this.getLeaveFunction());
   }
   async deleteLeave(leaveId:any){
     await this.leaveService.deleteLeaveByLeaveId(leaveId).subscribe({
-      error:()=>{
+      error: () => {
+        this.toastService.error('Failed to Delete Leave');
+        this.spinnerService.removeSpinner();
+      },
+      complete:()=>{
         this.toastService.success("Leave Deleted Successfully!");
         this.spinnerService.removeSpinner();
+        this.getLeaveFunction()
       } , 
       });
   }
